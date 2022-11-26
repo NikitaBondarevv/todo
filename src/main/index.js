@@ -1,5 +1,7 @@
 import { Component } from 'react';
 
+import { Input } from '../input';
+import { UserFrom } from '../userForm';
 import styles from './styles.css';
 
 export class Main extends Component {
@@ -8,9 +10,7 @@ export class Main extends Component {
   render() {
     return (
       <main className={styles.main}>
-        <form>
-          form
-        </form>
+        <UserFrom />
       </main>
     )
   }

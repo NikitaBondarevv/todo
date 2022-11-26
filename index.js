@@ -8,10 +8,6 @@ export const ContextTheme = createContext(true);
 const root = createRoot(document.getElementById('app'));
 
 class App extends Component {
-  state = {
-    isLight: true
-  }
-
   render() {
     return (
       <ContextTheme.Provider value>

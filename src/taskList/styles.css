@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "MyriadProRegular";
+  src: url(../../fonts/Myriad\Pro\Regular.ttf);
+}
+
+ul {
+  margin: 25px 0;
+  padding: 0 0 0 10px;
+  font-family: "MyriadProRegular";
+  font-size: 24px;
+  line-height: 24px;
+  color: #fff;
+  list-style: none;
+}
+
+ul p {
+  margin: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+  display: flex;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 0 15px;
+}
+
+.waiting {
+  background: url(../../images/waiting.png) no-repeat;
+  height: 38px;
+  width: 38px;
+  margin: 0 10px 0;
+}
+
+.done {
+  background: url(../../images/done.png) no-repeat;
+  height: 38px;
+  width: 38px;
+  margin: 0 10px 0;
+}
+
+.progress {
+  background: url(../../images/in-progress.png) no-repeat;
+  height: 38px;
+  width: 38px;
+}
+
+.taskInProgress {
+  text-decoration: underline;
+}
+
+.tasks a {
+  display: block;
+  background: url(../../images/hovering.png) no-repeat;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  margin: 0 0 0 10px;
+}
+
+.tasks {
+  display: flex;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 0 15px;
+}
+
+.tasks div {
+  margin: 0 0 0 10px;
+}
+
+ul .hidden { 
+  display: none;
+}
+
+.tasks .inProgress {
+  background-position: -53px 0;
+}
+
+.tasks .delete {
+  background-position: -105px 0;
+}
+
+.buttons {
+  display: flex;
+}

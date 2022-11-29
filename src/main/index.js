@@ -1,17 +1,10 @@
-import { Component } from 'react';
-
-import { Input } from '../input';
 import { UserFrom } from '../userForm';
 import styles from './styles.css';
+import { TaskList } from "../taskList";
 
-export class Main extends Component {
-  state = {};
-
-  render() {
-    return (
-      <main className={styles.main}>
-        <UserFrom />
-      </main>
-    )
-  }
-}
+export const Main = () => (
+  <main className={styles.main}>
+    <UserFrom />
+    <TaskList />
+  </main>
+)

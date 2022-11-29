@@ -1,0 +1,10 @@
+:global body {
+  background: url(images/main-bg.jpg) repeat;
+  height: 100%;
+  margin: 0;
+}
+
+:global #app {
+  max-width: 1024px;
+  margin: 0 auto;
+}

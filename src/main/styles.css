@@ -1,6 +1,7 @@
 .main {
-  background-color: blanchedalmond;
-  min-height: 200px;
-  font-size: 20px;
-  display: flex;
+  width: 837px;
+  margin: 0 auto;
+  background: rgba(0, 0, 255, .3);
+  border: 1px solid #fff;
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 50%);
 }

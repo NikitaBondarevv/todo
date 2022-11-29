@@ -1,6 +1,7 @@
 import { Component } from "react"
 
 import styles from './styles.css'
+import msg from '../../images/msg-element.png'
 
 export class UserFrom extends Component {
 
@@ -26,7 +27,7 @@ export class UserFrom extends Component {
       this.setState({ 
         passwordRepeat: { 
           [name]: value,
-          error: ' Passwords are not matched'
+          error: 'Passwords are not matched'
         }
        })
 
@@ -36,7 +37,7 @@ export class UserFrom extends Component {
     this.setState({ 
       [name]: { 
         value,
-        error: reg.test(value) ? '' : ` ${name} is incorrect`
+        error: reg.test(value) ? '' : `${name} is incorrect`
       }
      })
   }
@@ -70,13 +71,13 @@ export class UserFrom extends Component {
     const { disabledFields = [] } = this.props
 
     return (
-      <form onSubmit={this.save}>
+      <form className={styles.loginForm} onSubmit={this.save}>
         <ul>
           {fields.map((field, index) => {
             const stateField = state[field.label];
 
             return (
-              <li key={field.label}>
+              <li key={field.label} className={styles[field.label]}>
                 <input type={field.secure ? 'password' : 'text'}
                   name={field.label}
                   className={stateField.error ? styles.error : styles.success}
@@ -86,14 +87,14 @@ export class UserFrom extends Component {
                   onBlur={e => this.validate(e, index)}
                   disabled={disabledFields.includes(field.label)}
                 />
-                {stateField.error && <span>{stateField.error}</span>}
+                {stateField.error && <div className={styles.info}><img src={msg} /><span className={styles.textInfo}>{stateField.error}</span></div>}
               </li>
             );
           }
           )}
         </ul>
 
-        <input type="submit" value="Save" disabled={!this.canSubmit()} />
+        <input type="submit" value="SAVE" disabled={!this.canSubmit()} />
       </form>
     )
   }

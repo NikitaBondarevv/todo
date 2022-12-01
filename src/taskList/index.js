@@ -1,86 +1,85 @@
-import { Component } from "react";
+import { Component } from 'react'
 
-import styles from './styles.css';
+import styles from './styles.css'
 
-class Tasks extends Component {
-  componentWillUnmount() {
-    console.log('delete!!!');
-  }
-
-  render() {
-    const { id, completed, title, buttons } = this.props;
-
-    return (
-      <li key={id} className={completed === true ? styles.completed : styles.tasks}>
-        <span className={completed === true ? styles.done : styles.waiting}></span>
-        <p>{`${id}. ${title}`}</p>
-        {buttons}
-      </li>
-    )
-  }
-}
+const Tasks = ({ id, completed, title, buttons }) => (
+  <li key={id} className={completed ? styles.completed : styles.tasks}>
+    <span className={completed ? styles.done : completed === undefined ? styles.progress : styles.waiting}></span>
+    <p className={completed === undefined ? styles.taskInProgress : ''} >{`${id}. ${title}`}</p>
+    {buttons}
+  </li>
+)
 
 export class TaskList extends Component {
   state = {
     todos: [],
-    completed: true,
-    progress: 'progress',
-    deleteTask: 'delete'
+    value: ''
   }
 
-  async getTasks() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos');
-    const todos = await response.json();
+  originTodos = []
 
-    this.setState({ todos });
+  async getTasks() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+    const todos = await response.json()
+
+    this.originTodos = todos
+
+    this.setState({ todos: this.originTodos })
   }
 
   componentDidMount() {
-    this.getTasks();
+    this.getTasks()
   }
 
-  completedTask = (id) => {
-    this.setState({ completed: this.state.completed })
+  completeTask = (index) => {
+    this.state.todos[index].completed = true
 
-    if (this.state.todos[id].completed !== true) {
-      this.state.todos[id].completed = this.state.completed
-    }
+    this.setState({ todos: this.state.todos })
   }
 
-  inProgressTask = ({ target }, id) => {
-    this.setState({ progress: this.state.progress });
+  setInProgressTask = (index) => {
+    this.state.todos[index].completed = undefined
 
-    if (!this.state.todos[id].completed) {
-      this.state.todos[id].completed = this.state.progress;
-      target.parentNode.parentNode.classList.add(styles.taskInProgress);
-      document.querySelectorAll('li span')[id].classList.add(styles.progress);
-    }
+    this.setState({ todos: this.state.todos })
   }
 
   deleteTask = (id) => {
     this.setState({
-      deleteTask: this.state.deleteTask,
       todos: this.state.todos.filter(todo => todo.id !== id)
-    });
+    })
+  }
+
+  taskSearch = ({ target: { value } }) => {
+    this.setState({
+      value,
+      todos: this.originTodos
+    })
+
+    if (value.length > 1) {
+      this.setState({ todos: this.originTodos.filter(todo => todo.title.includes(value)) })
+    }
   }
 
   render() {
-    const { todos, progress } = this.state;
+    const { todos, value } = this.state
 
     return (
-      <ul className={styles.ul}>
-        {
-          todos.map((todo, index) =>
-            <Tasks key={index} id={index + 1} completed={todo.completed} title={todo.title} buttons={
-              <div className={styles.buttons} >
-                <a onClick={e => this.completedTask(index)}></a>
-                {todo.completed === progress ? '' : <a onClick={e => this.inProgressTask(e, index)} className={styles.inProgress}></a>}
-                <a onClick={e => this.deleteTask(todo.id)} className={styles.delete}></a>
-              </div>
-            } />
-          )
-        }
-      </ul>
+      <>
+        <input value={value} onChange={this.taskSearch} className={styles.search} placeholder="SEARCH" />
+        <ul className={styles.tasksList}>
+          {
+            todos.map((todo, index) =>
+              <Tasks key={index} id={index + 1} completed={todo.completed} title={todo.title} buttons={
+                <div className={styles.buttons} >
+                  <a onClick={() => this.completeTask(index)}></a>
+                  {todo.completed === undefined ? '' : <a onClick={() => this.setInProgressTask(index)} className={styles.inProgress}></a>}
+                  <a onClick={() => this.deleteTask(todo.id)} className={styles.delete}></a>
+                </div>
+              } />
+            )
+          }
+        </ul>
+      </>
     )
   }
 }

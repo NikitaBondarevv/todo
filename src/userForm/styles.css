@@ -25,16 +25,14 @@
 }
 
 .loginForm input {
+  font: 24px/24px "MyriadProLight";
   padding: 5px;
   width: 272px;
   height: 55px;
-  line-height: 24px;
-  font-size: 24px;
   border-radius: 7px;
   margin: 0 20px 15px 0;
   border: 1px solid #fff;
   font-style: italic;
-  font-family: "MyriadProLight";
   position: relative;
 }
 
@@ -82,12 +80,8 @@
   margin: 0;
   background: #0ff;
   color: #fff;
-  width: 70px;
-  text-align: center;
   height: 53px;
   width: 143px;
-  outline: none;
-  cursor: pointer;
   border: 1px solid #b1bad8;
   box-shadow: 0 0 5px #b1bad8;
 }

@@ -6,7 +6,7 @@ export class EditableText extends Component {
     value: ''
   }
 
-  setValue = ({ target: { value } }) => {
+  setValue = ({ target: { value }}) => {
     this.setState({ value });
   }
 
@@ -31,7 +31,7 @@ export class EditableText extends Component {
         {
           hidden ? <span onClick={this.showInput}>{value ? value : 'Click me!'}</span> :
             <form onSubmit={this.handleBlur}>
-              <input name="text" value={value} onChange={this.setValue} onBlur={this.handleBlur} />
+              <input name="text" value={value} onChange={this.setValue} onBlur={this.handleBlur} autoFocus />
             </form>
         }
       </>

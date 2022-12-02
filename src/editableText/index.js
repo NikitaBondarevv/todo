@@ -14,9 +14,8 @@ export class EditableText extends Component {
     e.preventDefault();
 
     this.setState({ hidden: true });
-    if (this.props.onloose) {
-      this.props.onloose(this.state.value);
-    }
+
+    this.props.onLoose?.(this.state.value);
   }
 
   showInput = () => {

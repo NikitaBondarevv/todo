@@ -1,6 +1,6 @@
 import styles from './styles.css'
-import logo from '../../images/logo.png'
-import { EditableText } from '../editableText';
+import logo from './images/logo.png'
+import { EditableText } from '../editableText'
 
 export const Header = () => {
   const links = ['Home', 'Task list', 'Contacts']
@@ -10,7 +10,7 @@ export const Header = () => {
       <img src={logo} />
       <nav>
         <ul className={styles.list}>
-          {links.map((link, index) => <li key={index} ><a href="/" className={styles[`${link.toLowerCase().replace(/\s+/, '-')}`]} >{link}</a></li>)}
+          {links.map((link, index) => <li key={index} ><a href={`#${link.replace(/\s+/, '-')}}`} className={styles[`${link.toLowerCase().replace(/\s+/, '-')}`]} >{link}</a></li>)}
         </ul>
       </nav>
       <EditableText />

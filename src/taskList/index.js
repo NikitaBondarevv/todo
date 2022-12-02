@@ -2,10 +2,10 @@ import { Component } from 'react'
 
 import styles from './styles.css'
 
-const Tasks = ({ id, completed, title, buttons }) => (
-  <li key={id} className={completed ? styles.completed : styles.tasks}>
+const Tasks = ({ index, completed, title, buttons }) => (
+  <li className={completed ? styles.completed : styles.tasks}>
     <span className={completed ? styles.done : completed === undefined ? styles.progress : styles.waiting}></span>
-    <p className={completed === undefined ? styles.taskInProgress : ''} >{`${id}. ${title}`}</p>
+    <p className={completed === undefined ? styles.taskInProgress : ''} >{`${index}. ${title}`}</p>
     {buttons}
   </li>
 )
@@ -13,7 +13,7 @@ const Tasks = ({ id, completed, title, buttons }) => (
 export class TaskList extends Component {
   state = {
     todos: [],
-    value: ''
+    inputValue: ''
   }
 
   originTodos = []
@@ -49,31 +49,27 @@ export class TaskList extends Component {
     })
   }
 
-  taskSearch = ({ target: { value } }) => {
+  taskSearch = ({ target: { value }}) => {
     this.setState({
-      value,
-      todos: this.originTodos
+      inputValue: value,
+      todos: value.length > 1 ? this.originTodos.filter(todo => todo.title.includes(value)) : this.originTodos
     })
-
-    if (value.length > 1) {
-      this.setState({ todos: this.originTodos.filter(todo => todo.title.includes(value)) })
-    }
   }
 
   render() {
-    const { todos, value } = this.state
+    const { todos, inputValue } = this.state
 
     return (
       <>
-        <input value={value} onChange={this.taskSearch} className={styles.search} placeholder="SEARCH" />
+        <input value={inputValue} onChange={this.taskSearch} className={styles.search} placeholder="SEARCH" />
         <ul className={styles.tasksList}>
           {
             todos.map((todo, index) =>
-              <Tasks key={index} id={index + 1} completed={todo.completed} title={todo.title} buttons={
+              <Tasks key={index} index={index + 1} completed={todo.completed} title={todo.title} buttons={
                 <div className={styles.buttons} >
-                  <a onClick={() => this.completeTask(index)}></a>
-                  {todo.completed === undefined ? '' : <a onClick={() => this.setInProgressTask(index)} className={styles.inProgress}></a>}
-                  <a onClick={() => this.deleteTask(todo.id)} className={styles.delete}></a>
+                  <a href='#done' onClick={() => this.completeTask(index)}></a>
+                  {todo.completed === undefined ? '' : <a href='#inProgress' onClick={() => this.setInProgressTask(index)} className={styles.inProgress}></a>}
+                  <a href='#delete' onClick={() => this.deleteTask(todo.id)} className={styles.delete}></a>
                 </div>
               } />
             )

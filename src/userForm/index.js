@@ -1,9 +1,9 @@
 import { Component } from "react"
 
 import styles from './styles.css'
-import msg from '../../images/msg-element.png'
+import msg from './images/msg-element.png'
 
-export class UserFrom extends Component {
+export class UserForm extends Component {
 
   fields = [
     { label: 'email', reg: /^\w+@\w+\.[a-z]{2,5}$/ },

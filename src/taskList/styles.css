@@ -1,0 +1,85 @@
+.tasksList {
+  margin: 25px 0;
+  padding: 0 15px 0;
+  font-size: 24px;
+  line-height: 24px;
+  color: #fff;
+  list-style: none;
+}
+
+.tasksList li {
+  display: flex;
+  align-items: center;
+  margin: 0 0 15px;
+  column-gap: 15px;
+}
+
+.tasksList span {
+  height: 35px;
+  min-width: 35px;
+}
+
+.tasksList p {
+  margin: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.taskInProgress {
+  text-decoration: underline;
+}
+
+.waiting {
+  background: url(./images/waiting.png) no-repeat;
+}
+
+.done {
+  background: url(./images/done.png) no-repeat;
+}
+
+.progress {
+  background: url(./images/in-progress.png) no-repeat;
+}
+
+.tasksList a {
+  text-indent: -9999px;
+}
+
+.tasks a {
+  display: block;
+  background: url(./images/hovering.png) no-repeat;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+}
+
+.tasks .inProgress {
+  background-position: -53px 0;
+}
+
+.tasks .delete {
+  background-position: -105px 0;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 10px;
+}
+
+.search {
+  font-size: 24px;
+  line-height: 24px;
+  padding: 5px 5px 5px 10px;
+  width: 200px;
+  height: 25px;
+  border-radius: 7px;
+  border: 1px solid #fff;
+  font-style: italic;
+  margin: 20px 0 0 15px;
+}
+
+.search::placeholder {
+  color: #000;
+}

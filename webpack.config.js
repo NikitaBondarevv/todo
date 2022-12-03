@@ -42,7 +42,11 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: { emitWarning: true }
-      }       
+      },
+      {
+        test : /\.(jpg|png|svg|jpeg)$/,
+        type: 'asset/resource',
+      } 
     ]
   },
   plugins: [

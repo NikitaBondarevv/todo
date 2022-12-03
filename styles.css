@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "MyriadProRegular";
+  src: url(./fonts/MyriadProRegular.ttf);
+}
+
+@font-face {
+  font-family: "MyriadProLight";
+  src: url(./fonts/MyriadProLight.otf);
+}
+
+:global body {
+  background: url(images/main-bg.jpg) repeat;
+  height: 100%;
+  margin: 0;
+  font-family: "MyriadProRegular";
+}
+
+:global #app {
+  max-width: 1024px;
+  margin: 0 auto;
+}

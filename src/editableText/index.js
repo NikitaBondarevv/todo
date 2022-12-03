@@ -1,6 +1,15 @@
 import { Component } from "react";
+import PropTypes from 'prop-types';
 
 export class EditableText extends Component {
+  static defaultProps = {
+    onLoose: function () {}
+  }
+
+  static propTypes = {
+    onLoose: PropTypes.func
+  }
+
   state = {
     hidden: true,
     value: ''
@@ -15,7 +24,7 @@ export class EditableText extends Component {
 
     this.setState({ hidden: true });
 
-    this.props.onLoose?.(this.state.value);
+    this.props.onLoose(this.state.value);
   }
 
   showInput = () => {

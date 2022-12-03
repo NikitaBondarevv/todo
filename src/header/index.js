@@ -10,7 +10,7 @@ export const Header = () => {
       <img src={logo} />
       <nav>
         <ul className={styles.list}>
-          {links.map((link, index) => <li key={index} ><a href={`#${link.replace(/\s+/, '-')}}`} className={styles[`${link.toLowerCase().replace(/\s+/, '-')}`]} >{link}</a></li>)}
+          {links.map((link, index) => <li key={index} ><a href={`#${link.replace(/\s+/, '-')}}`} className={styles[`link${index}`]} >{link}</a></li>)}
         </ul>
       </nav>
       <EditableText />

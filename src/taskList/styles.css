@@ -43,6 +43,10 @@
   background: url(./images/in-progress.png) no-repeat;
 }
 
+.tasksList a {
+  text-indent: -9999px;
+}
+
 .tasks a {
   display: block;
   background: url(./images/hovering.png) no-repeat;

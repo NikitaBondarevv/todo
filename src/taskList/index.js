@@ -67,9 +67,9 @@ export class TaskList extends Component {
             todos.map((todo, index) =>
               <Tasks key={index} index={index + 1} completed={todo.completed} title={todo.title} buttons={
                 <div className={styles.buttons} >
-                  <a href='#done' onClick={() => this.completeTask(index)}></a>
-                  {todo.completed === undefined ? '' : <a href='#inProgress' onClick={() => this.setInProgressTask(index)} className={styles.inProgress}></a>}
-                  <a href='#delete' onClick={() => this.deleteTask(todo.id)} className={styles.delete}></a>
+                  <a onClick={() => this.completeTask(index)}>done</a>
+                  {todo.completed === undefined ? '' : <a onClick={() => this.setInProgressTask(index)} className={styles.inProgress}>in progress</a>}
+                  <a onClick={() => this.deleteTask(todo.id)} className={styles.delete}>delete</a>
                 </div>
               } />
             )

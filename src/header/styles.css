@@ -33,10 +33,10 @@ header .list {
   position: absolute;
 }
 
-.list .task-list::before {
+.list .link1::before {
   background-position: -25px 0;
 }
 
-.list .contacts::before {
+.list .link2::before {
   background-position: -52px 0;
 }

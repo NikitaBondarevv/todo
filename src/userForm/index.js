@@ -1,9 +1,17 @@
-import { Component } from "react"
+import { Component } from 'react'
+import PropTypes from 'prop-types';
 
 import styles from './styles.css'
 import msg from './images/msg-element.png'
 
 export class UserForm extends Component {
+  static defaultProps = {
+    disabledFields: []
+  }
+
+  static propTypes = {
+    disabledFields: PropTypes.array
+  }
 
   fields = [
     { label: 'email', reg: /^\w+@\w+\.[a-z]{2,5}$/ },
@@ -68,7 +76,7 @@ export class UserForm extends Component {
 
   render() {
     const { fields, state } = this
-    const { disabledFields = [] } = this.props
+    const { disabledFields } = this.props
 
     return (
       <form className={styles.loginForm} onSubmit={this.save}>

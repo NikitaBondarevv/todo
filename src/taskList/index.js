@@ -1,16 +1,30 @@
 import { Component } from 'react'
+import PropTypes from 'prop-types';
 
 import styles from './styles.css'
 
 const Tasks = ({ index, completed, title, buttons }) => (
   <li className={completed ? styles.completed : styles.tasks}>
     <span className={completed ? styles.done : completed === undefined ? styles.progress : styles.waiting}></span>
-    <p className={completed === undefined ? styles.taskInProgress : ''} >{`${index}. ${title}`}</p>
+    <p className={completed === undefined ? styles.taskInProgress : ''}>{`${index}. ${title}`}</p>
     {buttons}
   </li>
 )
 
 export class TaskList extends Component {
+  static defaultProps = {
+    title: '',
+    index: 0,
+    completed: false,
+  }
+
+  static propTypes = {
+    title: PropTypes.string,
+    index: PropTypes.number,
+    completed: PropTypes.bool,
+    buttons: PropTypes.element
+  }
+  
   state = {
     todos: [],
     inputValue: ''

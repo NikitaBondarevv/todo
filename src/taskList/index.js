@@ -16,7 +16,6 @@ export class TaskList extends Component {
     title: '',
     index: 0,
     completed: false,
-    buttons: <div></div>
   }
 
   static propTypes = {

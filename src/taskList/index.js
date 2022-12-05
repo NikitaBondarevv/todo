@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types';
 
+import { getTasks } from '../contracts/getTasks'
 import styles from './styles.css'
 
 const Tasks = ({ index, completed, title, buttons }) => (
@@ -33,10 +34,7 @@ export class TaskList extends Component {
   originTodos = []
 
   async getTasks() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos')
-    const todos = await response.json()
-
-    this.originTodos = todos
+    this.originTodos = await getTasks()
 
     this.setState({ todos: this.originTodos })
   }

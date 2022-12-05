@@ -1,0 +1,27 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginForm input {
+  font: 24px/24px "MyriadProLight";
+  padding: 5px 5px 5px 30px;
+  width: 247px;
+  height: 55px;
+  border-radius: 7px;
+  margin: 0 0 15px 0;
+  border: 1px solid #fff;
+  font-style: italic;
+}
+
+.loginForm input[type=submit] {
+  padding: 0;
+  margin: 0;
+  background: #0ff;
+  color: #fff;
+  height: 53px;
+  width: 143px;
+  border: 1px solid #b1bad8;
+  box-shadow: 0 0 5px #b1bad8;
+}

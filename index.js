@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 import { checkUser } from './src/contracts/checkUser';
 import { Header } from './src/header';
 import { Main } from './src/main';
-import { TaskList } from './src/taskList';
 import './styles.css';
 
 export const ContextUser = createContext(true);
@@ -36,7 +35,6 @@ class App extends Component {
       <ContextUser.Provider value={contextValue}>
         <Header />
         <Main />
-        <TaskList />
       </ContextUser.Provider>
     )
   }

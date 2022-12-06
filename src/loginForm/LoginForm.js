@@ -1,6 +1,8 @@
 import { login } from '../contracts/login'
 import styles from './styles.css'
 
+import PropTypes from 'prop-types';
+
 export const LoginForm = ({ setUser }) => {
   const submitHandler = async (e) => {
     const {
@@ -23,4 +25,12 @@ export const LoginForm = ({ setUser }) => {
       <input type="submit" value="Login" />
     </form>
   )
+}
+
+LoginForm.defaultProps = {
+  setUser: function () {}
+}
+
+LoginForm.propTypes = {
+  setUser: PropTypes.func
 }

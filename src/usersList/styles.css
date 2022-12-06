@@ -1,0 +1,11 @@
+.list {
+  color: #fff;
+  font-size: 25px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user {
+  margin: 0 0 10px;
+}

@@ -1,0 +1,16 @@
+.gallery {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery li {
+  justify-self: center;
+}
+
+.image {
+  max-width: 150px;
+}

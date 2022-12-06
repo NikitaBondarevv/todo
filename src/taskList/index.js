@@ -2,36 +2,40 @@ import { Component } from 'react'
 import PropTypes from 'prop-types';
 
 import { getTasks } from '../contracts/getTasks'
+import { Task } from './task';
+import { TabsTasks } from './tabs';
+import { Tab } from '../tabs/tab';
+import { AddTask } from './addTask'
 import styles from './styles.css'
-
-const Tasks = ({ index, completed, title, buttons }) => (
-  <li className={completed ? styles.completed : styles.tasks}>
-    <span className={completed ? styles.done : completed === undefined ? styles.progress : styles.waiting}></span>
-    <p className={completed === undefined ? styles.taskInProgress : ''}>{`${index}. ${title}`}</p>
-    {buttons}
-  </li>
-)
 
 export class TaskList extends Component {
   static defaultProps = {
     title: '',
     index: 0,
-    completed: false,
+    done: false,
   }
 
   static propTypes = {
     title: PropTypes.string,
     index: PropTypes.number,
-    completed: PropTypes.bool,
+    done: PropTypes.bool,
     buttons: PropTypes.element
   }
-  
+
   state = {
-    todos: [],
-    inputValue: ''
+    todos: []
   }
 
   originTodos = []
+  daysOfTheWeek = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday'
+  ]
 
   async getTasks() {
     this.originTodos = await getTasks()
@@ -43,51 +47,53 @@ export class TaskList extends Component {
     this.getTasks()
   }
 
-  completeTask = (index) => {
-    this.state.todos[index].completed = true
+  completeTask = (todoIndex, index) => {
+    this.state.todos[todoIndex][index].done = true
 
     this.setState({ todos: this.state.todos })
   }
 
-  setInProgressTask = (index) => {
-    this.state.todos[index].completed = undefined
+  setInProgressTask = (todoIndex, index) => {
+    this.state.todos[todoIndex][index].done = undefined
 
     this.setState({ todos: this.state.todos })
   }
 
-  deleteTask = (id) => {
-    this.setState({
-      todos: this.state.todos.filter(todo => todo.id !== id)
-    })
-  }
+  deleteTask = (todoIndex, index) => {
+    this.state.todos[todoIndex][index].index = index
 
-  taskSearch = ({ target: { value }}) => {
     this.setState({
-      inputValue: value,
-      todos: value.length > 1 ? this.originTodos.filter(todo => todo.title.includes(value)) : this.originTodos
+      todos: this.state.todos.filter((todo) => todo.index !== index)
     })
   }
 
   render() {
-    const { todos, inputValue } = this.state
+    const { todos } = this.state
 
     return (
-      <>
-        <input value={inputValue} onChange={this.taskSearch} className={styles.search} placeholder="SEARCH" />
-        <ul className={styles.tasksList}>
+      <div className={styles.content} >
+        <TabsTasks selectedIndex={new Date().getDay() - 1}>
           {
-            todos.map((todo, index) =>
-              <Tasks key={index} index={index + 1} completed={todo.completed} title={todo.title} buttons={
-                <div className={styles.buttons} >
-                  <a onClick={() => this.completeTask(index)}>done</a>
-                  {todo.completed === undefined ? '' : <a onClick={() => this.setInProgressTask(index)} className={styles.inProgress}>in progress</a>}
-                  <a onClick={() => this.deleteTask(todo.id)} className={styles.delete}>delete</a>
-                </div>
-              } />
+            this.daysOfTheWeek.map((day, todoIndex) =>
+              <Tab key={todoIndex} title={`${day}`}>
+                {
+                  !todos.length ? <span>Loading...</span> :
+                    todos[todoIndex].map((todo, index) =>
+                      <Task key={index} index={index + 1} done={todo.done} title={todo.title} buttons={
+                        <div className={styles.buttons} >
+                          <a onClick={() => this.completeTask(todoIndex, index)}>done</a>
+                          {todo.done === undefined ? '' : <a onClick={() => this.setInProgressTask(todoIndex, index)} className={styles.inProgress}>in progress</a>}
+                          <a onClick={() => this.deleteTask(todoIndex, index)} className={styles.delete}>delete</a>
+                        </div>
+                      } />
+                    )
+                }
+              </Tab>
             )
           }
-        </ul>
-      </>
+        </TabsTasks>
+        <AddTask />
+      </div>
     )
   }
 }

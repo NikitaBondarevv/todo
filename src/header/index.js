@@ -17,7 +17,7 @@ export const Header = () => {
           {links.map((link, index) => <li key={index} ><a href={`#`} className={styles[`${link.value}`]}>{link.text}</a></li>)}
         </ul>
       </nav>
-      <EditableText />
+      <EditableText text="Click me" />
     </header>
   )
 }

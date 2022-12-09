@@ -1,9 +1,9 @@
-import { Component } from "react";
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export class EditableText extends Component {
   static defaultProps = {
-    onLoose: function () {}
+    onLoose: () => { }
   }
 
   static propTypes = {
@@ -38,9 +38,9 @@ export class EditableText extends Component {
       <div>
         {
           hidden ? <span onClick={this.showInput}>{value ? value : this.props.text}</span> :
-            <form onSubmit={this.handleBlur}>
-              <input name="text" value={value} onChange={this.setValue} onBlur={e => this.handleBlur} autoFocus />
-            </form>
+          <form onSubmit={this.handleBlur}>
+            <input name="text" value={value} onChange={this.setValue} onBlur={this.handleBlur} autoFocus />
+          </form>
         }
       </div>
     )

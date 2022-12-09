@@ -1,31 +1,32 @@
 // import { UserForm } from '../userForm';
-import styles from './styles.css';
+import { DaysWithTasks } from '../taskList/daysWithTasks';
 import { Tabs } from '../tabs';
+import { UsersList } from '../usersList'
+import { Gallery } from '../gallery';
 import { Tab } from '../tabs/tab';
 import { LoginForm } from '../loginForm/LoginForm';
 import { ContextUser } from '../../index'
-import { UsersList } from '../usersList'
-import { Gallery } from '../gallery';
-import { TaskList } from '../taskList';
 
 export const Main = () => (
   <ContextUser.Consumer>
     {
-      ({ isAuthenticated, setUser }) => <main className={styles.main}>
+      ({ isAuthenticated, setUser }) =>
+      <main>
         {
           isAuthenticated
             ?
             <>
               <Tabs selectedIndex="1">
-                <Tab title='Users'>
+                <Tab title="Users">
                   <UsersList />
                 </Tab>
 
-                <Tab title='Gallery'>
+                <Tab title="Gallery">
                   <Gallery />
                 </Tab>
+
               </Tabs>
-              <TaskList />
+              <DaysWithTasks />
             </>
             : <LoginForm setUser={setUser} />
         }

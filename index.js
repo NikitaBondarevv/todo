@@ -18,7 +18,7 @@ class App extends Component {
   async componentDidMount() {
     const user = await checkUser()
 
-    this.setState({isAuthenticated: !user.error})
+    this.setState({ isAuthenticated: !user.error })
   }
 
   setUser = (user) => {

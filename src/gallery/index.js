@@ -11,7 +11,7 @@ const images = [htmlIcon, jsIcon, cssIcon, nodeJSIcon, reactIcon, sassIcon]
 export const Gallery = () => (
   <ul className={styles.gallery}>
     {
-      images.map((image, index) => <li key={index} ><img className={styles.image} src={image} /></li>)
+      images.map((image, index) => <li key={index}><img className={styles.image} src={image} /></li>)
     }
   </ul>
 )

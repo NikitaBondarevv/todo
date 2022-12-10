@@ -8,7 +8,7 @@ export const daysOfTheWeek = [
   'Sunday'
 ]
 
-const month = [
+export const month = [
   'January',
   'February',
   'March',
@@ -23,17 +23,17 @@ const month = [
   'December'
 ]
 
-function dateRange(startDate, endDate, steps = 1) {
-  const dateArray = []
-  const currentDate = new Date(startDate)
+export const getDate = () => {
+  const date = new Date()
+  const targetDay = -6
+  const targetDate = new Date()
+  const delta = targetDay - date.getDay()
 
-  while (currentDate <= new Date(endDate)) {
-    dateArray.push(`${new Date(currentDate).getDate()} ${month[new Date(currentDate).getMonth()]}`)
-
-    currentDate.setUTCDate(currentDate.getUTCDate() + steps)
+  if (delta >= 0) {
+    targetDate.setDate(date.getDate() + delta)
+  } else {
+    targetDate.setDate(date.getDate() + 7 + delta)
   }
 
-  return dateArray;
+  return targetDate
 }
-
-export const dates = dateRange('2022-12-05', '2022-12-11')

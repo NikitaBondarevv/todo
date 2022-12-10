@@ -42,7 +42,7 @@
 }
 
 .loginForm .password::before {
-  background: url(./image/form-elements.png) no-repeat;
+  background: url(./images/form-elements.png) no-repeat;
   content: "";
   width: 17px;
   position: absolute;

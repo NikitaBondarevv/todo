@@ -80,7 +80,7 @@ export class TaskList extends Component {
     const { todos, value, hidden } = this.state
 
     return (
-      <div className={styles.content}>
+      <div>
         <ul className={styles.tasksList}>
           {
             todos.map((task, index) =>

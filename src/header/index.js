@@ -16,7 +16,7 @@ export const Header = () => {
         <ul className={styles.list}>
           {links.map((link, index) =>
             <li key={index}>
-              <a href={'#'} className={styles[`${link.value}`]}>{link.text}</a>
+              <a href='#' className={styles[`${link.value}`]}>{link.text}</a>
             </li>
           )}
         </ul>

@@ -35,14 +35,14 @@ export class EditableText extends Component {
     const { value, hidden } = this.state;
 
     return (
-      <div>
+      <>
         {
           hidden ? <span onClick={this.showInput}>{value ? value : this.props.text}</span> :
           <form onSubmit={this.handleBlur}>
             <input name="text" value={value} onChange={this.setValue} onBlur={this.handleBlur} autoFocus />
           </form>
         }
-      </div>
+      </>
     )
   }
 }

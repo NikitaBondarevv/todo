@@ -23,15 +23,25 @@ export const months = [
   'December'
 ]
 
-const firstDayOfTheWeek = new Date();
+const getCurrentMonday = () => {
+  const date = new Date()
+  const dayNumber = date.getDay()
 
-firstDayOfTheWeek.setDate(firstDayOfTheWeek.getDate() + 1 - firstDayOfTheWeek.getDay())
+  if (dayNumber) {
+    date.setDate(date.getDate() + 1 - dayNumber)
+  } else {
+    date.setDate(date.getDate() - 6)
+  }
 
-export const dates = Array.from({ length: 7 }).map(() => {
-    const date = firstDayOfTheWeek.getDate();
-    const month = months[firstDayOfTheWeek.getMonth()];
+  return date
+}
 
-    firstDayOfTheWeek.setDate(date + 1);
+export const getDates = () => Array.from({ length: 7 }).map((value, index) => {
+  const monday = getCurrentMonday()
+  const date = monday.getDate()
+  const month = months[monday.getMonth()]
 
-    return `${date} ${month}`
+  monday.setDate(date + index);
+
+  return `${monday.getDate()} ${month}`
 })

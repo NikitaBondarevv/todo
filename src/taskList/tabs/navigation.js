@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 import styles from './styles.css'
-import { dates } from '../../helpers/constans'
+import { getDates } from '../../helpers/constans'
 
 export const Navigation = ({ titles, setActiveTab, activeTabIndex }) => (
   <nav>
@@ -11,7 +11,7 @@ export const Navigation = ({ titles, setActiveTab, activeTabIndex }) => (
           <a onClick={() => setActiveTab(index)}>
             {title}
             <br />
-            <time className={styles.dates}>{dates[index]}</time>
+            <time className={styles.dates}>{getDates()[index]}</time>
           </a>
         </li>
       )}

@@ -1,7 +1,13 @@
 .loginForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 675px;
+  height: 406px;
+  margin: 0 auto 100px;
+  background: rgba(0, 0, 255, .3);
+  border: 1px solid #fff;
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 50%);
+  padding: 60px 80px;
 }
 
 .loginForm input {
@@ -13,6 +19,11 @@
   margin: 0 0 15px 0;
   border: 1px solid #fff;
   font-style: italic;
+  color: #000;
+}
+
+.loginForm input::placeholder {
+  color: #000;
 }
 
 .loginForm input[type=submit] {
@@ -24,4 +35,23 @@
   width: 143px;
   border: 1px solid #b1bad8;
   box-shadow: 0 0 5px #b1bad8;
+}
+
+.password {
+  position: relative;
+}
+
+.loginForm .password::before {
+  background: url(./images/form-elements.png) no-repeat;
+  content: "";
+  width: 17px;
+  position: absolute;
+  z-index: 2;
+  left: 250px;
+  top: 23px;
+}
+
+.loginForm .password::before {
+  background-position: 0 -33px;
+  height: 18px;
 }

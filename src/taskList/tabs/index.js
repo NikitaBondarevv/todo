@@ -1,11 +1,20 @@
 import { Children, Component } from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 import { Navigation } from './navigation'
 
 export class Tabs extends Component {
+  static defaultProps = {
+    selectedIndex: 0
+  }
+
+  static propTypes = {
+    selectedIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  }
+
   state = {
-    index: 0
+    index: +this.props.selectedIndex
   }
 
   constructor(...props) {
@@ -14,8 +23,8 @@ export class Tabs extends Component {
     this.setTabs()
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.children !== prevProps.children ) {
+  componentDidUpdate(prevProps) {
+    if (this.props.children !== prevProps.children) {
       const { index } = this.state
       const isTabIndexExist = index <= this.props.children.length
 
@@ -30,21 +39,20 @@ export class Tabs extends Component {
     this.contents = this.tabs.map(component => component.props.children)
   }
 
-
   setActiveTab = (index) => {
     this.setState({ index })
   }
 
   render() {
     const { index } = this.state
-    const {titles = [], contents = [] } = this
+    const { titles = [], contents = [] } = this
 
     return (
-      <>
+      <div className={styles.content}>
         <Navigation titles={titles} activeTabIndex={index} setActiveTab={this.setActiveTab} />
 
-        <div id={index} className={styles.content} >{contents[index]}</div>
-      </>
+        <div id={index} className={styles.activeContent}>{contents[index]}</div>
+      </div>
     )
   }
 }

@@ -27,36 +27,36 @@ export class UserForm extends Component {
     this.setState({ [name]: { value } })
   }
 
-  validate = ({ target: { value, name }}, index) => {
+  validate = ({ target: { value, name } }, index) => {
     const { reg } = this.fields[index]
 
     if (['passwordRepeat', 'password'].includes(name) && this.state.passwordRepeat.value &&
-    this.state.passwordRepeat.value !== this.state.password.value) {
-      this.setState({ 
-        passwordRepeat: { 
+      this.state.passwordRepeat.value !== this.state.password.value) {
+      this.setState({
+        passwordRepeat: {
           [name]: value,
           error: 'Passwords are not matched'
         }
-       })
+      })
 
-       return
+      return
     }
 
-    this.setState({ 
-      [name]: { 
+    this.setState({
+      [name]: {
         value,
         error: reg.test(value) ? '' : `${name} is incorrect`
       }
-     })
+    })
   }
 
   canSubmit = () => !this.fields.some(({ label, reg }) => {
-      if (!this.state[label].value) {
-        return true
-      }
+    if (!this.state[label].value) {
+      return true
+    }
 
-      return !reg.test(this.state[label].value)
-    })
+    return !reg.test(this.state[label].value)
+  })
 
   save = (e) => {
     e.preventDefault()

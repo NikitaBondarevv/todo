@@ -23,7 +23,6 @@
   margin: 0 20px 15px 0;
   border: 1px solid #fff;
   font-style: italic;
-  position: relative;
 }
 
 .loginForm .email::before,

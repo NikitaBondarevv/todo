@@ -1,5 +1,10 @@
+@font-face {
+  font-family: "MyriadProBold";
+  src: url(../../fonts/MyriadProBold.ttf);
+}
+
 .tasksList {
-  margin: 25px 0;
+  margin: 34px 0 52px;
   padding: 0 15px 0;
   font-size: 24px;
   line-height: 24px;
@@ -23,7 +28,7 @@
   margin: 0;
 }
 
-.completed {
+.done {
   text-decoration: line-through;
 }
 
@@ -49,11 +54,16 @@
 
 .tasks a {
   display: block;
-  background: url(./images/hovering.png) no-repeat;
+  background: url(./images/buttons.png) no-repeat;
   width: 38px;
   height: 38px;
   cursor: pointer;
 }
+
+.tasks a:hover {
+  background: url(./images/hoveringButtons.png) no-repeat;
+}
+
 
 .tasks .inProgress {
   background-position: -53px 0;
@@ -63,23 +73,72 @@
   background-position: -105px 0;
 }
 
+.tasks .inProgress:hover {
+  background-position: -53px 0;
+}
+
+.tasks .delete:hover {
+  background-position: -105px 0;
+}
+
 .buttons {
   display: flex;
   column-gap: 10px;
 }
 
-.search {
-  font-size: 24px;
-  line-height: 24px;
-  padding: 5px 5px 5px 10px;
-  width: 200px;
-  height: 25px;
-  border-radius: 7px;
-  border: 1px solid #fff;
-  font-style: italic;
-  margin: 20px 0 0 15px;
+.tabsNav {
+  transform: translate(53.5px, -78px);
 }
 
-.search::placeholder {
-  color: #000;
+.list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: "MyriadProBold";
+  line-height: 24px;
+}
+
+.list a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  padding: 16px 22px;
+  background: rgba(0, 0, 255, .3);
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 50%);
+  border: 1px solid #fff;
+}
+
+.list a:hover {
+  text-decoration: underline;
+}
+
+.active a {
+  box-shadow: 0 -2px 2px rgb(0 0 0 / 50%);
+  font-weight: bold;
+  background: #303994
+}
+
+.activeContent {
+  background: #303994
+}
+
+.addTask {
+  background: #fff;
+  width: 244px;
+  font-size: 22px;
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+  text-decoration: underline;
+  box-shadow: 0px 1px 7px #000;
+  margin: 0 0 14px 59px;
+}
+
+.editableText {
+  height: 45px;
+  width: 234px;
+  font-size: 22px;
 }

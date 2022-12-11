@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { login } from '../contracts/login'
 import styles from './styles.css'
 
@@ -19,8 +21,18 @@ export const LoginForm = ({ setUser }) => {
   return (
     <form onSubmit={submitHandler} className={styles.loginForm}>
       <input type="text" placeholder="Email" name="email" />
-      <input type="password" placeholder="Password" name="password" />
+      <div className={styles.password}>
+        <input type="password" placeholder="Password" name="password" />
+      </div>
       <input type="submit" value="Login" />
     </form>
   )
+}
+
+LoginForm.defaultProps = {
+  setUser: () => {}
+}
+
+LoginForm.propTypes = {
+  setUser: PropTypes.func
 }

@@ -36,7 +36,6 @@ export class Tabs extends Component {
   setTabs() {
     this.tabs = Children.toArray(this.props.children)
     this.titles = this.tabs.map(component => component.props.title)
-    this.dates = this.tabs.map(component => component.props.dates)
     this.contents = this.tabs.map(component => component.props.children)
   }
 
@@ -46,11 +45,11 @@ export class Tabs extends Component {
 
   render() {
     const { index } = this.state
-    const { titles = [], dates = [], contents = [] } = this
+    const { titles = [], contents = [] } = this
 
     return (
       <div className={styles.content}>
-        <Navigation titles={titles} dates={dates} activeTabIndex={index} setActiveTab={this.setActiveTab} />
+        <Navigation titles={titles} dates={this.props.dates} activeTabIndex={index} setActiveTab={this.setActiveTab} />
 
         <div id={index} className={index === index ? styles.activeContent : ''}>{contents[index]}</div>
       </div>

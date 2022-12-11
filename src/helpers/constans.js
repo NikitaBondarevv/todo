@@ -23,17 +23,14 @@ export const month = [
   'December'
 ]
 
-export const getDate = () => {
+export const getDateOfThisMonday = () => {
   const date = new Date()
-  const targetDay = -6
-  const targetDate = new Date()
-  const delta = targetDay - date.getDay()
 
-  if (delta >= 0) {
-    targetDate.setDate(date.getDate() + delta)
+  if (date.getDay() === 0) {
+    date.setDate(date.getDate() - 6)
   } else {
-    targetDate.setDate(date.getDate() + 7 + delta)
+    date.setDate(date.getDate() + 1 - date.getDay())
   }
 
-  return targetDate
+  return date
 }

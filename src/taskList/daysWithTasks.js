@@ -1,9 +1,9 @@
 import { Component } from 'react'
 
 import { TaskList } from '.'
-import { getDate, daysOfTheWeek, month } from '../helpers/constans'
-import { Tabs } from '../tabs'
-import { Tab } from '../tabs/tab'
+import { daysOfTheWeek } from '../helpers/constans'
+import { Tabs } from './tabs'
+import { Tab } from './tabs/tab'
 import { getTasks } from '../contracts/getTasks'
 
 export class DaysWithTasks extends Component {
@@ -19,20 +19,24 @@ export class DaysWithTasks extends Component {
     this.getTasks()
   }
 
-  getDateNow = () => {
-    const date = new Date()
+  getDayNow = () => {
+    let dayNow = new Date().getDay()
 
-    return date.getDay() - 1
+    if (dayNow === 0) {
+      return dayNow += 6
+    }
+
+    return dayNow - 1
   }
 
   render() {
     const { days } = this.state
 
     return (
-      <Tabs selectedIndex={this.getDateNow()}>
+      <Tabs selectedIndex={this.getDayNow()}>
         {
           days.map((day, index) => (
-            <Tab key={index} title={daysOfTheWeek[index]} dates={`${getDate().getDate() + index} ${month[getDate().getMonth()]}`}>
+            <Tab key={index} title={daysOfTheWeek[index]}>
               <TaskList tasks={day} />
             </Tab>
           ))

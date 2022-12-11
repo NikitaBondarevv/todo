@@ -19,21 +19,17 @@ export class DaysWithTasks extends Component {
     this.getTasks()
   }
 
-  getDayNow = () => {
+  getCurrentDay = () => {
     let dayNow = new Date().getDay()
 
-    if (dayNow === 0) {
-      return dayNow + 6
-    }
-
-    return dayNow - 1
+    return dayNow ? dayNow - 1 : 6
   }
 
   render() {
     const { days } = this.state
 
     return (
-      <Tabs selectedIndex={this.getDayNow()}>
+      <Tabs selectedIndex={this.getCurrentDay()}>
         {
           days.map((day, index) => (
             <Tab key={index} title={daysOfTheWeek[index]}>

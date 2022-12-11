@@ -8,7 +8,7 @@ export const daysOfTheWeek = [
   'Sunday'
 ]
 
-export const month = [
+export const months = [
   'January',
   'February',
   'March',
@@ -23,14 +23,15 @@ export const month = [
   'December'
 ]
 
-export const getDateOfThisMonday = () => {
-  const date = new Date()
+const firstDayOfTheWeek = new Date();
 
-  if (date.getDay() === 0) {
-    date.setDate(date.getDate() - 6)
-  } else {
-    date.setDate(date.getDate() + 1 - date.getDay())
-  }
+firstDayOfTheWeek.setDate(firstDayOfTheWeek.getDate() + 1 - firstDayOfTheWeek.getDay())
 
-  return date
-}
+export const dates = Array.from({ length: 7 }).map(() => {
+    const date = firstDayOfTheWeek.getDate();
+    const month = months[firstDayOfTheWeek.getMonth()];
+
+    firstDayOfTheWeek.setDate(date + 1);
+
+    return `${date} ${month}`
+})

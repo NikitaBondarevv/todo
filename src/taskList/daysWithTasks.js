@@ -23,7 +23,7 @@ export class DaysWithTasks extends Component {
     let dayNow = new Date().getDay()
 
     if (dayNow === 0) {
-      return dayNow += 6
+      return dayNow + 6
     }
 
     return dayNow - 1

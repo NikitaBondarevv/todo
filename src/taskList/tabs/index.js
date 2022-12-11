@@ -49,9 +49,9 @@ export class Tabs extends Component {
 
     return (
       <div className={styles.content}>
-        <Navigation titles={titles} dates={this.props.dates} activeTabIndex={index} setActiveTab={this.setActiveTab} />
+        <Navigation titles={titles} activeTabIndex={index} setActiveTab={this.setActiveTab} />
 
-        <div id={index} className={index === index ? styles.activeContent : ''}>{contents[index]}</div>
+        <div id={index} className={styles.activeContent}>{contents[index]}</div>
       </div>
     )
   }

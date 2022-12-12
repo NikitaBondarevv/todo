@@ -3,16 +3,9 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 import msg from './images/msg-element.png'
+import { fields } from './registerFields'
 
 export const UserForm = ({ disabledFields }) => {
-  const fields = [
-    { label: 'email', reg: /^\w+@\w+\.[a-z]{2,5}$/ },
-    { label: 'name', reg: /^[^ ]{3,20}$/ },
-    { label: 'surname', reg: /^[^ ]{3,20}$/ },
-    { label: 'password', reg: /^[^ ]{6,20}$/, secure: true },
-    { label: 'passwordRepeat', reg: /^[^ ]{6,20}$/, secure: true }
-  ];
-
   const [registerFields, setRegisterFields] = useState(fields.reduce((prev, next) => (prev[next.label] = { value: '' }) && prev, {}))
 
   const setValue = ({ target: { value, name } }) => {

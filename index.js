@@ -13,17 +13,21 @@ const root = createRoot(document.getElementById('app'));
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  useEffect(async () => {
-    const user = await checkUser()
+  useEffect(() => {
+    const fetchData = async () => {
+      const user = await checkUser()
 
-    setIsAuthenticated(!user.error)
+      setIsAuthenticated(!user.error)
+    }
+
+    fetchData()
   }, [])
 
   const setUser = user => setIsAuthenticated(Boolean(user))
 
   const contextValue = {
-    isAuthenticated: isAuthenticated,
-    setUser: setUser
+    isAuthenticated,
+    setUser
   }
 
   return (

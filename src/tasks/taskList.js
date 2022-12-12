@@ -1,88 +1,81 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { Task } from './task'
 import styles from './styles.css'
 
-export class TaskList extends Component {
-  static defaultProps = {
-    tasks: []
+export const TaskList = ({ tasks, getTasks }) => {
+  const [todos, setTodos] = useState(tasks)
+  const [hidden, setHidden] = useState(true)
+  const [value, setValue] = useState('')
+
+  useEffect(() => {
+    setTodos(tasks)
+  }, [tasks])
+
+  const setValueInput = ({ target: { value } }) => {
+    setValue(value)
   }
 
-  static propTypes = {
-    tasks: PropTypes.array
+  const showInput = () => {
+    setHidden(false)
   }
 
-  state = {
-    todos: this.props.tasks,
-    hidden: true,
-    value: ''
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.tasks !== prevProps.tasks) {
-
-      this.setState({ todos: this.props.tasks })
-    }
-  }
-
-  setValue = ({ target: { value } }) => {
-    this.setState({ value })
-  }
-
-  showInput = () => {
-    this.setState({ hidden: false })
-  }
-
-  randomInteger = () => {
+  const randomInteger = () => {
     const rand = 1 + Math.random() * (100 + 1 - 1);
 
     return Math.floor(rand);
   }
 
-  addTaskAndHandleBlur = (e) => {
+  const addTaskAndHandleBlur = e => {
     e.preventDefault()
 
-    if (this.state.value.length > 2) {
-      this.state.todos.push({
-        title: this.state.value,
-        id: this.randomInteger(),
+    if (value.length > 2) {
+      todos.push({
+        title: value,
+        id: randomInteger(),
         done: false
       })
     }
 
-    this.setState({
-      todos: this.state.todos,
-      hidden: true,
-      value: ''
-    })
+    setTodos(todos)
+    setHidden(true)
+    setValue('')
   }
 
-  render() {
-    const { todos, value, hidden } = this.state
-
-    return (
-      <div>
-        <ul className={styles.tasksList}>
-          {
-            todos.map((task, index) => <Task key={index} index={index + 1} data={task} getTasks={this.props.getTasks} />)
-          }
-        </ul>
-        <div className={styles.addTask}>
-          {
-            hidden ? <span onClick={this.showInput}>Add new task</span> :
-              <form onSubmit={this.addTaskAndHandleBlur}>
-                <input className={styles.editableText}
+  return (
+    <div>
+      <ol className={styles.tasksList}>
+        {
+          todos.map((task, index) => <Task key={index} index={index + 1} data={task} getTasks={getTasks} />)
+        }
+      </ol>
+      <div className={styles.addTask}>
+        {
+          hidden
+            ? <span onClick={showInput}>Add new task</span>
+            : (
+              <form onSubmit={addTaskAndHandleBlur}>
+                <input
+                  className={styles.editableText}
                   name="text"
                   value={value}
-                  onChange={this.setValue}
-                  onBlur={this.addTaskAndHandleBlur}
+                  onChange={setValueInput}
+                  onBlur={addTaskAndHandleBlur}
                   autoFocus
                 />
               </form>
-          }
-        </div>
+            )
+        }
       </div>
-    )
-  }
+    </div>
+  )
+}
+
+TaskList.defaultProps = {
+  tasks: []
+}
+
+TaskList.propTypes = {
+  tasks: PropTypes.array
 }

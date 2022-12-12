@@ -1,4 +1,4 @@
-import { Component, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { checkUser } from './src/contracts/checkUser';
@@ -10,34 +10,28 @@ export const ContextUser = createContext(true);
 
 const root = createRoot(document.getElementById('app'));
 
-class App extends Component {
-  state = {
-    isAuthenticated: false
-  }
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  async componentDidMount() {
+  useEffect(async () => {
     const user = await checkUser()
 
-    this.setState({ isAuthenticated: !user.error })
+    setIsAuthenticated(!user.error)
+  }, [])
+
+  const setUser = user => setIsAuthenticated(Boolean(user))
+
+  const contextValue = {
+    isAuthenticated: isAuthenticated,
+    setUser: setUser
   }
 
-  setUser = (user) => {
-    this.setState({ isAuthenticated: Boolean(user) })
-  }
-
-  render() {
-    const contextValue = {
-      isAuthenticated: this.state.isAuthenticated,
-      setUser: this.setUser
-    }
-
-    return (
-      <ContextUser.Provider value={contextValue}>
-        <Header />
-        <Main />
-      </ContextUser.Provider>
-    )
-  }
+  return (
+    <ContextUser.Provider value={contextValue}>
+      <Header />
+      <Main />
+    </ContextUser.Provider>
+  )
 }
 
 root.render(<App />);

@@ -6,15 +6,15 @@ import { ContextUser } from '../../index'
 export const Main = () => (
   <ContextUser.Consumer>
     {
-      ({ isAuthenticated, setUser }) =>
+      ({ isAuthenticated, setUser }) => (
         <main>
           {
             isAuthenticated
-              ?
-              <Tasks />
+              ? <Tasks />
               : <LoginForm setUser={setUser} />
           }
         </main>
+      )
     }
   </ContextUser.Consumer>
 )

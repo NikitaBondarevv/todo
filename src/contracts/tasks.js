@@ -1,4 +1,4 @@
-export const updateTask = async (data) => {
+export const updateTask = async data => {
   const response = await fetch(`http://localhost:8086/tasks/${data.id}`, {
     method: 'PUT',
     credentials: 'include',
@@ -8,5 +8,5 @@ export const updateTask = async (data) => {
     body: JSON.stringify(data)
   })
 
-  return await response.json()
+  return response.json()
 }

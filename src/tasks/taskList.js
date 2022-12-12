@@ -26,26 +26,8 @@ export class TaskList extends Component {
     }
   }
 
-  completeTask = (index) => {
-    this.state.todos[index].done = true
-
-    this.setState({ todos: this.state.todos })
-  }
-
-  setInProgressTask = (index) => {
-    this.state.todos[index].done = undefined
-
-    this.setState({ todos: this.state.todos })
-  }
-
   setValue = ({ target: { value } }) => {
     this.setState({ value })
-  }
-
-  deleteTask = (id) => {
-    this.setState({
-      todos: this.state.todos.filter(task => task.id !== id)
-    })
   }
 
   showInput = () => {
@@ -83,20 +65,7 @@ export class TaskList extends Component {
       <div>
         <ul className={styles.tasksList}>
           {
-            todos.map((task, index) =>
-              <Task key={index} index={index + 1} done={task.done} title={task.title}>
-                <div className={styles.buttons}>
-                  <a onClick={() => this.completeTask(index)}>done</a>
-                  {
-                    task.done === undefined ? '' :
-                      <a onClick={() => this.setInProgressTask(index)} className={styles.inProgress}>
-                        in progress
-                      </a>
-                  }
-                  <a onClick={() => this.deleteTask(task.id)} className={styles.delete}>delete</a>
-                </div>
-              </Task>
-            )
+            todos.map((task, index) => <Task key={index} index={index + 1} data={task} getTasks={this.props.getTasks} />)
           }
         </ul>
         <div className={styles.addTask}>

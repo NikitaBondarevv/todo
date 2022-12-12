@@ -1,5 +1,5 @@
 // import { UserForm } from '../userForm';
-import { DaysWithTasks } from '../taskList/daysWithTasks';
+import { Tasks } from '../tasks';
 import { LoginForm } from '../loginForm/LoginForm';
 import { ContextUser } from '../../index'
 
@@ -11,7 +11,7 @@ export const Main = () => (
           {
             isAuthenticated
               ?
-              <DaysWithTasks />
+              <Tasks />
               : <LoginForm setUser={setUser} />
           }
         </main>

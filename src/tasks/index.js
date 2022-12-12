@@ -1,17 +1,17 @@
 import { Component } from 'react'
 
-import { TaskList } from '.'
+import { TaskList } from './taskList'
 import { daysOfTheWeek } from '../helpers/constans'
 import { Tabs } from './tabs'
 import { Tab } from './tabs/tab'
 import { getTasks } from '../contracts/getTasks'
 
-export class DaysWithTasks extends Component {
+export class Tasks extends Component {
   state = {
     days: []
   }
 
-  async getTasks() {
+  getTasks = async () => {
     this.setState({ days: await getTasks() })
   }
 
@@ -33,7 +33,7 @@ export class DaysWithTasks extends Component {
         {
           days.map((day, index) => (
             <Tab key={index} title={daysOfTheWeek[index]}>
-              <TaskList tasks={day} />
+              <TaskList tasks={day} getTasks={this.getTasks} />
             </Tab>
           ))
         }

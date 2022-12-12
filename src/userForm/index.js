@@ -1,71 +1,61 @@
-import { Component } from 'react'
-import PropTypes from 'prop-types';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 import msg from './images/msg-element.png'
+import { fields } from './registerFields'
 
-export class UserForm extends Component {
-  static defaultProps = {
-    disabledFields: []
+export const UserForm = ({ disabledFields }) => {
+  const [registerFields, setRegisterFields] = useState(fields.reduce((prev, next) => (prev[next.label] = { value: '' }) && prev, {}))
+
+  const setValue = ({ target: { value, name } }) => {
+    setRegisterFields(registerFields => ({
+      ...registerFields,
+      [name]: { value }
+    }))
   }
 
-  static propTypes = {
-    disabledFields: PropTypes.array
-  }
+  const validate = ({ target: { value, name } }, index) => {
+    const { reg } = fields[index]
 
-  fields = [
-    { label: 'email', reg: /^\w+@\w+\.[a-z]{2,5}$/ },
-    { label: 'name', reg: /^[^ ]{3,20}$/ },
-    { label: 'surname', reg: /^[^ ]{3,20}$/ },
-    { label: 'password', reg: /^[^ ]{6,20}$/, secure: true },
-    { label: 'passwordRepeat', reg: /^[^ ]{6,20}$/, secure: true }
-  ];
-
-  state = this.fields.reduce((prev, next) => (prev[next.label] = { value: '' }) && prev, {});
-
-  setValue = ({ target: { value, name } }) => {
-    this.setState({ [name]: { value } })
-  }
-
-  validate = ({ target: { value, name } }, index) => {
-    const { reg } = this.fields[index]
-
-    if (['passwordRepeat', 'password'].includes(name) && this.state.passwordRepeat.value &&
-      this.state.passwordRepeat.value !== this.state.password.value) {
-      this.setState({
+    if (['passwordRepeat', 'password'].includes(name) && registerFields.passwordRepeat.value &&
+      registerFields.passwordRepeat.value !== registerFields.password.value) {
+      setRegisterFields(registerFields => ({
+        ...registerFields,
         passwordRepeat: {
           [name]: value,
           error: 'Passwords are not matched'
         }
-      })
+      }))
 
       return
     }
 
-    this.setState({
+    setRegisterFields(registerFields => ({
+      ...registerFields,
       [name]: {
         value,
         error: reg.test(value) ? '' : `${name} is incorrect`
       }
-    })
+    }))
   }
 
-  canSubmit = () => !this.fields.some(({ label, reg }) => {
-    if (!this.state[label].value) {
+  const canSubmit = () => !fields.some(({ label, reg }) => {
+    if (!registerFields[label].value) {
       return true
     }
 
-    return !reg.test(this.state[label].value)
+    return !reg.test(registerFields[label].value)
   })
 
-  save = (e) => {
+  const save = (e) => {
     e.preventDefault()
 
-    if (!this.canSubmit()) {
+    if (!canSubmit()) {
       return
     }
 
-    const data = Object.entries(this.state).reduce((user, [key, { value }]) => {
+    const data = Object.entries(registerFields).reduce((user, [key, { value }]) => {
       user[key] = value
 
       return user
@@ -74,36 +64,39 @@ export class UserForm extends Component {
     console.log(data);
   }
 
-  render() {
-    const { fields, state } = this
-    const { disabledFields } = this.props
+  return (
+    <form className={styles.loginForm} onSubmit={save}>
+      <ul>
+        {fields.map((field, index) => {
+          const stateField = registerFields[field.label];
 
-    return (
-      <form className={styles.loginForm} onSubmit={this.save}>
-        <ul>
-          {fields.map((field, index) => {
-            const stateField = state[field.label];
+          return (
+            <li key={field.label} className={styles[field.label]}>
+              <input type={field.secure ? 'password' : 'text'}
+                name={field.label}
+                className={stateField.error ? styles.error : styles.success}
+                placeholder={field.label.toUpperCase()}
+                value={stateField.value}
+                onChange={setValue}
+                onBlur={e => validate(e, index)}
+                disabled={disabledFields.includes(field.label)}
+              />
+              {stateField.error && <div className={styles.info}><img src={msg} /><span className={styles.textInfo}>{stateField.error}</span></div>}
+            </li>
+          )
+        }
+        )}
+      </ul>
 
-            return (
-              <li key={field.label} className={styles[field.label]}>
-                <input type={field.secure ? 'password' : 'text'}
-                  name={field.label}
-                  className={stateField.error ? styles.error : styles.success}
-                  placeholder={field.label.toUpperCase()}
-                  value={stateField.value}
-                  onChange={this.setValue}
-                  onBlur={e => this.validate(e, index)}
-                  disabled={disabledFields.includes(field.label)}
-                />
-                {stateField.error && <div className={styles.info}><img src={msg} /><span className={styles.textInfo}>{stateField.error}</span></div>}
-              </li>
-            );
-          }
-          )}
-        </ul>
+      <input type="submit" value="SAVE" disabled={!canSubmit()} />
+    </form>
+  )
+}
 
-        <input type="submit" value="SAVE" disabled={!this.canSubmit()} />
-      </form>
-    )
-  }
+UserForm.defaultProps = {
+  disabledFields: []
+}
+
+UserForm.propTypes = {
+  disabledFields: PropTypes.array
 }

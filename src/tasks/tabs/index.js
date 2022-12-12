@@ -1,58 +1,46 @@
-import { Children, Component } from 'react'
+import { Children, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 import { Navigation } from './navigation'
 
-export class Tabs extends Component {
-  static defaultProps = {
-    selectedIndex: 0
+export const Tabs = ({ selectedIndex, children }) => {
+  const [index, setIndex] = useState(+selectedIndex)
+  const [titles, setTitles] = useState([])
+  const [contents, setContents] = useState([])
+
+  const setTabs = () => {
+    const tabs = Children.toArray(children)
+    setTitles(tabs.map(component => component.props.title))
+    setContents(tabs.map(component => component.props.children))
   }
 
-  static propTypes = {
-    selectedIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  }
+  useEffect(() => {
+    setTabs()
+  }, [])
 
-  state = {
-    index: +this.props.selectedIndex
-  }
+  useEffect(() => {
+    const isTabIndexExist = index <= children.length
 
-  constructor(...props) {
-    super(...props)
+    setTabs()
+    setIndex(isTabIndexExist ? index : 0)
+  }, [children])
 
-    this.setTabs()
-  }
+  const setActiveTab = index => setIndex(index)
 
-  componentDidUpdate(prevProps) {
-    if (this.props.children !== prevProps.children) {
-      const { index } = this.state
-      const isTabIndexExist = index <= this.props.children.length
+  return (
+    <div className={styles.content}>
+      <Navigation titles={titles} activeTabIndex={index} setActiveTab={setActiveTab} />
 
-      this.setTabs()
-      this.setState({ index: isTabIndexExist ? index : 0 })
-    }
-  }
+      <div id={index} className={styles.activeContent}>{contents[index]}</div>
+    </div>
+  )
+}
 
-  setTabs() {
-    this.tabs = Children.toArray(this.props.children)
-    this.titles = this.tabs.map(component => component.props.title)
-    this.contents = this.tabs.map(component => component.props.children)
-  }
+Tabs.defaultProps = {
+  selectedIndex: 0
+}
 
-  setActiveTab = (index) => {
-    this.setState({ index })
-  }
-
-  render() {
-    const { index } = this.state
-    const { titles = [], contents = [] } = this
-
-    return (
-      <div className={styles.content}>
-        <Navigation titles={titles} activeTabIndex={index} setActiveTab={this.setActiveTab} />
-
-        <div id={index} className={styles.activeContent}>{contents[index]}</div>
-      </div>
-    )
-  }
+Tabs.propTypes = {
+  selectedIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }

@@ -8,5 +8,5 @@ export const login = async (email, password) => {
     body: JSON.stringify({ email, password })
   })
 
-  return await response.json()
+  return response.json()
 }

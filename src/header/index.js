@@ -11,14 +11,14 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <img src={logo} />
+      <img src={logo} alt="logo" />
       <nav>
         <ul className={styles.list}>
-          {links.map((link, index) =>
+          {links.map((link, index) => (
             <li key={index}>
-              <a href='#' className={styles[`${link.value}`]}>{link.text}</a>
+              <a href="#" className={styles[`${link.value}`]}>{link.text}</a>
             </li>
-          )}
+          ))}
         </ul>
       </nav>
       <EditableText text="Click me" />

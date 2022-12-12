@@ -1,44 +1,40 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 
-export class EditableText extends Component {
-  static defaultProps = {
-    onLoose: () => { }
+export const EditableText = ({ text, onLoose }) => {
+  const [hidden, setHidden] = useState(true)
+  const [value, setValue] = useState('')
+
+  const setValueInput = ({ target: { value } }) => {
+    setValue(value)
   }
 
-  static propTypes = {
-    onLoose: PropTypes.func
+  const handleBlur = e => {
+    e.preventDefault()
+
+    setHidden(true)
+
+    onLoose(value)
   }
 
-  state = {
-    hidden: true,
-    value: ''
+  const showInput = () => {
+    setHidden(false)
   }
 
-  setValue = ({ target: { value } }) => {
-    this.setState({ value });
-  }
+  return (
+    hidden ? <span onClick={showInput}>{value ? value : text}</span>
+      : (
+        <form onSubmit={handleBlur}>
+          <input name="text" value={value} onChange={setValueInput} onBlur={handleBlur} autoFocus />
+        </form>
+      )
+  )
+}
 
-  handleBlur = (e) => {
-    e.preventDefault();
+EditableText.defaultProps = {
+  onLoose: () => { }
+}
 
-    this.setState({ hidden: true });
-
-    this.props.onLoose(this.state.value);
-  }
-
-  showInput = () => {
-    this.setState({ hidden: false });
-  }
-
-  render() {
-    const { value, hidden } = this.state;
-
-    return (
-      hidden ? <span onClick={this.showInput}>{value ? value : this.props.text}</span> :
-      <form onSubmit={this.handleBlur}>
-        <input name="text" value={value} onChange={this.setValue} onBlur={this.handleBlur} autoFocus />
-      </form>
-    )
-  }
+EditableText.propTypes = {
+  onLoose: PropTypes.func
 }

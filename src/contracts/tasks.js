@@ -10,3 +10,12 @@ export const updateTask = async data => {
 
   return response.json()
 }
+
+export const deleteTask = async data => {
+  const response = await fetch(`http://localhost:8086/tasks/${data.id}`, {
+    method: 'delete',
+    credentials: 'include'
+  })
+
+  return response.json()
+}

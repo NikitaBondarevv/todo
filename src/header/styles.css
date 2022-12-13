@@ -22,6 +22,11 @@ header .list {
   position: relative;
 }
 
+.list a:hover {
+  color: #060e9a;
+  text-decoration: underline;
+}
+
 .list a::before {
   background: url(./images/menu.png) no-repeat;
   content: "";
@@ -33,10 +38,51 @@ header .list {
   position: absolute;
 }
 
+.list a:hover::before {
+  background: url(./images/hoverMenu.png) no-repeat;
+  content: "";
+  display: block;
+  width: 25px;
+  height: 25px;
+  right: -30px;
+  bottom: 2px;
+  position: absolute;
+}
+
+.list .home:hover::before {
+  background-position: 2px 2px;
+}
+
+.list .taskList:hover::before {
+  background-position: -23px 2px;
+}
+
+.list .contacts:hover::before {
+  background-position: -46px 2px;
+}
+
 .list .taskList::before {
   background-position: -25px 0;
 }
 
 .list .contacts::before {
   background-position: -52px 0;
+}
+
+.createUser {
+  margin: 0 0 0 220px;
+  font-size: 26px;
+  line-height: 24px;
+  color: #fff;
+  text-decoration: none;
+  background: url(./images/user.png) no-repeat;
+  background-position: 140px 0;
+  width: 165px;
+}
+
+.createUser:hover {
+  color: #060e9a;
+  background: url(./images/hoverUser.png) no-repeat;
+  background-position: 140px 0;
+  text-decoration: underline;
 }

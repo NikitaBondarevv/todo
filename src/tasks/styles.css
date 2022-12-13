@@ -14,6 +14,7 @@
 }
 
 .tasksList li {
+  display: flex;
   margin: 0 0 15px;
   height: 35px;
   min-width: 35px;
@@ -25,7 +26,6 @@
 .tasksList li::before {
   content: counter(my-awesome-counter) ". ";
   font-weight: bold;
-  transform: translate(12px, 0);
 }
 
 .tasksList p {
@@ -48,20 +48,16 @@
   text-decoration: underline;
 }
 
-.tasksList a {
-  text-indent: -9999px;
-}
-
-.tasksList a {
+.tasksList button {
   margin: 0 7px;
   background: url(./images/buttons.png) no-repeat;
   width: 38px;
   height: 38px;
   cursor: pointer;
-  display: inline-block;
+  border: none;
 }
 
-.tasksList a:hover {
+.tasksList button:hover {
   background: url(./images/hoveringButtons.png) no-repeat;
 }
 
@@ -82,8 +78,6 @@
 }
 
 .buttons {
-  display: inline-block;
-  white-space: nowrap;
   margin: 0 0 0 30px;
 }
 

@@ -11,10 +11,12 @@ export const Main = () => (
         <main>
           {
             isAuthenticated
-              ? <>
+              ? (
+                <>
                   <TasksInfo />
                   <Tasks />
                 </>
+              )
               : <LoginForm setUser={setUser} />
           }
         </main>

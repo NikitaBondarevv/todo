@@ -1,0 +1,45 @@
+.user {
+  position: relative;
+}
+
+.userName {
+  display: block;
+  margin: 0 0 0 255px;
+  font-size: 26px;
+  line-height: 24px;
+  color: #fff;
+  background: url(./images/user.png) no-repeat;
+  background-position: 60px 0;
+  min-width: 90px;
+  text-decoration: none;
+}
+
+.userName:hover {
+  color: #060e9a;
+  background: url(./images/hoverUser.png) no-repeat;
+  background-position: 60px 0;
+  text-decoration: underline;
+}
+
+.hoverMenu {
+  background: rgba(255,255,255, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 5px 17px 0;
+  position: absolute;
+  right: -5px;
+  top: 26px;
+}
+
+.hoverMenu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 26px;
+  line-height: 24px;
+  white-space: nowrap;
+  margin: 0 0 5px;
+}
+
+.hoverMenu a:hover {
+  color: rgb(169, 169, 169);
+}

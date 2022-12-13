@@ -1,0 +1,17 @@
+.createUser {
+  margin: 0 0 0 220px;
+  font-size: 26px;
+  line-height: 24px;
+  color: #fff;
+  text-decoration: none;
+  background: url(./images/user.png) no-repeat;
+  background-position: 140px 0;
+  width: 165px;
+}
+
+.createUser:hover {
+  color: #060e9a;
+  background: url(./images/hoverUser.png) no-repeat;
+  background-position: 140px 0;
+  text-decoration: underline;
+}

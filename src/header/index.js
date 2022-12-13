@@ -1,6 +1,8 @@
+import { CreateUser } from './createUser'
+import { AuthorizedUser } from './authorizedUser'
+import { ContextUser } from '../../index'
 import styles from './styles.css'
 import logo from './images/logo.png'
-import { EditableText } from '../editableText'
 
 export const Header = () => {
   const links = [
@@ -21,7 +23,15 @@ export const Header = () => {
           ))}
         </ul>
       </nav>
-      <EditableText text="Click me" />
+      <ContextUser.Consumer>
+        {
+          ({ isAuthenticated }) => (
+            isAuthenticated
+              ? <AuthorizedUser />
+              : <CreateUser />
+          )
+        }
+      </ContextUser.Consumer>
     </header>
   )
 }

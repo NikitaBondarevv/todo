@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 import styles from './styles.css'
-import { getDates } from '../../helpers/constans'
+import { getDates } from '../../../helpers/constans'
 
 export const Navigation = ({ titles, setActiveTab, activeTabIndex }) => (
   <nav>

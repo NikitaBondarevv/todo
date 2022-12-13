@@ -1,23 +1,15 @@
-import { useState, useEffect } from 'react'
-import { checkUser } from '../../contracts/checkUser'
+import { useContext } from 'react'
 
+import { ContextUser } from '../../..'
 import styles from './styles.css'
 
 export const AuthorizedUser = () => {
-  const [user, setUser] = useState('')
-
-  useEffect(() => {
-    const getName = async () => {
-      setUser(await checkUser())
-    }
-
-    getName()
-  }, [])
+  const { user } = useContext(ContextUser)
 
   return (
     <div className={styles.user}>
       <a className={styles.userName} href="#">
-        {user.firstName}
+        {user?.firstName}
       </a>
       <div className={styles.menu}>
         <a href="#">Progile</a>

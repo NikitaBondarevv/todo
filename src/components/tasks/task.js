@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 import { getProgressClassName } from './getProgressClassName'
-import { updateTask, deleteTask } from '../contracts/tasks'
+import { updateTask, deleteTask } from '../../contracts/tasks'
 
 export const Task = ({ data, getTasks }) => {
   const { done, title } = data
@@ -24,18 +24,19 @@ export const Task = ({ data, getTasks }) => {
 
   return (
     <li className={getProgressClassName(done)}>
+      &nbsp;
       {title}
       {
         !done && (
           <div className={styles.buttons}>
-            <button onClick={completeTask}></button>
+            <button onClick={completeTask} />
             {
               done === undefined ? ''
                 : (
-                  <button onClick={setInProgress} className={styles.inProgress}></button>
+                  <button onClick={setInProgress} className={styles.inProgress} />
                 )
             }
-            <button onClick={removeTask} className={styles.delete}></button>
+            <button onClick={removeTask} className={styles.delete} />
           </div>
         )
       }

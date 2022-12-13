@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 
-import { getInfo } from '../contracts/getInfo'
-import { checkUser } from '../contracts/checkUser'
-import { getTasksInfo } from '../helpers/constansInfo'
+import { getInfo } from '../../contracts/getInfo'
+import { checkUser } from '../../contracts/checkUser'
+import { getTasksInfo } from '../../helpers/constansInfo'
 import styles from './styles.css'
 
 export const TasksInfo = () => {

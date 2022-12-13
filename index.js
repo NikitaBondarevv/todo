@@ -1,9 +1,9 @@
-import { useState, useEffect, createContext } from 'react';
+import { useState, useEffect, createContext, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { checkUser } from './src/contracts/checkUser';
-import { Header } from './src/header';
-import { Main } from './src/main';
+import { Header } from './src/components/header';
+import { Main } from './src/components/main';
 import './styles.css';
 
 export const ContextUser = createContext(true);
@@ -11,24 +11,27 @@ export const ContextUser = createContext(true);
 const root = createRoot(document.getElementById('app'));
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
       const user = await checkUser()
 
-      setIsAuthenticated(!user.error)
+      if (!user.error) {
+        setUser(user)
+      }
+      
     }
 
     fetchData()
+    setUser()
   }, [])
 
-  const setUser = user => setIsAuthenticated(Boolean(user))
-
-  const contextValue = {
-    isAuthenticated,
+  const contextValue = useMemo(() => ({
+    isAuthenticated: user && !user.error,
+    user,
     setUser
-  }
+  }), [user])
 
   return (
     <ContextUser.Provider value={contextValue}>

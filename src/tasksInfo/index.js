@@ -5,7 +5,6 @@ import { checkUser } from '../contracts/checkUser'
 import { getTasksInfo } from '../helpers/constansInfo'
 import styles from './styles.css'
 
-
 export const TasksInfo = () => {
   const [info, setInfo] = useState({})
   const [user, setUser] = useState('')
@@ -13,15 +12,10 @@ export const TasksInfo = () => {
   useEffect(() => {
     const getData = async () => {
       setInfo(await getInfo())
-    }
-
-    getData()
-
-    const getName = async () => {
       setUser(await checkUser())
     }
 
-    getName()
+    getData()
   }, [])
 
   return (

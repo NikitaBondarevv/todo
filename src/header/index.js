@@ -1,4 +1,5 @@
-import { CreateUser } from './createUser'
+import { useContext } from 'react'
+
 import { AuthorizedUser } from './authorizedUser'
 import { ContextUser } from '../../index'
 import styles from './styles.css'
@@ -10,6 +11,8 @@ export const Header = () => {
     { text: 'Task list', value: 'taskList' },
     { text: 'Contacts', value: 'contacts' }
   ]
+
+  const { isAuthenticated } = useContext(ContextUser)
 
   return (
     <header className={styles.header}>
@@ -23,15 +26,11 @@ export const Header = () => {
           ))}
         </ul>
       </nav>
-      <ContextUser.Consumer>
-        {
-          ({ isAuthenticated }) => (
-            isAuthenticated
-              ? <AuthorizedUser />
-              : <CreateUser />
-          )
-        }
-      </ContextUser.Consumer>
+      {
+        isAuthenticated
+          ? <AuthorizedUser />
+          : <a className={styles.createUser} href="#">Create User</a>
+      }
     </header>
   )
 }

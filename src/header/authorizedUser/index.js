@@ -4,7 +4,6 @@ import { checkUser } from '../../contracts/checkUser'
 import styles from './styles.css'
 
 export const AuthorizedUser = () => {
-  const [show, setShow] = useState(false)
   const [user, setUser] = useState('')
 
   useEffect(() => {
@@ -16,19 +15,14 @@ export const AuthorizedUser = () => {
   }, [])
 
   return (
-    <div className={styles.user} onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+    <div className={styles.user}>
       <a className={styles.userName} href="#">
         {user.firstName}
       </a>
-      {
-        show
-        && (
-          <div className={styles.hoverMenu}>
-            <a href="#">Progile</a>
-            <a href="#">Log out</a>
-          </div>
-        )
-      }
+      <div className={styles.menu}>
+        <a href="#">Progile</a>
+        <a href="#">Log out</a>
+      </div>
     </div>
   )
 }

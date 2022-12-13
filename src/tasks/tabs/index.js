@@ -20,10 +20,7 @@ export const Tabs = ({ selectedIndex, children }) => {
   }, [])
 
   useEffect(() => {
-    const isTabIndexExist = index <= children.length
-
     setTabs()
-    setIndex(isTabIndexExist ? index : 0)
   }, [children])
 
   const setActiveTab = index => setIndex(index)

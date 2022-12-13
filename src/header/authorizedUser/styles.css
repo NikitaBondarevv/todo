@@ -21,17 +21,21 @@
   text-decoration: underline;
 }
 
-.hoverMenu {
+.menu {
   background: rgba(255,255,255, 0.3);
-  display: flex;
   flex-direction: column;
   padding: 5px 17px 0;
   position: absolute;
   right: -5px;
   top: 26px;
+  display: none;
 }
 
-.hoverMenu a {
+.user:hover .menu {
+  display: flex;
+}
+
+.menu a {
   text-decoration: none;
   color: #fff;
   font-size: 26px;
@@ -40,6 +44,6 @@
   margin: 0 0 5px;
 }
 
-.hoverMenu a:hover {
+.menu a:hover {
   color: rgb(169, 169, 169);
 }

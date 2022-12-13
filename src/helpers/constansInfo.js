@@ -1,5 +1,5 @@
 export const getTasksInfo = info => {
-  const taskInfo = [
+  return [
     {
       text: 'You have ',
       amount: info.total,
@@ -21,6 +21,4 @@ export const getTasksInfo = info => {
       styles: 'waiting'
     }
   ]
-
-  return taskInfo
 }

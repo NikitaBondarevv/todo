@@ -15,10 +15,9 @@ export const Task = ({ data, getTasks }) => {
   const setInProgress = async () => {
     await updateTask({ ...data, done: undefined })
     getTasks()
-    console.log(data);
   }
 
-  const deleteCurrentTask = async () => {
+  const removeTask = async () => {
     await deleteTask(data)
     getTasks()
   }
@@ -29,16 +28,14 @@ export const Task = ({ data, getTasks }) => {
       {
         !done && (
           <div className={styles.buttons}>
-            <a onClick={completeTask}>done</a>
+            <button onClick={completeTask}></button>
             {
               done === undefined ? ''
                 : (
-                  <a onClick={setInProgress} className={styles.inProgress}>
-                    in progress
-                  </a>
+                  <button onClick={setInProgress} className={styles.inProgress}></button>
                 )
             }
-            <a onClick={deleteCurrentTask} className={styles.delete}>delete</a>
+            <button onClick={removeTask} className={styles.delete}></button>
           </div>
         )
       }

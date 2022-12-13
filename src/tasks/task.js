@@ -2,12 +2,24 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 import { getProgressClassName } from './getProgressClassName'
-import { updateTask } from '../contracts/tasks'
+import { updateTask, deleteTask } from '../contracts/tasks'
 
 export const Task = ({ data, getTasks }) => {
   const { done, title } = data
+
   const completeTask = async () => {
     await updateTask({ ...data, done: true })
+    getTasks()
+  }
+  
+  const setInProgress = async () => {
+    await updateTask({ ...data, done: undefined })
+    getTasks()
+    console.log(data);
+  }
+
+  const deleteCurrentTask = async () => {
+    await deleteTask(data)
     getTasks()
   }
 
@@ -21,12 +33,12 @@ export const Task = ({ data, getTasks }) => {
             {
               done === undefined ? ''
                 : (
-                  <a className={styles.inProgress}>
+                  <a onClick={setInProgress} className={styles.inProgress}>
                     in progress
                   </a>
                 )
             }
-            <a className={styles.delete}>delete</a>
+            <a onClick={deleteCurrentTask} className={styles.delete}>delete</a>
           </div>
         )
       }

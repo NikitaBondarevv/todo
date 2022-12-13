@@ -1,7 +1,8 @@
-// import { UserForm } from '../userForm';
-import { Tasks } from '../tasks';
-import { LoginForm } from '../loginForm/LoginForm';
+// import { UserForm } from '../userForm'
+import { Tasks } from '../tasks'
+import { LoginForm } from '../loginForm/LoginForm'
 import { ContextUser } from '../../index'
+import { TasksInfo } from '../tasksInfo'
 
 export const Main = () => (
   <ContextUser.Consumer>
@@ -10,7 +11,10 @@ export const Main = () => (
         <main>
           {
             isAuthenticated
-              ? <Tasks />
+              ? <>
+                  <TasksInfo />
+                  <Tasks />
+                </>
               : <LoginForm setUser={setUser} />
           }
         </main>

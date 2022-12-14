@@ -1,5 +1,3 @@
-export const getTasks = async () => {
-  const response = await fetch('http://localhost:8086/tasks', { credentials: 'include' })
-  
-  return response.json()
-}
+import { request } from './request'
+
+export const getTasks = async () => request.get('tasks')

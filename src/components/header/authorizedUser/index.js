@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { ContextUser } from '../../..'
+import { ContextUser } from '../../../../index'
 import styles from './styles.css'
 
 export const AuthorizedUser = () => {
@@ -12,7 +12,7 @@ export const AuthorizedUser = () => {
         {user?.firstName}
       </a>
       <div className={styles.menu}>
-        <a href="#">Progile</a>
+        <a href="#">Profile</a>
         <a href="#">Log out</a>
       </div>
     </div>

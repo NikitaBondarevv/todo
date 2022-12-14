@@ -34,7 +34,7 @@ export const TasksInfo = () => {
           ))
         }
       </ul>
-      <a className={styles.link} href="#">Go to the task list</a>
+      <a className={styles.link} href="/tasks">Go to the task list</a>
     </div>
   )
 }

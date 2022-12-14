@@ -1,5 +1,3 @@
-export const getInfo = async () => {
-  const response = await fetch('http://localhost:8086/info', { credentials: 'include' })
-  
-  return response.json()
-}
+import { request } from './request'
+
+export const getInfo = async () => request.get('info')

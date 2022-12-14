@@ -29,14 +29,14 @@ export const Task = ({ data, getTasks }) => {
       {
         !done && (
           <div className={styles.buttons}>
-            <button onClick={completeTask} />
+            <button onClick={completeTask} type="button" />
             {
               done === undefined ? ''
                 : (
-                  <button onClick={setInProgress} className={styles.inProgress} />
+                  <button onClick={setInProgress} className={styles.inProgress} type="button" />
                 )
             }
-            <button onClick={removeTask} className={styles.delete} />
+            <button onClick={removeTask} className={styles.delete} type="button" />
           </div>
         )
       }
@@ -46,12 +46,10 @@ export const Task = ({ data, getTasks }) => {
 
 Task.defaultProps = {
   title: '',
-  index: 0,
   done: undefined,
 }
 
 Task.propTypes = {
   title: PropTypes.string,
-  index: PropTypes.number,
   done: PropTypes.bool
 }

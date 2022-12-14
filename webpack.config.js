@@ -1,5 +1,6 @@
 const path = require('path');
 const HTMLPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -54,7 +55,10 @@ module.exports = {
       title: 'React',
       template: path.resolve(__dirname, 'index.html')
     }),
-    new MiniCssExtractPlugin({ filename: 'styles.css' })
+    new MiniCssExtractPlugin({ filename: 'styles.css' }),
+    new webpack.DefinePlugin({
+      BASE_URL: "'http://localhost:8086'"
+    })
   ],
   optimization: {
     splitChunks: {

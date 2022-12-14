@@ -1,21 +1,4 @@
-export const updateTask = async data => {
-  const response = await fetch(`http://localhost:8086/tasks/${data.id}`, {
-    method: 'PUT',
-    credentials: 'include',
-    headers: {
-      'Content-type': 'application/json; charset=utf-8'
-    },
-    body: JSON.stringify(data)
-  })
+import { request } from './request'
 
-  return response.json()
-}
-
-export const deleteTask = async data => {
-  const response = await fetch(`http://localhost:8086/tasks/${data.id}`, {
-    method: 'delete',
-    credentials: 'include'
-  })
-
-  return response.json()
-}
+export const updateTask = async data => request.put(`tasks/${data.id}`, data)
+export const deleteTask = async data => request.delete(`tasks/${data.id}`)

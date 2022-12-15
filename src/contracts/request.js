@@ -18,7 +18,6 @@ const makeRequest = async (url, method = 'GET', data) => {
   return response.json()
 }
 
-
 export const request = {
   get(url) {
     return makeRequest(url)
@@ -26,14 +25,13 @@ export const request = {
 
   post(url, data) {
     return makeRequest(url, 'POST', data)
-  }
-  ,
+  },
 
   put(url, data) {
     return makeRequest(url, 'PUT', data)
   },
 
-  delete(url, data) {
+  delete(url) {
     return makeRequest(url, 'DELETE')
   }
 }

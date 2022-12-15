@@ -67,11 +67,9 @@ export const AddNewTask = ({ getTasks, activeTabIndex }) => {
 }
 
 AddNewTask.defaultProps = {
-  getCurrentDay: () => { },
   getTasks: () => { }
 }
 
 AddNewTask.propTypes = {
-  getCurrentDay: PropTypes.func,
-  getTasks: PropTypes.func
+  getTasks: PropTypes.func,
 }

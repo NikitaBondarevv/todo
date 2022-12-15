@@ -15,15 +15,15 @@ export const AuthorizedUser = () => {
 
   return (
     <div className={styles.menu}>
-      <a href="/" className={styles.userName}>
+      <a href="/#" className={styles.userName}>
         {user?.firstName}
       </a>
       <ul className={styles.dropDown}>
         <li>
-          <a href="/">Profile</a>
+          <a href="/#">Profile</a>
         </li>
         <li>
-          <a onClick={logoutHandler} href="/">Log out</a>
+          <a onClick={logoutHandler} href="/#">Log out</a>
         </li>
       </ul>
     </div>

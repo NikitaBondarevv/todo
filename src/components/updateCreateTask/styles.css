@@ -1,0 +1,46 @@
+.updateCreateTask {
+  border: 1px solid #fff;
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 50%);
+  padding: 39px 29px 70px;
+  background: rgba(0, 0, 255, .3);
+  width: 777px;
+  color: #fff;
+  margin: 0 auto 100px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 19px;
+  padding: 59px;
+  position: absolute;
+  top: 400px;
+  left: 0;
+  width: 717px;
+}
+
+.updateCreateTask .title,
+.updateCreateTask .description {
+  width: 257px;
+  outline: none;
+  font: 24px/40px "MyriadProRegular";
+  padding: 0 0 0 16px;
+}
+
+.updateCreateTask .description {
+  height: 70px;
+  resize: none;
+  margin: 0 0 96px;
+}
+
+.updateCreateTask input[type=button] {
+  padding: 0;
+  margin: 0;
+  background: #0ff;
+  color: #fff;
+  height: 53px;
+  width: 143px;
+  border: 1px solid #b1bad8;
+  box-shadow: 0 0 5px #b1bad8;
+  border-radius: 6px;
+  font: 24px/24px "MyriadProLight" ;
+  font-style: italic;
+  margin: 0 0 120px;
+}

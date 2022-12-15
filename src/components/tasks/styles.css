@@ -23,6 +23,11 @@
   white-space: nowrap;
 }
 
+.tasksList .updateTask:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .tasksList li::before {
   content: counter(my-awesome-counter) ". ";
   font-weight: bold;
@@ -45,7 +50,6 @@
 .tasksList .progress {
   background: url(./images/in-progress.png) no-repeat;
   background-position: 0 5px;
-  text-decoration: underline;
 }
 
 .tasksList button {

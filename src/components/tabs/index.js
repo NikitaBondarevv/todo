@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styles from './styles.css'
 import { Navigation } from './navigation'
 
-export const Tabs = ({ selectedIndex, children, activeTabIndex }) => {
+export const Tabs = ({ selectedIndex, children }) => {
   const [index, setIndex] = useState(+selectedIndex)
   const [titles, setTitles] = useState([])
   const [contents, setContents] = useState([])

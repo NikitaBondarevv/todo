@@ -30,10 +30,12 @@ export const TaskList = ({ tasks, getTasks, activeTabIndex }) => {
 
 TaskList.defaultProps = {
   tasks: [],
+  getTasks: () => { },
   activeTabIndex: 0
 }
 
 TaskList.propTypes = {
   tasks: PropTypes.array,
+  getTasks: PropTypes.func,
   activeTabIndex: PropTypes.number
 }

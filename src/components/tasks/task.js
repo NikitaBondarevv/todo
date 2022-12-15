@@ -45,11 +45,11 @@ export const Task = ({ data, getTasks }) => {
 }
 
 Task.defaultProps = {
-  title: '',
-  done: undefined,
+  data: {},
+  getTasks: () => { },
 }
 
 Task.propTypes = {
-  title: PropTypes.string,
-  done: PropTypes.bool
+  data: PropTypes.object,
+  getTasks: PropTypes.func
 }

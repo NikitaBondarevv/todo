@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { createTask } from '../../contracts/tasks'
 import styles from './styles.css'
@@ -47,8 +48,25 @@ export const UpdateCreateTask = ({ getTasks, text, activeTabIndex }) => {
   return (
     <form className={styles.updateCreateTask}>
       <input className={styles.title} name="text" value={value} onChange={setValueTitle} />
-      <textarea onChange={setDescription} placeholder="Add description here" className={styles.description} name="description" />
+      <textarea
+        onChange={setDescription}
+        placeholder="Add description here"
+        className={styles.description}
+        name="description"
+      />
       <input onClick={addTaskAndHandleBlur} type="button" value="SAVE" />
     </form>
   )
+}
+
+UpdateCreateTask.defaultProps = {
+  getTasks: () => { },
+  text: '',
+  activeTabIndex: 0
+}
+
+UpdateCreateTask.propTypes = {
+  getTasks: PropTypes.func,
+  text: PropTypes.string,
+  activeTabIndex: PropTypes.number
 }

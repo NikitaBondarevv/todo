@@ -16,7 +16,9 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <img src={logo} alt="logo" />
+      <a href="/#">
+        <img src={logo} alt="logo" />
+      </a>
       <nav>
         <ul className={styles.list}>
           {links.map((link, index) => (

@@ -43,4 +43,9 @@
   font: 24px/24px "MyriadProLight" ;
   font-style: italic;
   margin: 0 0 120px;
+  cursor: pointer;
+}
+
+.updateCreateTask input[type=button]:hover {
+  text-decoration: underline;
 }

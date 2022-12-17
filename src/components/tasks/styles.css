@@ -94,3 +94,20 @@
 .activeContent {
   background: #303994
 }
+
+.addTask {
+  display: block;
+  color: #000;
+  background: #fff;
+  width: 244px;
+  font-size: 22px;
+  line-height: 55px;
+  text-align: center;
+  box-shadow: 0px 1px 7px #000;
+  margin: 0 0 14px 59px;
+  text-decoration: none;
+}
+
+.addTask:hover {
+  text-decoration: underline;
+}

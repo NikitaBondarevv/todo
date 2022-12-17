@@ -3,9 +3,15 @@ header {
   line-height: 26px;
   display: flex;
   align-items: center;
-  column-gap: 75px;
+  justify-content: space-between;
   padding: 23px 0 0;
   margin: 0 0 60px;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
 }
 
 header .list {

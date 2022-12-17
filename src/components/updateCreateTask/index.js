@@ -16,19 +16,12 @@ export const UpdateCreateTask = ({ getTasks, text, activeTabIndex }) => {
     setValueDescription(value)
   }
 
-  const randomInteger = () => {
-    const rand = 1 + Math.random() * (100 + 1 - 1)
-
-    return Math.floor(rand)
-  }
-
   const addTaskAndHandleBlur = e => {
     e.preventDefault()
 
     const addCurrentTask = async () => {
       await createTask({
         title: value,
-        id: randomInteger(),
         done: false,
         day: activeTabIndex,
         description: valueDescription

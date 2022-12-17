@@ -16,18 +16,20 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <a href="/#">
-        <img src={logo} alt="logo" />
-      </a>
-      <nav>
-        <ul className={styles.list}>
-          {links.map((link, index) => (
-            <li key={index}>
-              <a href={`/${link.value}`} className={styles[`${link.value}`]}>{link.text}</a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div>
+        <a href="/#">
+          <img src={logo} alt="logo" />
+        </a>
+        <nav>
+          <ul className={styles.list}>
+            {links.map((link, index) => (
+              <li key={index}>
+                <a href={`/${link.value}`} className={styles[`${link.value}`]}>{link.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
       {
         isAuthenticated
           ? <AuthorizedUser />

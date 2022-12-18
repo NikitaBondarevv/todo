@@ -20,7 +20,7 @@ export const AuthorizedUser = () => {
       </a>
       <ul className={styles.dropDown}>
         <li>
-          <a href="/#">Profile</a>
+          <a href="/profile">Profile</a>
         </li>
         <li>
           <a onClick={logoutHandler} href="/#">Log out</a>

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 
 import { login } from 'contracts/login'
+import { TLoginFormProps } from './types'
 import styles from './styles.css'
 
-export const LoginForm = ({ setUser }) => {
-  const submitHandler = async e => {
+export const LoginForm = ({ setUser }: TLoginFormProps) => {
+  const submitHandler = async (e: any) => {
     const {
       target: {
         elements: { email, password }

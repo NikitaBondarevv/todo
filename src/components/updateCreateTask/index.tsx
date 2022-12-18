@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { createTask } from '../../contracts/tasks'
+import { createTask } from 'contracts/tasks'
 import styles from './styles.css'
 
 export const UpdateCreateTask = ({ getTasks, text, activeTabIndex }) => {

@@ -4,7 +4,7 @@ import { login } from '../../contracts/login'
 import styles from './styles.css'
 
 export const LoginForm = ({ setUser }) => {
-  const submitHandler = async (e) => {
+  const submitHandler = async e => {
     const {
       target: {
         elements: { email, password }

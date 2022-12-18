@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './index.js',
-  // context: path.resolve(__dirname, 'src'),
+  context: path.resolve(__dirname, 'src'),
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
@@ -50,10 +50,13 @@ module.exports = {
       } 
     ]
   },
+  resolve: {
+    modules: [path.resolve('./src'), 'node_modules']
+  },
   plugins: [
     new HTMLPlugin({
       title: 'React',
-      template: path.resolve(__dirname, 'index.html')
+      template: './index.html'
     }),
     new MiniCssExtractPlugin({ filename: 'styles.css' }),
     new webpack.DefinePlugin({

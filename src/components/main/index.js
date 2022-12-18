@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 
 // import { UserForm } from '../userForm'
+import { LoginForm } from 'components/loginForm/LoginForm'
+import { UserContext } from 'contexts/userContext'
 import { Tasks } from '../tasks'
-import { LoginForm } from '../loginForm/LoginForm'
-import { ContextUser } from '../../../index'
 import { TasksInfo } from '../tasksInfo'
 
 export const Main = () => {
-  const { isAuthenticated, setUser } = useContext(ContextUser)
+  const { isAuthenticated, setUser } = useContext(UserContext)
 
   return (
     <main>

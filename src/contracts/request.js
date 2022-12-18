@@ -1,4 +1,4 @@
-const makeRequest = async (url, method = 'GET', data) => {
+const makeRequest = async (url, data, method = 'GET') => {
   const options = {
     method,
     credentials: 'include'
@@ -24,14 +24,14 @@ export const request = {
   },
 
   post(url, data) {
-    return makeRequest(url, 'POST', data)
+    return makeRequest(url, data, 'POST')
   },
 
   put(url, data) {
-    return makeRequest(url, 'PUT', data)
+    return makeRequest(url, data, 'PUT')
   },
 
   delete(url) {
-    return makeRequest(url, 'DELETE')
+    return makeRequest(url, undefined, 'DELETE')
   }
 }

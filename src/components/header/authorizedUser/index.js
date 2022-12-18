@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 
-import { ContextUser } from '../../../../index'
-import { logout } from '../../../contracts/logout'
+import { UserContext } from 'contexts/userContext'
+import { logout } from 'contracts/logout'
 import styles from './styles.css'
 
 export const AuthorizedUser = () => {
-  const { user, setUser } = useContext(ContextUser)
+  const { user, setUser } = useContext(UserContext)
 
   const logoutHandler = async () => {
     await logout()

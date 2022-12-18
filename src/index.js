@@ -1,12 +1,11 @@
-import { useState, useEffect, createContext, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { createRoot } from 'react-dom/client'
 
-import { checkUser } from './src/contracts/checkUser'
-import { Header } from './src/components/header'
-import { Main } from './src/components/main'
+import { checkUser } from 'contracts/checkUser'
+import { Header } from 'components/header'
+import { Main } from 'components/main'
+import { UserContext } from './contexts/userContext';
 import './styles.css'
-
-export const ContextUser = createContext(true)
 
 const root = createRoot(document.getElementById('app'))
 
@@ -33,10 +32,10 @@ const App = () => {
   }), [user])
 
   return (
-    <ContextUser.Provider value={contextValue}>
+    <UserContext.Provider value={contextValue}>
       <Header />
       <Main />
-    </ContextUser.Provider>
+    </UserContext.Provider>
   )
 }
 

@@ -23,6 +23,11 @@
   white-space: nowrap;
 }
 
+.tasksList .updateTask:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .tasksList li::before {
   content: counter(my-awesome-counter) ". ";
   font-weight: bold;
@@ -45,7 +50,6 @@
 .tasksList .progress {
   background: url(./images/in-progress.png) no-repeat;
   background-position: 0 5px;
-  text-decoration: underline;
 }
 
 .tasksList button {
@@ -92,18 +96,18 @@
 }
 
 .addTask {
+  display: block;
+  color: #000;
   background: #fff;
   width: 244px;
   font-size: 22px;
   line-height: 55px;
   text-align: center;
-  text-decoration: underline;
   box-shadow: 0px 1px 7px #000;
   margin: 0 0 14px 59px;
+  text-decoration: none;
 }
 
-.editableText {
-  height: 45px;
-  width: 234px;
-  font-size: 22px;
+.addTask:hover {
+  text-decoration: underline;
 }

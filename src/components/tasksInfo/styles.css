@@ -43,13 +43,13 @@
   font-size: 22px;
   line-height: 55px;
   text-align: center;
-  text-decoration: underline;
   box-shadow: 0px 1px 7px #000;
+  text-decoration: none;
   margin: 60px 0 14px 59px;
 }
 
 .link:hover {
-  background: rgb(196, 196, 196);
+  text-decoration: underline;
 }
 
 .done {

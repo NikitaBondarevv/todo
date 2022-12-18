@@ -16,12 +16,14 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <img src={logo} alt="logo" />
+      <a href="/#">
+        <img src={logo} alt="logo" />
+      </a>
       <nav>
         <ul className={styles.list}>
           {links.map((link, index) => (
             <li key={index}>
-              <a href="#" className={styles[`${link.value}`]}>{link.text}</a>
+              <a href={`/${link.value}`} className={styles[`${link.value}`]}>{link.text}</a>
             </li>
           ))}
         </ul>
@@ -29,7 +31,7 @@ export const Header = () => {
       {
         isAuthenticated
           ? <AuthorizedUser />
-          : <a className={styles.createUser} href="#">Create User</a>
+          : <a className={styles.createUser} href="/createUser">Create User</a>
       }
     </header>
   )

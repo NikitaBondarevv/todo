@@ -1,47 +1,68 @@
-.user {
+.menu {
   position: relative;
+  padding: 0 0 15px;
+}
+
+.dropDown {
+  background: rgba(255,255,255, 0.3);
+  flex-direction: column;
+  padding: 7px 17px 0;
+  min-width: 90px;
+  position: absolute;
+  align-items: center;
+  top: 33px;
+  display: none;
+  left: 50%;
+  transform: translate(-50%, 0);
+  list-style: none;
+  margin: 0;
+}
+
+.dropDown a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.dropDown a:hover {
+  text-decoration: underline 1px;
+  text-underline-offset: 5px
+}
+
+.dropDown li {
+  font-size: 26px;
+  line-height: 24px;
+  white-space: nowrap;
+  margin: 0 0 7px;
+}
+
+.menu:hover .dropDown {
+  display: flex;
 }
 
 .userName {
   display: block;
-  margin: 0 0 0 255px;
   font-size: 26px;
   line-height: 24px;
   color: #fff;
-  background: url(./images/user.png) no-repeat 60px 0;
-  min-width: 90px;
   text-decoration: none;
+  position: relative;
+}
+
+.userName::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: url(./images/user.png) no-repeat;
+  width: 24px;
+  height: 24px;
+  right: -35px;
 }
 
 .userName:hover {
   color: #060e9a;
-  background: url(./images/hoverUser.png) no-repeat 60px 0;
   text-decoration: underline;
 }
 
-.menu {
-  background: rgba(255,255,255, 0.3);
-  flex-direction: column;
-  padding: 5px 17px 0;
-  position: absolute;
-  right: -5px;
-  top: 26px;
-  display: none;
-}
-
-.user:hover .menu {
-  display: flex;
-}
-
-.menu a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 26px;
-  line-height: 24px;
-  white-space: nowrap;
-  margin: 0 0 5px;
-}
-
-.menu a:hover {
-  color: rgb(169, 169, 169);
+.userName:hover::before {
+  background: url(./images/hoverUser.png) no-repeat;
 }

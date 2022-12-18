@@ -1,9 +1,10 @@
 header {
   font-size: 26px;
   line-height: 26px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
   align-items: center;
-  column-gap: 75px;
   padding: 23px 0 0;
   margin: 0 0 60px;
 }

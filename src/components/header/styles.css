@@ -1,17 +1,11 @@
 header {
   font-size: 26px;
   line-height: 26px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 0.1fr 1fr auto;
   align-items: center;
-  justify-content: space-between;
   padding: 23px 0 0;
   margin: 0 0 60px;
-}
-
-header div {
-  display: flex;
-  align-items: center;
-  column-gap: 40px;
 }
 
 header .list {

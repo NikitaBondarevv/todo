@@ -1,6 +1,5 @@
 .menu {
   position: relative;
-  display: inline-block;
   padding: 0 0 15px;
 }
 
@@ -49,8 +48,7 @@
   position: relative;
 }
 
-.userName::before,
-.userName:hover::before {
+.userName::before {
   content: "";
   display: block;
   position: absolute;

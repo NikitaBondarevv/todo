@@ -27,5 +27,10 @@
     "module": "esnext",
     "jsx": "react-jsx",
     "noEmit": false
-  }
+  },
+  "include": [
+    "types/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.ts"
+  ]
 }

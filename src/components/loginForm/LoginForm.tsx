@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { login } from '../../contracts/login'
+import { login } from 'contracts/login'
 import styles from './styles.css'
 
 export const LoginForm = ({ setUser }) => {

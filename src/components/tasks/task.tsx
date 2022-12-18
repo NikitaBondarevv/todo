@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 
-import styles from './styles.css'
+import { updateTask, deleteTask } from 'contracts/tasks'
 import { getProgressClassName } from './getProgressClassName'
-import { updateTask, deleteTask } from '../../contracts/tasks'
+import styles from './styles.css'
 
 export const Task = ({ data, getTasks }) => {
   const { done, title } = data

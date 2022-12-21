@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 import msg from './images/msg-element.png'
 import { fields } from './registerFields'
-import { TUserForm, TTarget } from './types'
+import { TUserForm, TTarget, TRegisterFields } from './types'
+import { IUser } from 'interfaces/IUser'
 
 export const UserForm = ({ disabledFields }: TUserForm) => {
-  const [registerFields, setRegisterFields] = useState(fields.reduce((prev, next) => (prev[next.label] = { value: '' }) && prev, {}))
+  const [registerFields, setRegisterFields] = useState<TRegisterFields>(fields.reduce<TRegisterFields>((prev, next) => (prev[next.label] = { value: '' }) && prev, {}))
 
   const setValue = ({ target: { value, name } }: TTarget) => {
     setRegisterFields(registerFields => ({
@@ -49,7 +50,7 @@ export const UserForm = ({ disabledFields }: TUserForm) => {
     return !reg.test(registerFields[label].value)
   })
 
-  const save = (e) => {
+  const save = (e: FormEvent) => {
     e.preventDefault()
 
     if (!canSubmit()) {
@@ -57,10 +58,10 @@ export const UserForm = ({ disabledFields }: TUserForm) => {
     }
 
     const data = Object.entries(registerFields).reduce((user, [key, { value }]) => {
-      user[key] = value
+      user[key as keyof IUser] = value
 
       return user
-    }, {})
+    }, {} as IUser)
 
     console.log(data);
   }

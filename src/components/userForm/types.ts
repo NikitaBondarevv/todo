@@ -1,5 +1,5 @@
 export type TUserForm = {
-  disabledFields: boolean
+  disabledFields: string[]
 }
 
 export type TTarget = {
@@ -8,3 +8,13 @@ export type TTarget = {
     name: string
   }
 }
+
+export type TField = {
+  label: string
+  reg: RegExp
+  secure?: boolean
+}
+
+type TRegisterField = Record<string, string>
+
+export type TRegisterFields = Record<string, TRegisterField>

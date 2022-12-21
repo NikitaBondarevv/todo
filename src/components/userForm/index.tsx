@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import styles from './styles.css'
 import msg from './images/msg-element.png'
 import { fields } from './registerFields'
-import { TUserForm, TTarget, TNext } from './types'
+import { TUserForm, TTarget } from './types'
 
 export const UserForm = ({ disabledFields }: TUserForm) => {
-  const [registerFields, setRegisterFields] = useState(fields.reduce((prev, next: TNext) => (prev[next.label] = { value: '' }) && prev, {}))
+  const [registerFields, setRegisterFields] = useState(fields.reduce((prev, next) => (prev[next.label] = { value: '' }) && prev, {}))
 
   const setValue = ({ target: { value, name } }: TTarget) => {
     setRegisterFields(registerFields => ({

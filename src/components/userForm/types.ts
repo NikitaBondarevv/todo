@@ -8,9 +8,3 @@ export type TTarget = {
     name: string
   }
 }
-
-export type TNext = {
-  label: string;
-  reg: RegExp;
-  secure?: boolean;
-}

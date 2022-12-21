@@ -28,7 +28,7 @@ export const Tasks = () => {
       {
         days.map((day, index) => (
           <Tab key={index} title={daysOfTheWeek[index]}>
-            <TaskList tasks={day} getTasks={getDailyTasks} getCurrentDay={getCurrentDay} activeTabIndex={index} />
+            <TaskList tasks={day} getTasks={getDailyTasks} activeTabIndex={index} />
           </Tab>
         ))
       }

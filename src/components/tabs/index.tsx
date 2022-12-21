@@ -1,16 +1,17 @@
-import { Children, useState, useEffect } from 'react'
+import { Children, useState, useEffect, PropsWithChildren } from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 import { Navigation } from './navigation'
+import { TTabsChildren, TTabsProos } from './types'
 
-export const Tabs = ({ selectedIndex, children }) => {
+export const Tabs = ({ selectedIndex, children }: PropsWithChildren<TTabsProos>) => {
   const [index, setIndex] = useState(+selectedIndex)
-  const [titles, setTitles] = useState([])
-  const [contents, setContents] = useState([])
+  const [titles, setTitles] = useState<string[]>([])
+  const [contents, setContents] = useState<Array<TTabsChildren['props']['children']>>([])
 
   const setTabs = () => {
-    const tabs = Children.toArray(children)
+    const tabs = Children.toArray(children) as TTabsChildren[]
     setTitles(tabs.map(component => component.props.title))
     setContents(tabs.map(component => component.props.children))
   }
@@ -23,13 +24,13 @@ export const Tabs = ({ selectedIndex, children }) => {
     setTabs()
   }, [children])
 
-  const setActiveTab = index => setIndex(index)
+  const setActiveTab = (index: number) => setIndex(index)
 
   return (
     <div className={styles.content}>
       <Navigation titles={titles} activeTabIndex={index} setActiveTab={setActiveTab} />
 
-      <div id={index} className={styles.activeContent}>{contents[index]}</div>
+      <div id={String(index)} className={styles.activeContent}>{contents[index]}</div>
     </div>
   )
 }

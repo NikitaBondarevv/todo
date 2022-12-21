@@ -1,4 +1,6 @@
-export const fields = [
+import { TField } from './types'
+
+export const fields: TField[] = [
   { label: 'email', reg: /^\w+@\w+\.[a-z]{2,5}$/ },
   { label: 'name', reg: /^[^ ]{3,20}$/ },
   { label: 'surname', reg: /^[^ ]{3,20}$/ },

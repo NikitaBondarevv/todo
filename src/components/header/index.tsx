@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
-import { AuthorizedUser } from './authorizedUser'
 import { UserContext } from 'contexts/userContext'
+import { AuthorizedUser } from './authorizedUser'
 import styles from './styles.css'
 import logo from './images/logo.png'
 

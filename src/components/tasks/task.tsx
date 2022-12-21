@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 
-import styles from './styles.css'
+import { updateTask, deleteTask } from 'contracts/tasks'
 import { getProgressClassName } from './getProgressClassName'
-import { updateTask, deleteTask } from '../../contracts/tasks'
+import { TTaskProps } from './types'
+import styles from './styles.css'
 
-export const Task = ({ data, getTasks }) => {
+export const Task = ({ data, getTasks }: TTaskProps) => {  
   const { done, title } = data
 
   const completeTask = async () => {

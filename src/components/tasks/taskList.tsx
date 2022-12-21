@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 
 import { UpdateCreateTask } from '../updateCreateTask'
 import { Task } from './task'
+import { TTaskListProps } from './types'
 import styles from './styles.css'
 
-export const TaskList = ({ tasks, getTasks, activeTabIndex }) => {
+export const TaskList = ({ tasks, getTasks, activeTabIndex }: TTaskListProps) => {
   const [todos, setTodos] = useState(tasks)
 
   useEffect(() => {
     setTodos(tasks)
   }, [tasks])
-
+  
   return (
     <>
       <div>

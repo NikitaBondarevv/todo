@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
+import { daysOfTheWeek } from 'helpers/constans'
+import { getTasks } from 'contracts/getTasks'
 import { TaskList } from './taskList'
-import { daysOfTheWeek } from '../../helpers/constans'
 import { Tabs } from '../tabs'
 import { Tab } from '../tabs/tab'
-import { getTasks } from '../../contracts/getTasks'
 
 export const Tasks = () => {
   const [days, setDays] = useState([])
@@ -28,7 +28,7 @@ export const Tasks = () => {
       {
         days.map((day, index) => (
           <Tab key={index} title={daysOfTheWeek[index]}>
-            <TaskList tasks={day} getTasks={getDailyTasks} getCurrentDay={getCurrentDay} activeTabIndex={index} />
+            <TaskList tasks={day} getTasks={getDailyTasks} activeTabIndex={index} />
           </Tab>
         ))
       }

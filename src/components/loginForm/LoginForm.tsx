@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 import { login } from 'contracts/login'
 import { TLoginFormProps } from './types'
 import styles from './styles.css'
+import { FormEvent } from 'react';
 
 export const LoginForm = ({ setUser }: TLoginFormProps) => {
-  const submitHandler = async (e: any) => {
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     const {
-      target: {
-        elements: { email, password }
+      currentTarget: {
+        elements
       }
     } = e
+
+    const { email, password } = elements as unknown as Record<string, HTMLInputElement>
 
     e.preventDefault()
 

@@ -4,18 +4,19 @@ import PropTypes from 'prop-types'
 import styles from './styles.css'
 import msg from './images/msg-element.png'
 import { fields } from './registerFields'
+import { TUserForm, TTarget, TNext } from './types'
 
-export const UserForm = ({ disabledFields }) => {
-  const [registerFields, setRegisterFields] = useState(fields.reduce((prev, next) => (prev[next.label] = { value: '' }) && prev, {}))
+export const UserForm = ({ disabledFields }: TUserForm) => {
+  const [registerFields, setRegisterFields] = useState(fields.reduce((prev, next: TNext) => (prev[next.label] = { value: '' }) && prev, {}))
 
-  const setValue = ({ target: { value, name } }) => {
+  const setValue = ({ target: { value, name } }: TTarget) => {
     setRegisterFields(registerFields => ({
       ...registerFields,
       [name]: { value }
     }))
   }
 
-  const validate = ({ target: { value, name } }, index) => {
+  const validate = ({ target: { value, name } }: TTarget, index: number) => {
     const { reg } = fields[index]
 
     if (['passwordRepeat', 'password'].includes(name) && registerFields.passwordRepeat.value &&

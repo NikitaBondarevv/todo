@@ -1,22 +1,23 @@
-import { useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import PropTypes from 'prop-types'
 
+import { TUpdateCreateTaskProps, TTarget } from './types'
 import { createTask } from 'contracts/tasks'
 import styles from './styles.css'
 
-export const UpdateCreateTask = ({ getTasks, text, activeTabIndex }) => {
+export const UpdateCreateTask = ({ getTasks, text, activeTabIndex }: TUpdateCreateTaskProps) => {
   const [value, setValue] = useState(text)
   const [valueDescription, setValueDescription] = useState('')
 
-  const setValueTitle = ({ target: { value } }) => {
+  const setValueTitle = ({ target: { value } }: TTarget) => {
     setValue(value)
   }
 
-  const setDescription = ({ target: { value } }) => {
+  const setDescription = ({ target: { value } }: TTarget) => {
     setValueDescription(value)
   }
 
-  const addTaskAndHandleBlur = e => {
+  const addTaskAndHandleBlur = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault()
 
     const addCurrentTask = async () => {

@@ -10,3 +10,9 @@ export type TTabsChildren = {
     children: ReactNode
   }
 }
+
+export type TNavigationProps = {
+  titles: string[]
+  setActiveTab: Function
+  activeTabIndex: number
+}

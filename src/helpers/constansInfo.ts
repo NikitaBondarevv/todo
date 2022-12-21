@@ -1,4 +1,6 @@
-export const getTasksInfo = info => [
+import { IInfo } from 'interfaces/IInfo'
+
+export const getTasksInfo = (info: IInfo) => [
   {
     text: 'You have ',
     amount: info.total,

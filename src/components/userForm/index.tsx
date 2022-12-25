@@ -1,18 +1,16 @@
-import { FormEvent, useContext, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 
 import styles from './styles.css'
 import msg from './images/msg-element.png'
 import { fields } from './registerFields'
 import { TUserForm, TTarget, TRegisterFields } from './types'
 import { IUser } from 'interfaces/IUser'
-import { UserContext } from 'contexts/userContext'
-import { updateUser } from 'contracts/updateUser'
 
-export const UserForm = ({ disabledFields, user }: TUserForm) => {
-  const { isAuthenticated } = useContext(UserContext)
-  const [registerFields, setRegisterFields] = useState<TRegisterFields>(fields.reduce<TRegisterFields>((prev, next) => (prev[next.label] = { value: user[next.label] ?? '' }) && prev, {}))
+export const UserForm = ({ disabledFields, user, onSubmit }: TUserForm) => {
+  const [registerFields, setRegisterFields] = useState<TRegisterFields>(fields.reduce<TRegisterFields>((prev, next) =>
+  (prev[next.label] = { value: user[next.label as keyof IUser] ?? '' }) && prev,
+  {}))
 
   const setValue = ({ target: { value, name } }: TTarget) => {
     setRegisterFields(registerFields => ({
@@ -67,13 +65,7 @@ export const UserForm = ({ disabledFields, user }: TUserForm) => {
       return user
     }, {} as IUser)
 
-    updateUser({
-      firstname: data.firstname,
-      lastname: data.lastname,
-      password: data.password
-    })
-    
-    console.log(data)
+    onSubmit(data)
   }
 
   return (
@@ -99,15 +91,7 @@ export const UserForm = ({ disabledFields, user }: TUserForm) => {
         }
         )}
       </ul>
-      {
-        isAuthenticated
-          ? <input type="submit" value="SAVE" disabled={!canSubmit()} />
-          : (
-            <Link to="/createdUser">
-              <input type="submit" value="SAVE" disabled={!canSubmit()} />
-            </Link>
-          )
-      }
+      <input type="submit" value="SAVE" disabled={!canSubmit()} />
     </form>
   )
 }

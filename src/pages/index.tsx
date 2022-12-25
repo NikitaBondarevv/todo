@@ -8,10 +8,11 @@ import { Tasks } from 'pages/tasks'
 import { TasksInfo } from 'pages/tasksInfo'
 import { UpdateCreateTask } from './updateCreateTask'
 import { Contacts } from 'pages/contacts'
-import { LinkToMainPage } from './linkToMainPage'
+import { CreateUser } from './createUser'
+import { Registered } from './registered'
 
 export const Pages = () => {
-  const { isAuthenticated, setUser, user } = useContext(UserContext)
+  const { isAuthenticated, setUser } = useContext(UserContext)
 
   return (
     <main>
@@ -22,20 +23,16 @@ export const Pages = () => {
               <Route path='/' element={<TasksInfo />} />
               <Route path='/tasks' element={<Tasks />} />
               <Route path='/task/:day/:id?' element={<UpdateCreateTask />} />
-              <Route path='/profile' element={<UserForm disabledFields={['email']} user={{
-                email: user?.email,
-                firstName: user?.firstname,
-                lastName: user?.lastname
-              }} />} />
+              <Route path='/profile' element={} />
               <Route path='/contacts' element={<Contacts />} />
             </Routes>
           )
           : (
             <>
               <Routes>
-                <Route path='/create' element={<UserForm />} />
-                <Route path='/createdUser' element={<LinkToMainPage />} />
-                <Route path='/login' element={<LoginForm setUser={setUser} />} />
+                <Route path='/create' element={<CreateUser />} />
+                <Route path='/registered' element={<Registered />} />
+                <Route path='/' element={<LoginForm setUser={setUser} />} />
               </Routes>
             </>
           )

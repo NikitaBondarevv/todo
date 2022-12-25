@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import styles from './styles.css'
 
-export const LinkToMainPage = () => (
+export const Registered = () => (
   <div className={styles.content}>
     <p>
       Account was seccuesfully created

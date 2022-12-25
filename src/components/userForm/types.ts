@@ -1,12 +1,9 @@
-interface IUser {
-  email?: string,
-  firstName?: string,
-  lastName?: string,
-}
+import { IUser } from 'interfaces/IUser'
 
 export type TUserForm = {
   disabledFields: string[]
   user: IUser
+  onSubmit: (user: IUser) => Promise<void>
 }
 
 export type TTarget = {

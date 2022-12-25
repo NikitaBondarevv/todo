@@ -30,7 +30,7 @@ export const TasksInfo = () => {
 
   return (
     <div className={styles.tasksInfo}>
-      <span>Hello, {user?.firstName}</span>
+      <span>Hello, {user?.firstname}</span>
       <ul className={styles.list}>
         {
           getTasksInfo(info).map((taskInfo: IGetTasksInfo, index) => (

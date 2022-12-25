@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
 import { checkUser } from 'contracts/checkUser'
 import { Header } from 'components/header'
-import { Main } from 'components/main'
+import { Pages } from 'pages'
 import { IUser } from 'interfaces/IUser'
 import { UserContext } from './contexts/userContext';
 import './styles.css'
@@ -27,6 +28,7 @@ const App = () => {
 
   const contextValue = useMemo(() => ({
     isAuthenticated: user && !user.error,
+    createUser: user && !user.error,
     user,
     setUser
   }), [user])
@@ -34,9 +36,13 @@ const App = () => {
   return (
     <UserContext.Provider value={contextValue}>
       <Header />
-      <Main />
+      <Pages />
     </UserContext.Provider>
   )
 }
 
-root.render(<App />)
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+)

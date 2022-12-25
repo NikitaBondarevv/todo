@@ -8,7 +8,8 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   mode: 'development',
   devtool: 'source-map',
@@ -79,6 +80,7 @@ module.exports = {
     hot: true,
     client: {
       overlay: false,
-    },   
+    },
+    historyApiFallback: true
   }
 };

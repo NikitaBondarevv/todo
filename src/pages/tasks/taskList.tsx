@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-import { UpdateCreateTask } from '../updateCreateTask'
 import { Task } from './task'
 import { TTaskListProps } from './types'
 import styles from './styles.css'
@@ -21,9 +21,8 @@ export const TaskList = ({ tasks, getTasks, activeTabIndex }: TTaskListProps) =>
             todos.map((task, index) => <Task key={index} data={task} getTasks={getTasks} />)
           }
         </ol>
-        <a href="#" className={styles.addTask}>Add new task</a>
+        <Link to={`/task/${activeTabIndex}`} className={styles.addTask}>Add new task</Link>
       </div>
-      <UpdateCreateTask text="New Task" getTasks={getTasks} activeTabIndex={activeTabIndex} />
     </>
   )
 }

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 import { login } from 'contracts/login'
 import { TLoginFormProps } from './types'

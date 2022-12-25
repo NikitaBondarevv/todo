@@ -1,4 +1,6 @@
-const makeRequest = async (url, data, method = 'GET') => {
+import { IData } from 'interfaces/IData'
+
+const makeRequest = async (url: string, data: IData | undefined, method: string = 'GET') => {
   const options = {
     method,
     credentials: 'include'
@@ -13,25 +15,25 @@ const makeRequest = async (url, data, method = 'GET') => {
     })
   }
 
-  const response = await fetch(`http://localhost:8086/${url}`, options)
+  const response = await fetch(`http://localhost:8086/${url}`, <RequestInit> options)
 
   return response.json()
 }
 
 export const request = {
-  get(url) {
-    return makeRequest(url)
+  get(url: string) {
+    return makeRequest(url, undefined)
   },
 
-  post(url, data) {
+  post(url: string, data: IData) {
     return makeRequest(url, data, 'POST')
   },
 
-  put(url, data) {
+  put(url: string, data: IData) {
     return makeRequest(url, data, 'PUT')
   },
 
-  delete(url) {
+  delete(url: string) {
     return makeRequest(url, undefined, 'DELETE')
   }
 }

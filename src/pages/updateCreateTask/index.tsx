@@ -1,13 +1,14 @@
-import { MouseEvent, useState } from 'react'
-import PropTypes from 'prop-types'
+import { MouseEvent, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-import { TUpdateCreateTaskProps, TTarget } from './types'
-import { createTask } from 'contracts/tasks'
+import { TTarget } from './types'
+import { createTask, getTaskById } from 'contracts/tasks'
 import styles from './styles.css'
 
-export const UpdateCreateTask = ({ getTasks, text, activeTabIndex }: TUpdateCreateTaskProps) => {
-  const [value, setValue] = useState(text)
+export const UpdateCreateTask = () => {
+  const [value, setValue] = useState('New task')
   const [valueDescription, setValueDescription] = useState('')
+  const { day, id } = useParams()
 
   const setValueTitle = ({ target: { value } }: TTarget) => {
     setValue(value)
@@ -17,27 +18,29 @@ export const UpdateCreateTask = ({ getTasks, text, activeTabIndex }: TUpdateCrea
     setValueDescription(value)
   }
 
-  const addTaskAndHandleBlur = (e: MouseEvent<HTMLElement>) => {
+  const addTaskAndHandleBlur = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault()
 
-    const addCurrentTask = async () => {
+    if (value.length > 2) {
       await createTask({
         title: value,
         done: false,
-        day: activeTabIndex,
+        day: Number(day),
         description: valueDescription
       })
-
-      getTasks()
     }
-
-    if (value.length > 2) {
-      addCurrentTask()
-    }
-
-    setValue('New Task')
-    setValueDescription('')
   }
+
+  useEffect(() => {
+    (async () => {
+      if (id) {
+        const task = await getTaskById(id)
+
+        setValue(task.title)
+        setValueDescription(task.description)
+      }
+    })()
+  }, [id])
 
   return (
     <form className={styles.updateCreateTask}>
@@ -47,20 +50,9 @@ export const UpdateCreateTask = ({ getTasks, text, activeTabIndex }: TUpdateCrea
         placeholder="Add description here"
         className={styles.description}
         name="description"
+        value={valueDescription}
       />
       <input onClick={addTaskAndHandleBlur} type="button" value="SAVE" />
     </form>
   )
-}
-
-UpdateCreateTask.defaultProps = {
-  getTasks: () => { },
-  text: '',
-  activeTabIndex: 0
-}
-
-UpdateCreateTask.propTypes = {
-  getTasks: PropTypes.func,
-  text: PropTypes.string,
-  activeTabIndex: PropTypes.number
 }

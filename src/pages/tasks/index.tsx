@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 import { daysOfTheWeek } from 'helpers/constans'
 import { getTasks } from 'contracts/getTasks'
 import { TaskList } from './taskList'
-import { Tabs } from '../tabs'
-import { Tab } from '../tabs/tab'
+import { Tabs } from '../../components/tabs'
+import { Tab } from '../../components/tabs/tab'
 
 export const Tasks = () => {
   const [days, setDays] = useState([])

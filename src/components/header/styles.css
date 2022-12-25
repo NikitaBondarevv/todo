@@ -5,7 +5,7 @@ header {
   grid-template-columns: auto 1fr auto;
   gap: 60px;
   align-items: center;
-  padding: 23px 0 0;
+  padding: 23px 0 0 30px;
   margin: 0 0 60px;
 }
 
@@ -23,7 +23,8 @@ header .list {
   position: relative;
 }
 
-.list a:hover {
+.list a:hover,
+.list .active  {
   color: #060e9a;
   text-decoration: underline;
 }
@@ -39,7 +40,8 @@ header .list {
   position: absolute;
 }
 
-.list a:hover::before {
+.list a:hover::before,
+.list .active::before {
   background: url(./images/hoverMenu.png) no-repeat;
   content: "";
   display: block;
@@ -50,24 +52,24 @@ header .list {
   position: absolute;
 }
 
-.list .home:hover::before {
-  background-position: 2px 2px;
-}
-
-.list .taskList:hover::before {
-  background-position: -23px 2px;
-}
-
-.list .contacts:hover::before {
-  background-position: -46px 2px;
-}
-
-.list .taskList::before {
+.list .tasks::before {
   background-position: -25px 0;
 }
 
 .list .contacts::before {
   background-position: -52px 0;
+}
+
+.list .home:hover::before {
+  background-position: 2px 2px;
+}
+
+.list .tasks:hover::before {
+  background-position: -23px 2px;
+}
+
+.list .contacts:hover::before {
+  background-position: -46px 2px;
 }
 
 .createUser {
@@ -79,9 +81,11 @@ header .list {
   background: url(./images/user.png) no-repeat;
   background-position: 140px 0;
   width: 165px;
+  transform: translate(-90px, 0);
 }
 
-.createUser:hover {
+.createUser:hover,
+.active {
   color: #060e9a;
   background: url(./images/hoverUser.png) no-repeat;
   background-position: 140px 0;

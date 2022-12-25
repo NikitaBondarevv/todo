@@ -1,5 +1,12 @@
+interface IUser {
+  email?: string,
+  firstName?: string,
+  lastName?: string,
+}
+
 export type TUserForm = {
   disabledFields: string[]
+  user: IUser
 }
 
 export type TTarget = {

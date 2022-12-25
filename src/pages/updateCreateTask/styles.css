@@ -2,7 +2,7 @@
   border: 1px solid #fff;
   box-shadow: 0 0 5px 1px rgb(0 0 0 / 50%);
   padding: 39px 29px 70px;
-  background: rgba(0, 0, 255, .3);
+  background: rgb(7 21 147 / 50%);
   width: 777px;
   color: #fff;
   margin: 0 auto 100px;
@@ -10,9 +10,6 @@
   flex-direction: column;
   row-gap: 19px;
   padding: 59px;
-  position: absolute;
-  top: 450px;
-  left: 0;
   width: 717px;
 }
 

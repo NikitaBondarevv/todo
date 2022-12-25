@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import { updateTask, deleteTask } from 'contracts/tasks'
 import { getProgressClassName } from './getProgressClassName'
@@ -26,7 +27,7 @@ export const Task = ({ data, getTasks }: TTaskProps) => {
   return (
     <li className={getProgressClassName(done)}>
       &nbsp;
-      {title}
+      <Link to={`/task/${data.day}/${data.id}`}>{title}</Link>
       {
         !done && (
           <div className={styles.buttons}>

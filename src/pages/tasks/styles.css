@@ -23,6 +23,11 @@
   white-space: nowrap;
 }
 
+.tasksList li a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .tasksList .updateTask:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -83,16 +88,6 @@
 
 .buttons {
   margin: 0 0 0 30px;
-}
-
-.active a {
-  box-shadow: 0 -2px 2px rgb(0 0 0 / 50%);
-  font-weight: bold;
-  background: #303994
-}
-
-.activeContent {
-  background: #303994
 }
 
 .addTask {

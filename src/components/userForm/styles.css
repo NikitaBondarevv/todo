@@ -1,9 +1,11 @@
 .loginForm {
   padding: 20px;
   min-height: 250px;
-  background: rgba(0, 0, 255, .3);
+  background: rgb(7 21 147 / 50%);
   box-shadow: 0 0 5px 1px rgb(0 0 0 / 50%);
   border: 1px solid #fff;
+  width: 795px;
+  margin: 0 auto;
 }
 
 .loginForm ul {

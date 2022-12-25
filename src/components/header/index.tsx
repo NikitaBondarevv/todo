@@ -1,29 +1,31 @@
 import { useContext } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
 import { UserContext } from 'contexts/userContext'
 import { AuthorizedUser } from './authorizedUser'
+import { links } from 'helpers/constans'
 import styles from './styles.css'
 import logo from './images/logo.png'
 
-export const Header = () => {
-  const links = [
-    { text: 'Home', value: 'home' },
-    { text: 'Task list', value: 'taskList' },
-    { text: 'Contacts', value: 'contacts' }
-  ]
+const getNavLinkName = (isActive: boolean, value: string) => {
+  const activeClassName = isActive ? styles.active : ''
 
+  return `${value} ${activeClassName}`
+}
+
+export const Header = () => {
   const { isAuthenticated } = useContext(UserContext)
 
   return (
     <header className={styles.header}>
-      <a href="/#">
+      <Link to="/">
         <img src={logo} alt="logo" />
-      </a>
+      </Link>
       <nav>
         <ul className={styles.list}>
           {links.map((link, index) => (
             <li key={index}>
-              <a href={`/${link.value}`} className={styles[`${link.value}`]}>{link.text}</a>
+              <NavLink to={`/${link.value}`} className={({ isActive }) => getNavLinkName(isActive, styles[link.value])}>{link.text}</NavLink>
             </li>
           ))}
         </ul>
@@ -31,7 +33,7 @@ export const Header = () => {
       {
         isAuthenticated
           ? <AuthorizedUser />
-          : <a className={styles.createUser} href="/createUser">Create User</a>
+          : <NavLink to='/create' className={({ isActive }) => getNavLinkName(isActive, styles.createUser)}>Create User</NavLink>
       }
     </header>
   )

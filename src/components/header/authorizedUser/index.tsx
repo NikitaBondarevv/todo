@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 import { UserContext } from 'contexts/userContext'
 import { logout } from 'contracts/logout'
@@ -15,15 +16,15 @@ export const AuthorizedUser = () => {
 
   return (
     <div className={styles.menu}>
-      <a href="/#" className={styles.userName}>
+      <a href="/" className={styles.userName}>
         {user?.firstName}
       </a>
       <ul className={styles.dropDown}>
         <li>
-          <a href="/profile">Profile</a>
+          <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <a onClick={logoutHandler} href="/#">Log out</a>
+          <a onClick={logoutHandler} href="/">Log out</a>
         </li>
       </ul>
     </div>

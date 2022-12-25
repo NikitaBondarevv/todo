@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { getInfo } from 'contracts/getInfo'
 import { checkUser } from 'contracts/checkUser'
@@ -43,7 +44,7 @@ export const TasksInfo = () => {
           ))
         }
       </ul>
-      <a className={styles.link} href="/tasks">Go to the task list</a>
+      <Link className={styles.link} to="/tasks">Go to the task list</Link>
     </div>
   )
 }

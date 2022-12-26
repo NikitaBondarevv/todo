@@ -24,7 +24,7 @@ export const AuthorizedUser = () => {
           <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <a onClick={logoutHandler} href="/">Log out</a>
+          <Link onClick={logoutHandler} to="/">Log out</Link>
         </li>
       </ul>
     </div>

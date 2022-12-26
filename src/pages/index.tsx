@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { UserForm } from 'components/userForm'
+import { Profile } from 'pages/profile'
 import { LoginForm } from 'components/loginForm/LoginForm'
 import { UserContext } from 'contexts/userContext'
 import { Tasks } from 'pages/tasks'
@@ -23,7 +23,7 @@ export const Pages = () => {
               <Route path='/' element={<TasksInfo />} />
               <Route path='/tasks' element={<Tasks />} />
               <Route path='/task/:day/:id?' element={<UpdateCreateTask />} />
-              <Route path='/profile' element={} />
+              <Route path='/profile' element={<Profile />} />
               <Route path='/contacts' element={<Contacts />} />
             </Routes>
           )

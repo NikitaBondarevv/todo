@@ -11,6 +11,6 @@ export const Registered = () => (
       Now you can use your email and<br />
       password to login into profile
     </p>
-    <Link to="/login" className={styles.link}>Go to main page</Link>
+    <Link to="/" className={styles.link}>Go to main page</Link>
   </div>
 )

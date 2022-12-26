@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { UserForm } from 'components/userForm'
-import { createUser } from 'contracts/createUser'
+import { createUser } from 'contracts/user'
 import { IUser } from 'interfaces/IUser'
 
 export const CreateUser = () => {
@@ -9,11 +9,10 @@ export const CreateUser = () => {
 
   const submitHandler = async (data: IUser) => {
     await createUser(data)
-    navigate('/createdUser')
+    navigate('/registered')
   }
 
   return (
     <UserForm onSubmit={submitHandler} />
   )
 }
- 

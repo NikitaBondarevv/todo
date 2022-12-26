@@ -60,15 +60,18 @@ header .list {
   background-position: -52px 0;
 }
 
-.list .home:hover::before {
+.list .home:hover::before,
+.list .home.active::before {
   background-position: 2px 2px;
 }
 
-.list .tasks:hover::before {
+.list .tasks:hover::before,
+.list .tasks.active::before {
   background-position: -23px 2px;
 }
 
-.list .contacts:hover::before {
+.list .contacts:hover::before,
+.list .contacts.active::before {
   background-position: -46px 2px;
 }
 

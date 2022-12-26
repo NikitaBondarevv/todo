@@ -7,7 +7,7 @@ import { links } from 'helpers/constans'
 import styles from './styles.css'
 import logo from './images/logo.png'
 
-const getNavLinkName = (isActive: boolean, value: string) => {
+const getNavLinkName = (isActive: boolean, value: string = '') => {
   const activeClassName = isActive ? styles.active : ''
 
   return `${value} ${activeClassName}`

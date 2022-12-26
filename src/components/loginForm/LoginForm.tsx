@@ -33,10 +33,6 @@ export const LoginForm = ({ setUser }: TLoginFormProps) => {
   )
 }
 
-LoginForm.defaultProps = {
-  setUser: () => {}
-}
-
 LoginForm.propTypes = {
   setUser: PropTypes.func
 }

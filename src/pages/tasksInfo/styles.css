@@ -30,7 +30,8 @@
 
 .tasksInfo span {
   display: block;
-  text-decoration: underline;
+  text-decoration: underline 1px;
+  text-underline-offset: 5px;
   margin: 0 0 38px;
   padding: 0 0 0 60px;
 }

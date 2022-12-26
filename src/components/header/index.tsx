@@ -2,8 +2,8 @@ import { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 import { UserContext } from 'contexts/userContext'
-import { AuthorizedUser } from './authorizedUser'
 import { links } from 'helpers/constans'
+import { AuthorizedUser } from './authorizedUser'
 import styles from './styles.css'
 import logo from './images/logo.png'
 
@@ -25,7 +25,12 @@ export const Header = () => {
         <ul className={styles.list}>
           {links.map((link, index) => (
             <li key={index}>
-              <NavLink to={`/${link.value}`} className={({ isActive }) => getNavLinkName(isActive, styles[link.value])}>{link.text}</NavLink>
+              <NavLink
+                to={`/${link.value}`}
+                className={({ isActive }) => getNavLinkName(isActive, styles[link.value])}
+              >
+                {link.text}
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -33,7 +38,14 @@ export const Header = () => {
       {
         isAuthenticated
           ? <AuthorizedUser />
-          : <NavLink to='/create' className={({ isActive }) => getNavLinkName(isActive, styles.createUser)}>Create User</NavLink>
+          : (
+            <NavLink
+              to="/create"
+              className={({ isActive }) => getNavLinkName(isActive, styles.createUser)}
+            >
+              Create User
+            </NavLink>
+          )
       }
     </header>
   )

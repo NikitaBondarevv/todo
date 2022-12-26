@@ -12,18 +12,16 @@ export const TaskList = ({ tasks, getTasks, activeTabIndex }: TTaskListProps) =>
   useEffect(() => {
     setTodos(tasks)
   }, [tasks])
-  
+
   return (
-    <>
-      <div>
-        <ol className={styles.tasksList}>
-          {
-            todos.map((task, index) => <Task key={index} data={task} getTasks={getTasks} />)
-          }
-        </ol>
-        <Link to={`/task/${activeTabIndex}`} className={styles.addTask}>Add new task</Link>
-      </div>
-    </>
+    <div>
+      <ol className={styles.tasksList}>
+        {
+          todos.map((task, index) => <Task key={index} data={task} getTasks={getTasks} />)
+        }
+      </ol>
+      <Link to={`/task/${activeTabIndex}`} className={styles.addTask}>Add new task</Link>
+    </div>
   )
 }
 

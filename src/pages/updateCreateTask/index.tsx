@@ -1,14 +1,15 @@
 import { MouseEvent, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
-import { TTarget } from './types'
 import { createTask, getTaskById } from 'contracts/tasks'
+import { TTarget } from './types'
 import styles from './styles.css'
 
 export const UpdateCreateTask = () => {
   const [value, setValue] = useState('New task')
   const [valueDescription, setValueDescription] = useState('')
   const { day, id } = useParams()
+  const navigate = useNavigate()
 
   const setValueTitle = ({ target: { value } }: TTarget) => {
     setValue(value)
@@ -29,6 +30,8 @@ export const UpdateCreateTask = () => {
         description: valueDescription
       })
     }
+
+    navigate('/tasks')
   }
 
   useEffect(() => {

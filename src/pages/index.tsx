@@ -7,7 +7,7 @@ import { UserContext } from 'contexts/userContext'
 import { Tasks } from 'pages/tasks'
 import { TasksInfo } from 'pages/tasksInfo'
 import { Contacts } from 'pages/contacts'
-import { UpdateCreateTask } from './updateCreateTask'
+import { ManageTask } from './manageTask'
 import { CreateUser } from './createUser'
 import { Registered } from './registered'
 import { NotLoggedIn } from './notLoggedIn'
@@ -23,7 +23,7 @@ export const Pages = () => {
             <Routes>
               <Route path="/" element={<TasksInfo />} />
               <Route path="/tasks" element={<Tasks />} />
-              <Route path="/task/:day/:id?" element={<UpdateCreateTask />} />
+              <Route path="/task/:day/:id?" element={<ManageTask />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/contacts" element={<Contacts />} />
             </Routes>

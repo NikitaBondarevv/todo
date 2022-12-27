@@ -1,11 +1,11 @@
-import { MouseEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { createTask, getTaskById, updateTask } from 'contracts/tasks'
 import { TTarget } from './types'
 import styles from './styles.css'
 
-export const UpdateCreateTask = () => {
+export const ManageTask = () => {
   const [value, setValue] = useState('')
   const [valueDescription, setValueDescription] = useState('')
   const { day, id } = useParams()
@@ -19,7 +19,7 @@ export const UpdateCreateTask = () => {
     setValueDescription(value)
   }
 
-  const addUpdateTask = async (e: MouseEvent<HTMLElement>) => {
+  const addUpdateTask = async (e: FormEvent) => {
     e.preventDefault()
 
     if (value.length <= 2) return
@@ -27,7 +27,7 @@ export const UpdateCreateTask = () => {
     if (id) {
       await updateTask({
         title: value,
-        id: id,
+        id,
         done: false,
         day: Number(day),
         description: valueDescription

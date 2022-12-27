@@ -1,15 +1,14 @@
 import { MouseEvent, useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-import { createTask, getTaskById } from 'contracts/tasks'
-import { TTarget } from './types'
+import { getTaskById } from 'contracts/tasks'
+import { TTarget, TUpdateCreateTaskProps } from './types'
 import styles from './styles.css'
 
-export const UpdateCreateTask = () => {
+export const UpdateCreateTask = ({ onSubmit }: TUpdateCreateTaskProps) => {
   const [value, setValue] = useState('New task')
   const [valueDescription, setValueDescription] = useState('')
   const { day, id } = useParams()
-  const navigate = useNavigate()
 
   const setValueTitle = ({ target: { value } }: TTarget) => {
     setValue(value)
@@ -23,15 +22,14 @@ export const UpdateCreateTask = () => {
     e.preventDefault()
 
     if (value.length > 2) {
-      await createTask({
+      await onSubmit({
         title: value,
+        id: id,
         done: false,
         day: Number(day),
         description: valueDescription
       })
     }
-
-    navigate('/tasks')
   }
 
   useEffect(() => {

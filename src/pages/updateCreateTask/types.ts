@@ -1,7 +1,5 @@
 export type TUpdateCreateTaskProps = {
-  getTasks: Function
-  text: string
-  activeTabIndex: number
+  onSubmit: Function
 }
 
 export type TTarget = {

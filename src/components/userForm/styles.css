@@ -20,13 +20,17 @@
 
 .loginForm input {
   font: 24px/24px "MyriadProLight";
-  padding: 5px 5px 5px 30px;
-  width: 247px;
+  padding: 5px 35px 5px 30px;
+  width: 212px;
   height: 55px;
   border-radius: 7px;
   margin: 0 20px 15px 0;
   border: 1px solid #fff;
   font-style: italic;
+}
+
+.loginForm input:disabled {
+  background-color: rgb(255 255 255 / 50%);
 }
 
 .loginForm .email::before,

@@ -6,8 +6,8 @@ import { checkUser } from 'contracts/checkUser'
 import { getTasksInfo } from 'helpers/constansInfo'
 import { IUser } from 'interfaces/IUser'
 import { IGetTasksInfo } from 'interfaces/IGetTasksInfo'
-import styles from './styles.css'
 import { IInfo } from 'interfaces/IInfo'
+import styles from './styles.css'
 
 export const TasksInfo = () => {
   const [info, setInfo] = useState<IInfo>({
@@ -20,7 +20,6 @@ export const TasksInfo = () => {
 
   useEffect(() => {
     const getData = async () => {
-
       setInfo(await getInfo())
       setUser(await checkUser())
     }

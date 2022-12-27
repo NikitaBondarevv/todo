@@ -1,14 +1,15 @@
-import { MouseEvent, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { FormEvent, useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 
+import { createTask, getTaskById, updateTask } from 'contracts/tasks'
 import { TTarget } from './types'
-import { createTask, getTaskById } from 'contracts/tasks'
 import styles from './styles.css'
 
-export const UpdateCreateTask = () => {
-  const [value, setValue] = useState('New task')
+export const ManageTask = () => {
+  const [value, setValue] = useState('')
   const [valueDescription, setValueDescription] = useState('')
   const { day, id } = useParams()
+  const navigate = useNavigate()
 
   const setValueTitle = ({ target: { value } }: TTarget) => {
     setValue(value)
@@ -18,10 +19,20 @@ export const UpdateCreateTask = () => {
     setValueDescription(value)
   }
 
-  const addTaskAndHandleBlur = async (e: MouseEvent<HTMLElement>) => {
+  const addUpdateTask = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (value.length > 2) {
+    if (value.length <= 2) return
+
+    if (id) {
+      await updateTask({
+        title: value,
+        id,
+        done: false,
+        day: Number(day),
+        description: valueDescription
+      })
+    } else {
       await createTask({
         title: value,
         done: false,
@@ -29,6 +40,8 @@ export const UpdateCreateTask = () => {
         description: valueDescription
       })
     }
+
+    navigate('/tasks')
   }
 
   useEffect(() => {
@@ -38,12 +51,14 @@ export const UpdateCreateTask = () => {
 
         setValue(task.title)
         setValueDescription(task.description)
+      } else {
+        setValue('New task')
       }
     })()
   }, [id])
 
   return (
-    <form className={styles.updateCreateTask}>
+    <form onSubmit={addUpdateTask} className={styles.updateCreateTask}>
       <input className={styles.title} name="text" value={value} onChange={setValueTitle} />
       <textarea
         onChange={setDescription}
@@ -52,7 +67,7 @@ export const UpdateCreateTask = () => {
         name="description"
         value={valueDescription}
       />
-      <input onClick={addTaskAndHandleBlur} type="button" value="SAVE" />
+      <input type="submit" value="SAVE" />
     </form>
   )
 }

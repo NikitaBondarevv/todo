@@ -23,7 +23,6 @@ export const Navigation = ({ titles, setActiveTab, activeTabIndex }: TNavigation
 Navigation.defaultProps = {
   titles: [],
   activeTabIndex: 0,
-  setActiveTab: () => { },
 }
 
 Navigation.propTypes = {

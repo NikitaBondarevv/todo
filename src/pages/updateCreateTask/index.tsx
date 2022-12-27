@@ -19,7 +19,7 @@ export const UpdateCreateTask = () => {
     setValueDescription(value)
   }
 
-  const addTaskAndHandleBlur = async (e: MouseEvent<HTMLElement>) => {
+  const addUpdateTask = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault()
 
     if (value.length <= 2) return
@@ -33,8 +33,6 @@ export const UpdateCreateTask = () => {
         description: valueDescription
       })
     } else {
-      setValue('New task')
-
       await createTask({
         title: value,
         done: false,
@@ -53,6 +51,8 @@ export const UpdateCreateTask = () => {
 
         setValue(task.title)
         setValueDescription(task.description)
+      } else {
+        setValue('New task')
       }
     })()
   }, [id])
@@ -67,7 +67,7 @@ export const UpdateCreateTask = () => {
         name="description"
         value={valueDescription}
       />
-      <input onClick={addTaskAndHandleBlur} type="button" value="SAVE" />
+      <input onSubmit={addUpdateTask} type="button" value="SAVE" />
     </form>
   )
 }

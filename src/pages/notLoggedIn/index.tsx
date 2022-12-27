@@ -8,8 +8,8 @@ export const NotLoggedIn = () => (
       You need to register or login to your account
     </p>
     <div className={styles.links}>
-      <Link to="/" className={styles.link}>Go to login</Link>
-      <Link to="/create" className={styles.link}>Go to register</Link>
+      <Link to="/" className={styles.link}>Go to login page</Link>
+      <Link to="/create" className={styles.link}>Go to register page</Link>
     </div>
   </div>
 )

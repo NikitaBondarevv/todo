@@ -58,7 +58,7 @@ export const UpdateCreateTask = () => {
   }, [id])
 
   return (
-    <form className={styles.updateCreateTask}>
+    <form onSubmit={addUpdateTask} className={styles.updateCreateTask}>
       <input className={styles.title} name="text" value={value} onChange={setValueTitle} />
       <textarea
         onChange={setDescription}
@@ -67,7 +67,7 @@ export const UpdateCreateTask = () => {
         name="description"
         value={valueDescription}
       />
-      <input onSubmit={addUpdateTask} type="button" value="SAVE" />
+      <input type="submit" value="SAVE" />
     </form>
   )
 }

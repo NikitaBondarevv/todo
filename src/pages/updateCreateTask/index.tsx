@@ -22,23 +22,25 @@ export const UpdateCreateTask = () => {
   const addTaskAndHandleBlur = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault()
 
-    if (value.length > 2) {
-      if (id) {
-        await updateTask({
-          title: value,
-          id: id,
-          done: false,
-          day: Number(day),
-          description: valueDescription
-        })
-      } else {
-        await createTask({
-          title: value,
-          done: false,
-          day: Number(day),
-          description: valueDescription
-        })
-      }
+    if (value.length <= 2) return
+
+    if (id) {
+      await updateTask({
+        title: value,
+        id: id,
+        done: false,
+        day: Number(day),
+        description: valueDescription
+      })
+    } else {
+      setValue('New task')
+
+      await createTask({
+        title: value,
+        done: false,
+        day: Number(day),
+        description: valueDescription
+      })
     }
 
     navigate('/tasks')

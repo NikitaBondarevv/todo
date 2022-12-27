@@ -11,7 +11,6 @@ import { UpdateCreateTask } from './updateCreateTask'
 import { CreateUser } from './createUser'
 import { Registered } from './registered'
 import { NotLoggedIn } from './notLoggedIn'
-import { createTask, updateTask } from 'contracts/tasks'
 
 export const Pages = () => {
   const { isAuthenticated, setUser } = useContext(UserContext)
@@ -24,8 +23,7 @@ export const Pages = () => {
             <Routes>
               <Route path="/" element={<TasksInfo />} />
               <Route path="/tasks" element={<Tasks />} />
-              <Route path="/task/:day/:id" element={<UpdateCreateTask onSubmit={updateTask} />} />
-              <Route path="/task/:day" element={<UpdateCreateTask onSubmit={createTask} text="New task" />} />
+              <Route path="/task/:day/:id?" element={<UpdateCreateTask />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/contacts" element={<Contacts />} />
             </Routes>

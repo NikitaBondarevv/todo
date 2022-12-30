@@ -46,8 +46,13 @@ export const getDates = () => Array.from({ length: 7 }).map((value, index) => {
   return `${monday.getDate()} ${month}`
 })
 
-export const links = [
+export const navigation = [
   { text: 'Home', value: '' },
   { text: 'Task list', value: 'tasks' },
+  { text: 'Contacts', value: 'contacts' }
+]
+
+export const notLoggedNavigation = [
+  { text: 'Home', value: '' },
   { text: 'Contacts', value: 'contacts' }
 ]

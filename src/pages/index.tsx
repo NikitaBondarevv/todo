@@ -10,7 +10,8 @@ import { Contacts } from 'pages/contacts'
 import { ManageTask } from './manageTask'
 import { CreateUser } from './createUser'
 import { Registered } from './registered'
-import { NotLoggedIn } from './notLoggedIn'
+
+const NotFound = () => <h1>Not Found</h1>
 
 export const Pages = () => {
   const { isAuthenticated, setUser } = useContext(UserContext)
@@ -34,7 +35,7 @@ export const Pages = () => {
               <Route path="/registered" element={<Registered />} />
               <Route path="/" element={<LoginForm setUser={setUser} />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/tasks" element={<NotLoggedIn />} />
+              <Route path='/notfound' element={<NotFound />} />
             </Routes>
           )
       }

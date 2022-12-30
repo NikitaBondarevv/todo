@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 import { UserContext } from 'contexts/userContext'
-import { links } from 'helpers/constans'
+import { navigation, notLoggedNavigation } from 'helpers/constans'
 import { AuthorizedUser } from './authorizedUser'
 import styles from './styles.css'
 import logo from './images/logo.png'
@@ -22,18 +22,37 @@ export const Header = () => {
         <img src={logo} alt="logo" />
       </Link>
       <nav>
-        <ul className={styles.list}>
-          {links.map((link, index) => (
-            <li key={index}>
-              <NavLink
-                to={`/${link.value}`}
-                className={({ isActive }) => getNavLinkName(isActive, styles[link.value])}
-              >
-                {link.text}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        {
+          isAuthenticated
+            ? (
+              <ul className={styles.list}>
+                {navigation.map((link, index) => (
+                  <li key={index}>
+                    <NavLink
+                      to={`/${link.value}`}
+                      className={({ isActive }) => getNavLinkName(isActive, styles[link.value])}
+                    >
+                      {link.text}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            )
+            : (
+              <ul className={styles.list}>
+                {notLoggedNavigation.map((link, index) => (
+                  <li key={index}>
+                    <NavLink
+                      to={`/${link.value}`}
+                      className={({ isActive }) => getNavLinkName(isActive, styles[link.value])}
+                    >
+                      {link.text}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            )
+        }
       </nav>
       {
         isAuthenticated

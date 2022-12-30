@@ -39,7 +39,7 @@ export const UserForm = ({ disabledFields, user, onSubmit }: TUserForm) => {
       ...registerFields,
       [name]: {
         value,
-        error: reg.test(value) ? '' : `${name} is incorrect`
+        error: reg.test(value) ? '' : `${name.replace(/[A-Z]/, letter => ` ${letter.toLowerCase()}`)} is incorrect`
       }
     }))
   }

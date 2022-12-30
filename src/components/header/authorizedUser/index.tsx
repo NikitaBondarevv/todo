@@ -16,9 +16,9 @@ export const AuthorizedUser = () => {
 
   return (
     <div className={styles.menu}>
-      <a href="/" className={styles.userName}>
+      <Link to="/" className={styles.userName}>
         {user?.firstName}
-      </a>
+      </Link>
       <ul className={styles.dropDown}>
         <li>
           <Link to="/profile">Profile</Link>

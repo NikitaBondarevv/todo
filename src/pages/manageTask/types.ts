@@ -1,7 +1,7 @@
-import { IData } from 'interfaces/IData'
+import { ITodo } from 'interfaces/ITodo'
 
 export type TTaskProps = {
-  onSubmit: (data: IData) => Promise<void>
+  onSubmit: (data: ITodo) => Promise<void>
   text?: string
 }
 

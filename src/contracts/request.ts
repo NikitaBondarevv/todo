@@ -1,7 +1,4 @@
-import { IData } from 'interfaces/IData'
-import { IUser } from 'interfaces/IUser'
-
-const makeRequest = async (url: string, data?: IData | IUser, method: string = 'GET') => {
+const makeRequest = async <T>(url: string, data?: T, method: string = 'GET') => {
   const options = {
     method,
     credentials: 'include'
@@ -26,11 +23,11 @@ export const request = {
     return makeRequest(url, undefined)
   },
 
-  post(url: string, data: IData | IUser) {
+  post<T>(url: string, data: T) {
     return makeRequest(url, data, 'POST')
   },
 
-  put(url: string, data: IData | IUser) {
+  put<T>(url: string, data: T) {
     return makeRequest(url, data, 'PUT')
   },
 

@@ -4,8 +4,4 @@ export interface IData {
   title?: string
   done?: boolean | undefined
   description?: string
-  email?: string
-  password?: string
-  firstname?: string
-  lastname?: string
 }

@@ -1,45 +1,20 @@
-@keyframes ldio-smk3sd608te {
+@keyframes loader {
   0% { transform: translate(-50%,-50%) rotate(0deg); }
   100% { transform: translate(-50%,-50%) rotate(360deg); }
 }
 
 .preloader {
-  display: flex;
-  justify-content: center;
+  position: relative;
 }
 
-.loader div {
+.loader {
   position: absolute;
   width: 120px;
   height: 120px;
   border: 20px solid #086dc0;
   border-top-color: transparent;
   border-radius: 50%;
-}
-
-.loader div {
-  animation: ldio-smk3sd608te 1s linear infinite;
+  animation: loader 1s linear infinite;
   top: 100px;
-  left: 100px
-}
-
-.loadingioSpinner {
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  overflow: hidden;
-  background: rgba(241, 242, 243, 0);
-}
-
-.loader {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  transform-origin: 0 0;
-}
-
-.loader div {
-  box-sizing: content-box;
+  left: 50%;
 }

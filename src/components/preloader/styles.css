@@ -4,18 +4,17 @@
 }
 
 .preloader {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .preloader::after {
   content: "";
-  position: absolute;
   width: 120px;
   height: 120px;
   border: 20px solid #086dc0;
   border-top-color: transparent;
   border-radius: 50%;
   animation: loader 1s linear infinite;
-  top: 100px;
-  left: 50%;
 }

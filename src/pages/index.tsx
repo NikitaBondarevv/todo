@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 import { LoginForm } from 'components/loginForm/LoginForm'
 import { UserContext } from 'contexts/userContext'
 import { Tasks } from 'pages/tasks'
-// import { Preloader } from 'components/preloader'
+import { Preloader } from 'components/preloader'
 import { TasksInfo } from 'pages/tasksInfo'
 import { Contacts } from 'pages/contacts'
 import { ManageTask } from './manageTask'
@@ -40,7 +40,7 @@ export const Pages = () => {
           ? (
             <Routes>
               <Route path="/" element={<TasksInfo />} />
-              <Route path="/tasks" element={<Tasks />} />
+              <Route path="/tasks" element={<Preloader />} />
               <Route path="/task/:day/:id?" element={<ManageTask />} />
               <Route path="/profile" element={<ComponentAsync path='profile' name='Profile' />} />
               <Route path="/contacts" element={<Contacts />} />

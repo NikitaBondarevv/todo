@@ -1,16 +1,10 @@
 @keyframes loader {
-  0% { transform: translate(-50%,-50%) rotate(0deg); }
-  100% { transform: translate(-50%,-50%) rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .preloader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.preloader::after {
-  content: "";
+  margin: 0 auto;
   width: 120px;
   height: 120px;
   border: 20px solid #086dc0;

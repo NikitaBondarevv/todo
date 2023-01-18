@@ -1,7 +1,6 @@
 .menu {
   position: relative;
   padding: 0 0 15px;
-  transform: translate(-127px, 0);
 }
 
 .dropDown {
@@ -46,17 +45,9 @@
   line-height: 24px;
   color: #fff;
   text-decoration: none;
-  position: relative;
-}
-
-.userName::before {
-  content: "";
-  display: block;
-  position: absolute;
   background: url(./images/user.png) no-repeat;
-  width: 24px;
-  height: 24px;
-  right: -35px;
+  background-position: 100% 0;
+  padding: 0 32px 0 0;
 }
 
 .userName:hover {
@@ -64,6 +55,7 @@
   text-decoration: underline;
 }
 
-.userName:hover::before {
+.userName:hover {
   background: url(./images/hoverUser.png) no-repeat;
+  background-position: 100% 0;
 }

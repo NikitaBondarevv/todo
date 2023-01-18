@@ -1,0 +1,14 @@
+@keyframes loader {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.preloader {
+  margin: 0 auto;
+  width: 120px;
+  height: 120px;
+  border: 20px solid #086dc0;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: loader 1s linear infinite;
+}

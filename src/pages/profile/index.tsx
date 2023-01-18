@@ -1,11 +1,10 @@
 import { UserForm } from 'components/userForm'
 import { updateUser } from 'contracts/user'
 import { IUser } from 'interfaces/IUser'
-import { useContext } from 'react'
-import { UserContext } from 'contexts/userContext'
+import { useAppSelector } from 'store'
 
 export const Profile = () => {
-  const { user } = useContext(UserContext)
+  const user = useAppSelector((state) => state.user.data)
 
   const submitHandler = async (data: IUser) => {
     await updateUser(data)

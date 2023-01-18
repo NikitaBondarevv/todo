@@ -11,8 +11,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
-  mode: 'development',
-  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -75,12 +73,4 @@ module.exports = {
       },
     }
   },
-  devServer: {
-    port: 9000,
-    hot: true,
-    client: {
-      overlay: false,
-    },
-    historyApiFallback: true
-  }
 };

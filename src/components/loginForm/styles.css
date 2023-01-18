@@ -10,7 +10,8 @@
   padding: 60px 80px;
 }
 
-.loginForm input {
+.loginForm input,
+.loginForm button[type=submit] {
   font: 24px/24px "MyriadProLight";
   padding: 5px 5px 5px 30px;
   width: 247px;
@@ -26,7 +27,7 @@
   color: #000;
 }
 
-.loginForm input[type=submit] {
+.loginForm button[type=submit] {
   padding: 0;
   margin: 0;
   background: #0ff;
@@ -35,6 +36,10 @@
   width: 143px;
   border: 1px solid #b1bad8;
   box-shadow: 0 0 5px #b1bad8;
+}
+
+.loginForm button[type=submit]:disabled {
+  background: #316262;
 }
 
 .password {

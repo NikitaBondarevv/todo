@@ -1,17 +1,18 @@
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import { UserContext } from 'contexts/userContext'
 import { logout } from 'contracts/logout'
 import styles from './styles.css'
+import { useAppDispatch, useAppSelector } from 'store'
+import { logout as logoutAction} from 'store/user'
 
 export const AuthorizedUser = () => {
-  const { user, setUser } = useContext(UserContext)
+  const user = useAppSelector((state) => state.user.data)
+  const dispatch = useAppDispatch()
 
   const logoutHandler = async () => {
     await logout()
 
-    setUser()
+    dispatch(logoutAction())
   }
 
   return (

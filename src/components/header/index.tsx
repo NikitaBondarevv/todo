@@ -1,7 +1,6 @@
-import { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
-import { UserContext } from 'contexts/userContext'
+import { useAppSelector } from 'store'
 import { navigation, notLoggedNavigation } from 'helpers/constans'
 import { AuthorizedUser } from './authorizedUser'
 import styles from './styles.css'
@@ -14,7 +13,7 @@ const getNavLinkName = (isActive: boolean, value: string = '') => {
 }
 
 export const Header = () => {
-  const { isAuthenticated } = useContext(UserContext)
+  const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated)
 
   return (
     <header className={styles.header}>

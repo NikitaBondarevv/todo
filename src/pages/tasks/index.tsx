@@ -2,18 +2,21 @@ import { useState, useEffect } from 'react'
 
 import { daysOfTheWeek } from 'helpers/constans'
 import { getTasks } from 'contracts/getTasks'
+import { Preloader } from 'components/preloader'
 import { TaskList } from './taskList'
-import { Tabs } from '../../components/tabs'
-import { Tab } from '../../components/tabs/tab'
+import { Tabs } from 'components/tabs'
+import { Tab } from 'components/tabs/tab'
 
 export const Tasks = () => {
   const [days, setDays] = useState([])
+  const [isLoading, setIsloading] = useState(false)
 
   const getDailyTasks = async () => {
     setDays(await getTasks())
   }
 
   useEffect(() => {
+    setIsloading(true)
     getDailyTasks()
   }, [])
 
@@ -24,14 +27,16 @@ export const Tasks = () => {
   }
 
   return (
-    <Tabs selectedIndex={getCurrentDay()}>
-      {
-        days.map((day, index) => (
-          <Tab key={index} title={daysOfTheWeek[index]}>
-            <TaskList tasks={day} getTasks={getDailyTasks} activeTabIndex={index} />
-          </Tab>
-        ))
-      }
-    </Tabs>
+    isLoading && !days.length
+      ? <Preloader size={100} />
+      : <Tabs selectedIndex={getCurrentDay()}>
+        {
+          days.map((day, index) => (
+            <Tab key={index} title={daysOfTheWeek[index]}>
+              <TaskList tasks={day} getTasks={getDailyTasks} activeTabIndex={index} />
+            </Tab>
+          ))
+        }
+      </Tabs>
   )
 }

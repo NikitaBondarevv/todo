@@ -8,6 +8,7 @@ import { IUser } from 'interfaces/IUser'
 import { IGetTasksInfo } from 'interfaces/IGetTasksInfo'
 import { IInfo } from 'interfaces/IInfo'
 import styles from './styles.css'
+import { Preloader } from 'components/preloader'
 
 export const TasksInfo = () => {
   const [info, setInfo] = useState<IInfo>({
@@ -17,6 +18,7 @@ export const TasksInfo = () => {
     waiting: 0
   })
   const [user, setUser] = useState<IUser | undefined>()
+  const [isLoading, setIsloading] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
@@ -24,11 +26,15 @@ export const TasksInfo = () => {
       setUser(await checkUser())
     }
 
+    setIsloading(true)
     getData()
   }, [])
 
   return (
-    <div className={styles.tasksInfo}>
+    isLoading && !user
+    ? <Preloader size={100} />
+    : (
+      <div className={styles.tasksInfo}>
       <span>Hello, {user?.firstName}</span>
       <ul className={styles.list}>
         {
@@ -45,5 +51,6 @@ export const TasksInfo = () => {
       </ul>
       <Link className={styles.link} to="/tasks">Go to the task list</Link>
     </div>
+    )
   )
 }

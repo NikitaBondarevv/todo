@@ -1,44 +1,32 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { getInfo } from 'contracts/getInfo'
-import { checkUser } from 'contracts/checkUser'
 import { getTasksInfo } from 'helpers/constansInfo'
-import { IUser } from 'interfaces/IUser'
 import { IGetTasksInfo } from 'interfaces/IGetTasksInfo'
-import { IInfo } from 'interfaces/IInfo'
+import { useAppDispatch, useAppSelector } from 'store'
+import { setInfo } from 'store/taskInfo'
 import styles from './styles.css'
-import { Preloader } from 'components/preloader'
 
 export const TasksInfo = () => {
-  const [info, setInfo] = useState<IInfo>({
-    done: 0,
-    inProgress: 0,
-    total: 0,
-    waiting: 0
-  })
-  const [user, setUser] = useState<IUser | undefined>()
-  const [isLoading, setIsloading] = useState(false)
+  const user = useAppSelector(state => state.user.data)
+  const info = useAppSelector(state => state.taskInfo.data)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const getData = async () => {
-      setInfo(await getInfo())
-      setUser(await checkUser())
+      dispatch(setInfo(await getInfo()))
     }
 
-    setIsloading(true)
     getData()
   }, [])
 
   return (
-    isLoading && !user
-    ? <Preloader size={100} />
-    : (
-      <div className={styles.tasksInfo}>
+    <div className={styles.tasksInfo}>
       <span>Hello, {user?.firstName}</span>
       <ul className={styles.list}>
         {
-          getTasksInfo(info).map((taskInfo: IGetTasksInfo, index) => (
+          getTasksInfo(info!).map((taskInfo: IGetTasksInfo, index) => (
             <li className={styles[!taskInfo.styles ? '' : taskInfo.styles]} key={index}>
               {taskInfo.text}
               <mark>
@@ -51,6 +39,5 @@ export const TasksInfo = () => {
       </ul>
       <Link className={styles.link} to="/tasks">Go to the task list</Link>
     </div>
-    )
   )
 }

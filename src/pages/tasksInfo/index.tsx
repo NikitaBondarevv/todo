@@ -15,7 +15,9 @@ export const TasksInfo = () => {
 
   useEffect(() => {
     const getData = async () => {
-      dispatch(setInfo(await getInfo()))
+      const info = await getInfo()
+      
+      dispatch(setInfo(info))
     }
 
     getData()

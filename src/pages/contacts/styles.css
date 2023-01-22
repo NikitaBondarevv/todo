@@ -1,53 +1,22 @@
 .contacts {
   border: 1px solid #fff;
   box-shadow: 0 0 5px 1px rgb(0 0 0 / 50%);
-  padding: 10px 0 10px;
-  text-align: center;
+  padding: 30px 10px 10px 30px;
   background: rgb(7 21 147 / 50%);
-  width: 835px;
+  width: 785px;
   color: #fff;
   font: 25px/40px "MyriadProRegular";
   margin: 0 auto 100px;
   letter-spacing: 1px;
-  height: 487px;
+  height: 457px;
 }
 
-.contacts h1 {
-  font-size: 30px;
-  margin: 0 0 20px;
-}
-
-.contacts textarea {
-  width: 450px;
-  height: 200px;
-  resize: none;
-  border-radius: 10px;
-}
-
-.contacts input {
-  font: 24px/24px "MyriadProLight";
-  padding: 5px;
-  width: 140px;
-  height: 25px;
-  border-radius: 7px;
-  margin: 0 0 15px 0;
-  border: 1px solid #fff;
-  font-style: italic;
-}
-
-.contacts input[type="submit"] {
-  margin: 0 20px 0 0;
-}
-
-.contacts input[type="submit"],
-.contacts input[type="reset"] {
-  background: #0ff;
+.contacts a {
+  text-decoration: none;
   color: #fff;
-  height: 53px;
-  width: 143px;
-  border: 1px solid #b1bad8;
-  box-shadow: 0 0 5px #b1bad8;
-  font: 24px/24px "MyriadProLight";
-  border-radius: 7px;
-  cursor: pointer;
+  margin: 0 0 0 10px;
+}
+
+.contacts a:hover {
+  text-decoration: underline;
 }

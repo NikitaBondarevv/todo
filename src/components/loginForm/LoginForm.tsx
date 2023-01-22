@@ -33,7 +33,7 @@ export const LoginForm = ({ setUser }: TLoginFormProps) => {
         <input type="password" placeholder="Password" name="password" />
       </div>
       <button type='submit' disabled={isLoading}>
-        {isLoading ? <Preloader /> : 'Login'}
+        {isLoading ? <Preloader size={25}/> : 'Login'}
         </button>
     </form>
   )

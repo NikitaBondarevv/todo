@@ -5,9 +5,9 @@ header {
   grid-template-columns: auto 1fr auto;
   gap: 60px;
   align-items: center;
-  padding: 23px 0 0 30px;
+  padding: 23px 90px 0 30px;
   margin: 0 0 60px;
-  min-width: 837px;
+  min-width: 905px;
 }
 
 header .list {
@@ -77,15 +77,13 @@ header .list {
 }
 
 .createUser {
-  margin: 0 0 0 220px;
   font-size: 26px;
   line-height: 24px;
   color: #fff;
   text-decoration: none;
   background: url(./images/user.png) no-repeat;
   background-position: 140px 0;
-  width: 165px;
-  transform: translate(-90px, 0);
+  padding: 0 42px 0 0;
 }
 
 .createUser:hover,

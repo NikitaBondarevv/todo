@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { NotificationManager } from 'react-notifications'
 
 import { login } from 'contracts/login'
 import { TLoginFormProps } from './types'
@@ -8,7 +9,6 @@ import { Preloader } from 'components/preloader';
 
 export const LoginForm = ({ setUser }: TLoginFormProps) => {
   const [isLoading, setIsloading] = useState(false)
-  const [error, setError] = useState('')
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     const {
@@ -21,16 +21,13 @@ export const LoginForm = ({ setUser }: TLoginFormProps) => {
 
     e.preventDefault()
     setIsloading(true)
-    setError('')
 
-    try {
-      const user = await login(email.value, password.value)
+    const user = await login(email.value, password.value)
 
-      if (!user.error) {
-        setUser(user)
-      }
-    } catch(err) {
-      setError('Ooopps... Something went wrong during login')
+    if (!user.error) {
+      setUser(user)
+    } else {
+      NotificationManager.error(user.error)
     }
 
     setIsloading(false)
@@ -45,9 +42,6 @@ export const LoginForm = ({ setUser }: TLoginFormProps) => {
       <button type='submit' disabled={isLoading}>
         {isLoading ? <Preloader size={25} /> : 'Login'}
       </button>
-      <p className={styles.error}>
-        {error}
-      </p>
     </form>
   )
 }

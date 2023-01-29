@@ -1,3 +1,5 @@
+import { NotificationManager } from 'react-notifications'
+
 const makeRequest = async <T>(url: string, data?: T, method: string = 'GET') => {
   const options = {
     method,
@@ -18,9 +20,9 @@ const makeRequest = async <T>(url: string, data?: T, method: string = 'GET') => 
 
     return response.json()
   } catch (error) {
-    alert(String(error))
+    NotificationManager.error('Ooops! Something went wrong. Try again later')
 
-    throw new Error(error)
+    throw new Error(String(error))
   }
 }
 

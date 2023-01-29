@@ -13,6 +13,7 @@ export const Tasks = () => {
 
   const getDailyTasks = async () => {
     setDays(await getTasks())
+    setIsloading(false)
   }
 
   useEffect(() => {
@@ -27,8 +28,7 @@ export const Tasks = () => {
   }
 
   return (
-    isLoading && !days.length
-      ? <Preloader size={100} />
+    isLoading ? <Preloader size={100} />
       : <Tabs selectedIndex={getCurrentDay()}>
         {
           days.map((day, index) => (

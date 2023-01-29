@@ -27,6 +27,9 @@ module.exports = {
             options: {
               modules: {
                 localIdentName: '[name]--[hash:base64:5]',
+                getLocalIdent(context, localIdentName, localName) {
+                  if (localName.includes('notification')) return localName
+                }
               },
               importLoaders: 1,
             },

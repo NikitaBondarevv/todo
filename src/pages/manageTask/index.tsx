@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { createTask, getTaskById, updateTask } from 'contracts/tasks'
 import { TTarget } from './types'
 import styles from './styles.css'
+import { Preloader } from 'components/preloader'
 
 export const ManageTask = () => {
   const [value, setValue] = useState('')
@@ -58,16 +59,20 @@ export const ManageTask = () => {
   }, [id])
 
   return (
-    <form onSubmit={addUpdateTask} className={styles.updateCreateTask}>
-      <input className={styles.title} name="text" value={value} onChange={setValueTitle} />
-      <textarea
-        onChange={setDescription}
-        placeholder="Add description here"
-        className={styles.description}
-        name="description"
-        value={valueDescription}
-      />
-      <input type="submit" value="SAVE" />
-    </form>
+    !value.length
+      ? <Preloader size={100} />
+      : (
+        <form onSubmit={addUpdateTask} className={styles.updateCreateTask}>
+          <input className={styles.title} name="text" value={value} onChange={setValueTitle} />
+          <textarea
+            onChange={setDescription}
+            placeholder="Add description here"
+            className={styles.description}
+            name="description"
+            value={valueDescription}
+          />
+          <input type="submit" value="SAVE" />
+        </form>
+      )
   )
 }

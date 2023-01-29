@@ -13,9 +13,15 @@ const makeRequest = async <T>(url: string, data?: T, method: string = 'GET') => 
     })
   }
 
-  const response = await fetch(`http://localhost:8086/${url}`, <RequestInit> options)
+  try {
+    const response = await fetch(`http://localhost:8086/${url}`, <RequestInit>options)
 
-  return response.json()
+    return response.json()
+  } catch (error) {
+    alert(String(error))
+
+    throw new Error(error)
+  }
 }
 
 export const request = {

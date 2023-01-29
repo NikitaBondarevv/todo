@@ -8,6 +8,7 @@ import { Preloader } from 'components/preloader';
 
 export const LoginForm = ({ setUser }: TLoginFormProps) => {
   const [isLoading, setIsloading] = useState(false)
+  const [error, setError] = useState('')
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     const {
@@ -20,10 +21,19 @@ export const LoginForm = ({ setUser }: TLoginFormProps) => {
 
     e.preventDefault()
     setIsloading(true)
+    setError('')
 
-    const user = await login(email.value, password.value)
+    try {
+      const user = await login(email.value, password.value)
 
-    setUser(user)
+      if (!user.error) {
+        setUser(user)
+      }
+    } catch(err) {
+      setError('Ooopps... Something went wrong during login')
+    }
+
+    setIsloading(false)
   }
 
   return (
@@ -33,8 +43,11 @@ export const LoginForm = ({ setUser }: TLoginFormProps) => {
         <input type="password" placeholder="Password" name="password" />
       </div>
       <button type='submit' disabled={isLoading}>
-        {isLoading ? <Preloader size={25}/> : 'Login'}
-        </button>
+        {isLoading ? <Preloader size={25} /> : 'Login'}
+      </button>
+      <p className={styles.error}>
+        {error}
+      </p>
     </form>
   )
 }

@@ -12,12 +12,16 @@ export const Tasks = () => {
   const [isLoading, setIsloading] = useState(false)
 
   const getDailyTasks = async () => {
-    setDays(await getTasks())
+    setIsloading(true)
+
+    try {
+      setDays(await getTasks())
+    } catch (error) {}
+
     setIsloading(false)
   }
 
   useEffect(() => {
-    setIsloading(true)
     getDailyTasks()
   }, [])
 

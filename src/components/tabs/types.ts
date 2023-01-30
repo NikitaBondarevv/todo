@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 
 export type TTabsProos = {
   selectedIndex: number | string
+  loading: boolean
 }
 
 export type TTabsChildren = {

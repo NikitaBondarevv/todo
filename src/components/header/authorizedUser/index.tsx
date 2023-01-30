@@ -1,19 +1,10 @@
 import { Link } from 'react-router-dom'
 
-import { logout } from 'contracts/logout'
 import styles from './styles.css'
-import { useAppDispatch, useAppSelector } from 'store'
-import { logout as logoutAction} from 'store/user'
+import { useAppSelector } from 'store'
 
 export const AuthorizedUser = () => {
   const user = useAppSelector((state) => state.user.data)
-  const dispatch = useAppDispatch()
-
-  const logoutHandler = async () => {
-    await logout()
-
-    dispatch(logoutAction())
-  }
 
   return (
     <div className={styles.menu}>
@@ -25,7 +16,7 @@ export const AuthorizedUser = () => {
           <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <Link onClick={logoutHandler} to="/">Log out</Link>
+          <Link to="/logout">Log out</Link>
         </li>
       </ul>
     </div>

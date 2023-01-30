@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 import styles from './styles.css'
 import { Navigation } from './navigation'
 import { TTabsChildren, TTabsProos } from './types'
+import { Preloader } from 'components/preloader'
 
-export const Tabs = ({ selectedIndex, children }: PropsWithChildren<TTabsProos>) => {
+export const Tabs = ({ selectedIndex, children, loading }: PropsWithChildren<TTabsProos>) => {
   const [index, setIndex] = useState(+selectedIndex)
   const [titles, setTitles] = useState<string[]>([])
   const [contents, setContents] = useState<Array<TTabsChildren['props']['children']>>([])
@@ -30,7 +31,13 @@ export const Tabs = ({ selectedIndex, children }: PropsWithChildren<TTabsProos>)
     <div className={styles.content}>
       <Navigation titles={titles} activeTabIndex={index} setActiveTab={setActiveTab} />
 
-      <div id={String(index)} className={styles.activeContent}>{contents[index]}</div>
+      <div id={String(index)} className={styles.activeContent}>
+        {
+          loading
+          ? <Preloader />
+          : contents[index]
+        }
+      </div>
     </div>
   )
 }

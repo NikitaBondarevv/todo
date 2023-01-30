@@ -19,3 +19,7 @@
   max-width: 1024px;
   margin: 0 auto;
 }
+
+:global .notification-container-empty {
+  pointer-events: none;
+}

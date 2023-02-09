@@ -79,7 +79,7 @@ export const UserForm = ({ disabledFields, user, onSubmit }: TUserForm) => {
               <input type={field.secure ? 'password' : 'text'}
                 name={field.label}
                 className={stateField.error ? styles.error : styles.success}
-                placeholder={field.label.toUpperCase()}
+                placeholder={field.label.replace(/([A-Z])/g, ' $1').toUpperCase()}
                 value={stateField.value}
                 onChange={setValue}
                 onBlur={e => validate(e, index)}

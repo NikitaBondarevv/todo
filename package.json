@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch-all",
+    "test:cov": "jest --collectCoverage",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "start:prod": "webpack --config webpack.config.prod.js",
     "lint": "eslint src/**/**.js"
@@ -24,6 +26,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.4.0",
     "@types/react": "^18.0.26",

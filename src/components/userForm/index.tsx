@@ -9,8 +9,8 @@ import { IUser } from 'interfaces/IUser'
 
 export const UserForm = ({ disabledFields, user, onSubmit }: TUserForm) => {
   const [registerFields, setRegisterFields] = useState<TRegisterFields>(fields.reduce<TRegisterFields>((prev, next) =>
-  (prev[next.label] = { value: user[next.label as keyof IUser] ?? '' }) && prev,
-  {}))
+    (prev[next.label] = { value: user[next.label as keyof IUser] ?? '' }) && prev,
+    {}))
 
   const setValue = ({ target: { value, name } }: TTarget) => {
     setRegisterFields(registerFields => ({
@@ -85,7 +85,14 @@ export const UserForm = ({ disabledFields, user, onSubmit }: TUserForm) => {
                 onBlur={e => validate(e, index)}
                 disabled={disabledFields.includes(field.label)}
               />
-              {stateField.error && <div className={styles.info}><img src={msg} /><span className={styles.textInfo}>{stateField.error}</span></div>}
+              {
+                stateField.error &&
+                <div className={styles.info}><img src={msg} />
+                  <span className={styles.textInfo}>
+                    {stateField.error}
+                  </span>
+                </div>
+              }
             </li>
           )
         }

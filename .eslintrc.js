@@ -5,6 +5,7 @@ module.exports = {
   root: true,
   rules: {
     "@typescript-eslint/no-inferrable-types": "off",
-    "@typescript-eslint/no-non-null-assertion": "off"
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "max-len": [2, 120, 2]
   },
 }

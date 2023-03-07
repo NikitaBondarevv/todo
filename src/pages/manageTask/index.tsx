@@ -1,44 +1,44 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { createTask, getTaskById, updateTask } from 'contracts/tasks'
 import { TTarget } from './types'
 import styles from './styles.css'
 import { Preloader } from 'components/preloader'
+import { useValue } from './useValue'
 
 export const ManageTask = () => {
-  const [value, setValue] = useState('')
-  const [valueDescription, setValueDescription] = useState('')
+  const { title, description, setTitle, setDescription } = useValue()
   const { day, id } = useParams()
   const navigate = useNavigate()
 
-  const setValueTitle = ({ target: { value } }: TTarget) => {
-    setValue(value)
+  const updateTitle = ({ target: { value } }: TTarget) => {
+    setTitle(value)
   }
 
-  const setDescription = ({ target: { value } }: TTarget) => {
-    setValueDescription(value)
+  const updateDescription = ({ target: { value } }: TTarget) => {
+    setDescription(value)
   }
 
   const addUpdateTask = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (value.length <= 2) return
+    if (title.length <= 2) return
 
     if (id) {
       await updateTask({
-        title: value,
+        title,
         id,
         done: false,
         day: Number(day),
-        description: valueDescription
+        description
       })
     } else {
       await createTask({
-        title: value,
+        title,
         done: false,
         day: Number(day),
-        description: valueDescription
+        description
       })
     }
 
@@ -50,10 +50,10 @@ export const ManageTask = () => {
       if (id) {
         const task = await getTaskById(id)
 
-        setValue(task.title)
-        setValueDescription(task.description)
+        setTitle(task.title)
+        setDescription(task.description)
       } else {
-        setValue('New task')
+        setTitle('New task')
       }
     })()
   }, [id])
@@ -61,16 +61,16 @@ export const ManageTask = () => {
   return (
     <form onSubmit={addUpdateTask} className={styles.updateCreateTask}>
       {
-        !value.length ?
+        !title.length ?
           <Preloader size={100} /> :
           <>
-            <input className={styles.title} name="text" value={value} onChange={setValueTitle} />
+            <input className={styles.title} name="text" value={title} onChange={updateTitle} />
             <textarea
-              onChange={setDescription}
+              onChange={updateDescription}
               placeholder="Add description here"
               className={styles.description}
               name="description"
-              value={valueDescription}
+              value={description}
             />
             <input type="submit" value="SAVE" />
           </>

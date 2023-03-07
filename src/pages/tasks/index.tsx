@@ -15,9 +15,9 @@ export const Tasks = () => {
 
     try {
       setDays(await getTasks())
-    } catch (error) { }
-
-    setIsloading(false)
+    } finally {
+      setIsloading(false) 
+    }
   }
 
   useEffect(() => {

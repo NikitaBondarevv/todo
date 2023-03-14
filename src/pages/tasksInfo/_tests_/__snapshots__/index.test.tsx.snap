@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TasksInfo /> should render div 1`] = `
+<DocumentFragment>
+  <div
+    class="tasksInfo"
+  >
+    <span>
+      Hello, 
+    </span>
+    <ul
+      class="list"
+    >
+      <li
+        class=""
+      >
+        You have 
+        <mark>
+          0
+        </mark>
+         tasks
+      </li>
+      <li
+        class="done"
+      >
+        Done: 
+        <mark>
+          0
+        </mark>
+      </li>
+      <li
+        class="inProgress"
+      >
+        In progress: 
+        <mark>
+          0
+        </mark>
+      </li>
+      <li
+        class="waiting"
+      >
+        Waiting: 
+        <mark>
+          0
+        </mark>
+      </li>
+    </ul>
+    <a
+      class="link"
+      href="/tasks"
+    >
+      Go to the task list
+    </a>
+  </div>
+</DocumentFragment>
+`;

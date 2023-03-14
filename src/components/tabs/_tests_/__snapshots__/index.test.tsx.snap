@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tabs />, <Navigation /> should render div 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`<Tabs />, <Navigation /> should render nav 1`] = `
+<DocumentFragment>
+  <nav />
+</DocumentFragment>
+`;

@@ -16,7 +16,7 @@ export const Tasks = () => {
     try {
       setDays(await getTasks())
     } finally {
-      setIsloading(false) 
+      setIsloading(false)
     }
   }
 

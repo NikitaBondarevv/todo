@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tasks />, <Task />, <TaskList /> should render div 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`<Tasks />, <Task />, <TaskList /> should render div 2`] = `
+<DocumentFragment>
+  <div>
+    <ol
+      class="tasksList"
+    />
+    <a
+      class="addTask"
+      href="/task/0"
+    >
+      Add new task
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Tasks />, <Task />, <TaskList /> should render li 1`] = `
+<DocumentFragment>
+  <li
+    class="progress updateTask"
+  >
+     
+    <a
+      href="/task/undefined/undefined"
+    />
+    <div
+      class="buttons"
+    >
+      <button
+        type="button"
+      />
+      <button
+        class="delete"
+        type="button"
+      />
+    </div>
+  </li>
+</DocumentFragment>
+`;

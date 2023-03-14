@@ -43,9 +43,11 @@ export const Tabs = ({ selectedIndex, children, loading }: PropsWithChildren<TTa
 }
 
 Tabs.defaultProps = {
-  selectedIndex: 0
+  selectedIndex: 0,
+  loading: false
 }
 
 Tabs.propTypes = {
-  selectedIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  selectedIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  loading: PropTypes.bool
 }

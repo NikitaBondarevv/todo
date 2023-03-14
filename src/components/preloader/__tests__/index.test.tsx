@@ -4,6 +4,8 @@ import { Preloader } from '..'
 
 describe('<Preloader />', () => {
   test('should render <div />', () => {
-    render(<Preloader />)
+    const { asFragment } = render(<Preloader />)
+
+    expect(asFragment()).toMatchSnapshot()
   })
 })

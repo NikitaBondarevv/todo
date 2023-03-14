@@ -27,7 +27,8 @@ export const TaskList = ({ tasks, getTasks, activeTabIndex }: TTaskListProps) =>
 
 TaskList.defaultProps = {
   tasks: [],
-  activeTabIndex: 0
+  activeTabIndex: 0,
+  getTasks: () => {}
 }
 
 TaskList.propTypes = {

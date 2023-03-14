@@ -48,6 +48,7 @@ export const Task = ({ data, getTasks }: TTaskProps) => {
 
 Task.defaultProps = {
   data: {},
+  getTasks: () => { }
 }
 
 Task.propTypes = {

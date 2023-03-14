@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Preloader /> should render <div /> 1`] = `
+<DocumentFragment>
+  <div
+    class="preloader "
+    style="width: 120px; height: 120px; border-width: 20px;"
+  />
+</DocumentFragment>
+`;

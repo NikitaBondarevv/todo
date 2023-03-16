@@ -1,10 +1,6 @@
 import { fireEvent, render } from '@testing-library/react'
 import { Navigation } from '../navigation'
 
-jest.mock('components/preloader', () => ({
-  Preloader: ({ loading }: { loading: boolean }) => <div>{ loading && 'loading' }</div>
-}))
-
 describe('<Navigation />', () => {
   const titles = ['test1', 'test2']
   const setActiveTab = jest.fn();

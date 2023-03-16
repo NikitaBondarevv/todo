@@ -3,7 +3,7 @@ import { Tab } from '../tab'
 
 describe('<Tab />', () => {
   test('should match snapshot', () => {
-    const { asFragment } = render(<Tab key={0} title={''} />)
+    const { asFragment } = render(<Tab key={0} title="" />)
 
     expect(asFragment()).toMatchSnapshot()
   })

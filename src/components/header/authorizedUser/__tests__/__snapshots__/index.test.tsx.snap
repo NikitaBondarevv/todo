@@ -2,11 +2,16 @@
 
 exports[`<AuthorizedUser /> should match snapshot 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="menu"
+  >
     <a
+      class="userName"
       href="/"
     />
-    <ul>
+    <ul
+      class="dropDown"
+    >
       <li>
         <a
           href="/profile"

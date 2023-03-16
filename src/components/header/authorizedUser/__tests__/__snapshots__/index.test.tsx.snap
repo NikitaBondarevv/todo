@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AuthorizedUser /> should match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <a
+      href="/"
+    />
+    <ul>
+      <li>
+        <a
+          href="/profile"
+        >
+          Profile
+        </a>
+      </li>
+      <li>
+        <a
+          href="/logout"
+        >
+          Log out
+        </a>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

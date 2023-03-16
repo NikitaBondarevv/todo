@@ -7,11 +7,11 @@ export interface TData {
 
 export type TTaskProps = {
   data: TData
-  getTasks: Function
+  getTasks: () => void
 }
 
 export type TTaskListProps = {
   tasks: TData[]
-  getTasks: (task: TData) => void
+  getTasks: () => void
   activeTabIndex: number
 }

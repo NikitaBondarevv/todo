@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigation /> should match snapshot 1`] = `
+<DocumentFragment>
+  <nav>
+    <ul
+      class="list"
+    >
+      <li
+        class="active"
+      >
+        <a>
+          test1
+          <br />
+          <time
+            class="dates"
+          >
+            13 March
+          </time>
+        </a>
+      </li>
+      <li
+        class=""
+      >
+        <a>
+          test2
+          <br />
+          <time
+            class="dates"
+          >
+            14 March
+          </time>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;

@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
 
-import { Preloader } from '..'
+import { Tabs } from '..'
 
-describe('<Preloader />', () => {
+describe('<Tabs />', () => {
   test('should match snapshot', () => {
-    const { asFragment } = render(<Preloader />)
+    const { asFragment } = render(<Tabs children={[]} loading={false} />)
 
     expect(asFragment()).toMatchSnapshot()
   })

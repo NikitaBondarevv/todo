@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should match snapshot 1`] = `
+<DocumentFragment>
+  <header>
+    <a
+      href="/"
+    >
+      <img
+        alt="logo"
+        src="logo"
+      />
+    </a>
+    <nav>
+      <ul>
+        <li>
+          <a
+            aria-current="page"
+            class=" undefined"
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            class=" "
+            href="/contacts"
+          >
+            Contacts
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <a
+      class=" "
+      href="/create"
+    >
+      Create User
+    </a>
+  </header>
+</DocumentFragment>
+`;

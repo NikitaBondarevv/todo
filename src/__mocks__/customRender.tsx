@@ -4,10 +4,10 @@ import { Provider } from 'react-redux'
 
 import { store } from 'store'
 
-export const customRender = (Cpmponent: React.ReactNode) => render(
+export const customRender = (Component: React.ReactNode) => render(
   <BrowserRouter>
     <Provider store={store}>
-      {Cpmponent}
+      {Component}
     </Provider>
   </BrowserRouter>
 )

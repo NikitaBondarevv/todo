@@ -14,6 +14,6 @@ export type TTabsChildren = {
 
 export type TNavigationProps = {
   titles: string[]
-  setActiveTab: Function
+  setActiveTab: (index: number) => void
   activeTabIndex: number
 }

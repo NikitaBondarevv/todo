@@ -1,10 +1,9 @@
 import { render } from '@testing-library/react'
+import { Tab } from '../tab'
 
-import { Tabs } from '..'
-
-describe('<Tabs />', () => {
+describe('<Tab />', () => {
   test('should match snapshot', () => {
-    const { asFragment } = render(<Tabs children={[]} loading={false} />)
+    const { asFragment } = render(<Tab key={0} title={''} />)
 
     expect(asFragment()).toMatchSnapshot()
   })

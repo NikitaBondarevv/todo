@@ -8,15 +8,15 @@ import { Tab } from 'components/tabs/tab'
 
 export const Tasks = () => {
   const [days, setDays] = useState([])
-  const [isLoading, setIsloading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const getDailyTasks = async () => {
-    setIsloading(true)
+    setIsLoading(true)
 
     try {
       setDays(await getTasks())
     } finally {
-      setIsloading(false) 
+      setIsLoading(false)
     }
   }
 

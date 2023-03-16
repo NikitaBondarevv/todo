@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch-all",
+    "test": "jest  --watch-all",
+    "test:once": "jest",
     "test:cov": "jest --collectCoverage",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "start:prod": "webpack --config webpack.config.prod.js",

@@ -33,8 +33,7 @@ export const Task = ({ data, getTasks }: TTaskProps) => {
           <div className={styles.buttons}>
             <button onClick={completeTask} type="button" />
             {
-              done === undefined ? ''
-                : (
+              done !== undefined && (
                   <button onClick={setInProgress} className={styles.inProgress} type="button" />
                 )
             }

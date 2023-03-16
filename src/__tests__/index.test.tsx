@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
+import { waitFor } from '@testing-library/react'
 
+import { customRender } from '../__mocks__/customRender'
 import { App } from '../app'
-import { store } from 'store'
+import { checkUser } from 'contracts/checkUser'
+import { login } from 'store/user'
 
 jest.mock('components/header', () => ({
   Header: () => <header data-testid="header" />
@@ -14,20 +14,52 @@ jest.mock('pages', () => ({
 }))
 
 jest.mock('contracts/checkUser', () => ({
-  checkUser: () => ({})
+  checkUser: jest.fn().mockReturnValue({})
 }))
 
+jest.mock('store/user', () => ({
+  login: jest.fn().mockReturnValue({ type: 'login '})
+}))
 
 describe('<App />', () => {
-  test('should render header and main', () => {
-    const { asFragment } = render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
-    )
+  const checkUserMock = checkUser as jest.Mock
+  const loginrMock = login as unknown as jest.Mock
+
+  beforeEach(() => {
+    jest.resetAllMocks()
+    checkUserMock.mockReturnValue({})
+    loginrMock.mockReturnValue({ type: 'login '})
+  })
+
+  test('should match snapshot', () => {
+    const { asFragment } = customRender(<App />)
 
     expect(asFragment()).toMatchSnapshot()
+  })
+
+  test('should call checkUser() on mount', () => {
+    customRender(<App />)
+
+    expect(checkUser).toHaveBeenCalled()
+  })
+
+  test('should call login() if there is no error', async () => {
+    const data = { data: '' }
+    checkUserMock.mockReturnValueOnce(data)
+    customRender(<App />)
+
+    await waitFor(() => undefined)
+
+    expect(login).toHaveBeenCalledWith(data)
+  })
+
+  test('should not call login() if there is an error', async () => {
+    const data = { error: 'test error' }
+    checkUserMock.mockReturnValueOnce(data)
+    customRender(<App />)
+
+    await waitFor(() => undefined)
+
+    expect(login).not.toHaveBeenCalled()
   })
 })

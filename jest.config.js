@@ -11,6 +11,7 @@ module.exports = {
     '^helpers/(.*)$': '<rootDir>/src/helpers/$1',
     '^pages/(.*)$': '<rootDir>/src/pages/$1',
     '^pages$': '<rootDir>/src/pages/index.tsx',
+    '^__mocks__/(.*)$': '<rootDir>/src/__mocks__/$1',
   },
   testEnvironment: 'jsdom'
 };

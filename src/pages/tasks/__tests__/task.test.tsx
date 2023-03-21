@@ -4,11 +4,12 @@ import { BrowserRouter } from 'react-router-dom'
 import { task } from '__mocks__/entities/task.mock'
 import { Task } from '../task'
 import { TTaskProps } from '../types'
-import { updateTask } from 'contracts/tasks'
+import { deleteTask, updateTask } from 'contracts/tasks'
 import styles from '../styles.css'
 
 jest.mock('contracts/tasks', () => ({
-  updateTask: jest.fn()
+  updateTask: jest.fn(),
+  deleteTask: jest.fn()
 }))
 
 describe('<Task />', () => {
@@ -51,6 +52,15 @@ describe('<Task />', () => {
     await act(() => fireEvent.click(button!))
 
     expect(updateTask).toHaveBeenCalledWith({ ...task, done: undefined })
+    expect(defaultProps.getTasks).toHaveBeenCalled()
+  })
+
+  test('should call deleteTask() when click removeTask button', async () => {
+    const { container } = renderWrapper()
+
+    await act(() => fireEvent.click(container.querySelector(`.${styles.delete}`)!))
+
+    expect(deleteTask).toHaveBeenCalledWith(task)
     expect(defaultProps.getTasks).toHaveBeenCalled()
   })
 })

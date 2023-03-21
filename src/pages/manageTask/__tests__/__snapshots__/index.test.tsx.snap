@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ManageTask /> should match snapshot 1`] = `
+<DocumentFragment>
+  <form
+    class="updateCreateTask"
+  >
+    <input
+      class="title"
+      name="text"
+      value="New task"
+    />
+    <textarea
+      class="description"
+      name="description"
+      placeholder="Add description here"
+    />
+    <input
+      type="submit"
+      value="SAVE"
+    />
+  </form>
+</DocumentFragment>
+`;

@@ -29,10 +29,6 @@
   font-style: italic;
 }
 
-.loginForm input:disabled {
-  background-color: rgb(255 255 255 / 50%);
-}
-
 .loginForm .email::before,
 .loginForm .name::before,
 .loginForm .password::before {
@@ -80,6 +76,11 @@
   width: 143px;
   border: 1px solid #b1bad8;
   box-shadow: 0 0 5px #b1bad8;
+  cursor: pointer;
+}
+
+.loginForm input:disabled {
+  background-color: rgb(255 255 255 / 50%);
 }
 
 .info {

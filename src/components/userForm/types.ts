@@ -2,7 +2,7 @@ import { IUser } from 'interfaces/IUser'
 
 export type TUserForm = {
   disabledFields: string[]
-  user: IUser
+  user?: IUser
   onSubmit: (user: IUser) => Promise<void>
 }
 

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Task /> should match snapshot 1`] = `
+<DocumentFragment>
+  <li
+    class="waiting updateTask"
+  >
+     
+    <a
+      href="/task/0/0"
+    >
+      test
+    </a>
+    <div
+      class="buttons"
+    >
+      <button
+        type="button"
+      />
+      <button
+        class="inProgress"
+        type="button"
+      />
+      <button
+        class="delete"
+        type="button"
+      />
+    </div>
+  </li>
+</DocumentFragment>
+`;

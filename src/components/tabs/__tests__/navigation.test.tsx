@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { Navigation } from '../navigation'
 
 describe('<Navigation />', () => {
@@ -12,8 +12,8 @@ describe('<Navigation />', () => {
   })
 
   test('should trigger click and show tab', () => {
-    const { getByText } = render(<Navigation titles={titles} activeTabIndex={0} setActiveTab={setActiveTab} />)
-    const link = getByText(titles[0])
+    render(<Navigation titles={titles} activeTabIndex={0} setActiveTab={setActiveTab} />)
+    const link = screen.getByText(titles[0])
     
     fireEvent.click(link)
 

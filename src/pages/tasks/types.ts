@@ -2,7 +2,7 @@ export interface TData {
   day: string
   id: string
   title: string
-  done: boolean
+  done?: boolean
 }
 
 export type TTaskProps = {

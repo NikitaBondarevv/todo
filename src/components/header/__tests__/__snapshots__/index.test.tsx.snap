@@ -2,21 +2,25 @@
 
 exports[`<Header /> should match snapshot 1`] = `
 <DocumentFragment>
-  <header>
+  <header
+    class="header"
+  >
     <a
       href="/"
     >
       <img
         alt="logo"
-        src="logo"
+        src=""
       />
     </a>
     <nav>
-      <ul>
+      <ul
+        class="list"
+      >
         <li>
           <a
             aria-current="page"
-            class=" undefined"
+            class=" active"
             href="/"
           >
             Home
@@ -24,7 +28,7 @@ exports[`<Header /> should match snapshot 1`] = `
         </li>
         <li>
           <a
-            class=" "
+            class="contacts "
             href="/contacts"
           >
             Contacts
@@ -33,7 +37,7 @@ exports[`<Header /> should match snapshot 1`] = `
       </ul>
     </nav>
     <a
-      class=" "
+      class="createUser "
       href="/create"
     >
       Create User

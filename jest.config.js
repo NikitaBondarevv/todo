@@ -3,7 +3,8 @@ module.exports = {
   setupFiles: ['./jest.setup.js'],
   setupFilesAfterEnv: ['<rootDir>/jest.setupAfterEnv.js'],
   moduleNameMapper: {
-    '\\.(css|png)$': 'identity-obj-proxy',
+    '\\.css$': 'identity-obj-proxy',
+    '\\.(gif|jpeg|png)$': '<rootDir>/src/__mocks__/mockFile.ts',
     '^contracts/(.*)$': '<rootDir>/src/contracts/$1',
     '^components/(.*)$': '<rootDir>/src/components/$1',
     '^store/(.*)$': '<rootDir>/src/store/$1',

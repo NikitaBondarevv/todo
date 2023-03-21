@@ -81,6 +81,7 @@
 
 .loginForm input:disabled {
   background-color: rgb(255 255 255 / 50%);
+  cursor: default;
 }
 
 .info {

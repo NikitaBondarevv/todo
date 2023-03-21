@@ -56,10 +56,9 @@ describe('<Task />', () => {
   })
 
   test('should call deleteTask() when click removeTask button', async () => {
-    renderWrapper()
-    const buttons = screen.getAllByRole('button')
+    const { container } = renderWrapper()
 
-    await act(() => fireEvent.click(buttons.at(2)!))
+    await act(() => fireEvent.click(container.querySelector(`.${styles.delete}`)!))
 
     expect(deleteTask).toHaveBeenCalledWith(task)
     expect(defaultProps.getTasks).toHaveBeenCalled()

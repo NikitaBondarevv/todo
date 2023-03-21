@@ -32,23 +32,23 @@ describe('<UserForm />', () => {
   test('should set value "a" in input and render div with error text', () => {
     const { container } = render(<UserForm {...defaultProps} user={defaultProps.user} />)
     const input = screen.getByDisplayValue('firstName')
-        
+
     fireEvent.change(input, { target: { value: 'a' } })
     fireEvent.blur(input)
-    
-    expect(container.querySelector(`.${styles.textInfo}`)).toBeInTheDocument()
-   })
 
-   test('should not execute onSubmit() if all fields are not filled', () => {
+    expect(container.querySelector(`.${styles.textInfo}`)).toBeInTheDocument()
+  })
+
+  test('should not execute onSubmit() if all fields are not filled', () => {
     const { container } = render(<UserForm {...defaultProps} user={user} />)
     const form = container.querySelector(`.${styles.loginForm}`)
 
-    fireEvent.submit(form!)    
-    
-    expect(defaultProps.onSubmit).not.toHaveBeenCalled()
-   })
+    fireEvent.submit(form!)
 
-   test('should work onSubmit form and execute onSubmit()', () => {
+    expect(defaultProps.onSubmit).not.toHaveBeenCalled()
+  })
+
+  test('should work onSubmit form and execute onSubmit()', () => {
     const user = {
       ...defaultProps.user,
       passwordRepeat: defaultProps.user?.password
@@ -56,21 +56,22 @@ describe('<UserForm />', () => {
     const { container } = render(<UserForm {...defaultProps} user={user} />)
     const form = container.querySelector(`.${styles.loginForm}`)
 
-    fireEvent.submit(form!)    
-    
-    expect(defaultProps.onSubmit).toHaveBeenCalled()
-   })
+    fireEvent.submit(form!)
 
-   test('should show div with error if password and passwordRepeat don`t match', () => {
+    expect(defaultProps.onSubmit).toHaveBeenCalled()
+  })
+
+  test('should show div with error if password and passwordRepeat don`t match', () => {
+    const passwordRepeat = 'test'
     const user = {
       ...defaultProps.user,
-      passwordRepeat: 'test'
+      passwordRepeat
     } as IUser
     const { container } = render(<UserForm {...defaultProps} user={user} />)
-    const input = screen.getByDisplayValue('test')
+    const input = screen.getByDisplayValue(passwordRepeat)
 
     fireEvent.blur(input)
 
     expect(container.querySelector(`.${styles.textInfo}`)).toBeInTheDocument()
-   })
+  })
 })

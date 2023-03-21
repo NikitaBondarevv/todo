@@ -49,7 +49,7 @@ export const ManageTask = () => {
     (async () => {
       if (id) {
         const task = await getTaskById(id)
-        
+
         setTitle(task.title)
         setDescription(task.description)
       } else {

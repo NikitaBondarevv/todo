@@ -1,6 +1,6 @@
 import { NotificationManager } from 'react-notifications'
 
-const makeRequest = async <T>(url: string, data?: T, method: string = 'GET') => {
+export const makeRequest = async <T>(url: string, data?: T, method: string = 'GET') => {
   const options = {
     method,
     credentials: 'include'

@@ -6,12 +6,12 @@ import { request } from 'contracts/request'
 const mockData = { data: 'test' }
 const mockResponse = { json: () => mockData } as unknown as Response
 const options = {
-  body: "{\"data\":\"test\"}",
   credentials: 'include',
   headers: {
     "Content-type": 'application/json; charset=utf-8'
   },
-  method: 'GET'
+  method: 'GET',
+  body: JSON.stringify(mockData)
 }
 
 describe('makeRequest', () => {
@@ -32,7 +32,7 @@ describe('makeRequest', () => {
   test('should add for options "header and body" if data passed in argument', async () => {
     const fakeFetch = jest.spyOn(global, 'fetch').mockResolvedValueOnce(mockResponse)
 
-    await act(async () => await makeRequest('some', mockData))
+    await makeRequest('some', mockData)    
 
     expect(fakeFetch).toHaveBeenCalledWith('http://localhost:8086/some', options)
   })

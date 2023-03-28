@@ -1,33 +1,31 @@
-import { fireEvent, render } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { fireEvent } from '@testing-library/react'
+import { customRender } from '__mocks__/customRender'
 
-import { CreateUser } from '..'
-import { createUser } from 'contracts/user'
+import { Profile } from '..'
 import styles from 'components/userForm/styles.css'
+import { updateUser } from 'contracts/user'
 import { fakeUser } from '__mocks__/entities/user.mock'
 
 jest.mock('contracts/user', () => ({
-  createUser: jest.fn()
+  updateUser: jest.fn()
 }))
 
-describe('<CreateUser />', () => {
+describe('<Profile />', () => {
   test('should match snapshot', () => {
-    const { asFragment } = render(
-      <BrowserRouter>
-        <CreateUser />
-      </BrowserRouter>
-    )
+    const { asFragment } = customRender(<Profile />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should call createUser', () => {
-    const { container } = render(
-      <BrowserRouter>
-        <CreateUser />
-      </BrowserRouter>
-    )
+  test('should disable email field', () => {
+    const { container } = customRender(<Profile />)
+    const inputEmail = container.querySelector('[data-test="email"]')
 
+    expect(inputEmail!.getAttribute('disabled')).not.toBe(null)
+  })
+
+  test('should call updateUser', () => {
+    const { container } = customRender(<Profile />)
     const form = container.querySelector(`.${styles.loginForm}`)
     const inputEmail = container.querySelector('[data-test="email"]')
     const inputFirstName = container.querySelector('[data-test="firstName"]')
@@ -43,6 +41,7 @@ describe('<CreateUser />', () => {
 
     fireEvent.submit(form!)
 
-    expect(createUser).toHaveBeenCalledWith(fakeUser)
+    expect(updateUser).toHaveBeenCalledWith(fakeUser)
   })
 })
+

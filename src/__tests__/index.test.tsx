@@ -23,12 +23,12 @@ jest.mock('store/user', () => ({
 
 describe('<App />', () => {
   const checkUserMock = checkUser as jest.Mock
-  const loginrMock = login as unknown as jest.Mock
+  const loginMock = login as unknown as jest.Mock
 
   beforeEach(() => {
     jest.resetAllMocks()
     checkUserMock.mockReturnValue({})
-    loginrMock.mockReturnValue({ type: 'login '})
+    loginMock.mockReturnValue({ type: 'login '})
   })
 
   test('should match snapshot', () => {

@@ -3,12 +3,12 @@ import { NotificationManager } from 'react-notifications'
 
 import { login } from 'contracts/login'
 import { TLoginFormProps } from './types'
+import { FormEvent, useState } from 'react'
+import { Preloader } from 'components/preloader'
 import styles from './styles.css'
-import { FormEvent, useState } from 'react';
-import { Preloader } from 'components/preloader';
 
 export const LoginForm = ({ setUser }: TLoginFormProps) => {
-  const [isLoading, setIsloading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     const {
@@ -20,7 +20,7 @@ export const LoginForm = ({ setUser }: TLoginFormProps) => {
     const { email, password } = elements as unknown as Record<string, HTMLInputElement>
 
     e.preventDefault()
-    setIsloading(true)
+    setIsLoading(true)
 
     const user = await login(email.value, password.value)
 
@@ -30,7 +30,7 @@ export const LoginForm = ({ setUser }: TLoginFormProps) => {
       NotificationManager.error(user.error)
     }
 
-    setIsloading(false)
+    setIsLoading(false)
   }
 
   return (

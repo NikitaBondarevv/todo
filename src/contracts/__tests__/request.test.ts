@@ -1,5 +1,3 @@
-import { act } from '@testing-library/react'
-
 import { makeRequest } from 'contracts/request'
 import { request } from 'contracts/request'
 

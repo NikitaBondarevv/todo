@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 
 import { Profile } from 'pages/profile'
-import { LoginForm } from 'pages/loginForm/LoginForm'
+import { LoginForm } from 'pages/loginForm'
 import { Tasks } from 'pages/tasks'
 import { TasksInfo } from 'pages/tasksInfo'
 import { Contacts } from 'pages/contacts'

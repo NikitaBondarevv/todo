@@ -1,5 +1,6 @@
 import { request } from 'contracts/request'
 import { createTask, deleteTask, getTaskById, updateTask } from 'contracts/tasks'
+import { task } from '__mocks__/entities/task.mock'
 
 jest.mock('contracts/request', () => ({
   request: {
@@ -10,38 +11,32 @@ jest.mock('contracts/request', () => ({
   }
 }))
 
-const data = {
-  day: '1',
-  id: '1',
-  title: 'test-title'
-}
-
-const testUrl = `tasks/${data.id}`
+const testUrl = `tasks/${task.id}`
 
 describe('getTaskById', () => {
   test('should return data on request', () => {
-    getTaskById(data.id)
+    getTaskById(task.id)
     expect(request.get).toHaveBeenCalledWith(testUrl)
   })
 })
 
 describe('updateTask', () => {
   test('should update data on request "updateTask"', () => {
-    updateTask(data)
-    expect(request.put).toHaveBeenCalledWith(testUrl, data)
+    updateTask(task)
+    expect(request.put).toHaveBeenCalledWith(testUrl, task)
   })
 })
 
 describe('deleteTask', () => {
   test('should work delete on request', () => {
-    deleteTask(data)
+    deleteTask(task)
     expect(request.delete).toHaveBeenCalledWith(testUrl)
   })
 })
 
 describe('createTask', () => {
   test('should create data on request "createTask"', () => {
-    createTask(data)
-    expect(request.post).toHaveBeenCalledWith('tasks', data)
+    createTask(task)
+    expect(request.post).toHaveBeenCalledWith('tasks', task)
   })
 })

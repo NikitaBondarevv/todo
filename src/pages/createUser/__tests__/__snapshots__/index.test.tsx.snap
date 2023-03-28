@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<UserForm /> should match snapshot 1`] = `
+exports[`<CreateUser /> should match snapshot 1`] = `
 <DocumentFragment>
   <form
     class="loginForm"
@@ -15,7 +15,7 @@ exports[`<UserForm /> should match snapshot 1`] = `
           name="email"
           placeholder="EMAIL"
           type="text"
-          value="test@gmail.com"
+          value=""
         />
       </li>
       <li
@@ -27,7 +27,7 @@ exports[`<UserForm /> should match snapshot 1`] = `
           name="firstName"
           placeholder="FIRST NAME"
           type="text"
-          value="firstName"
+          value=""
         />
       </li>
       <li
@@ -39,7 +39,7 @@ exports[`<UserForm /> should match snapshot 1`] = `
           name="lastName"
           placeholder="LAST NAME"
           type="text"
-          value="lastName"
+          value=""
         />
       </li>
       <li
@@ -51,7 +51,7 @@ exports[`<UserForm /> should match snapshot 1`] = `
           name="password"
           placeholder="PASSWORD"
           type="password"
-          value="test-password"
+          value=""
         />
       </li>
       <li

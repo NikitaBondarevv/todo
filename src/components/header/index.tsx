@@ -6,7 +6,7 @@ import { AuthorizedUser } from './authorizedUser'
 import styles from './styles.css'
 import logo from './images/logo.png'
 
-const getNavLinkName = (isActive: boolean, value: string = '') => {
+const getNavLinkName = (isActive: boolean, value = '') => {
   const activeClassName = isActive ? styles.active : ''
 
   return `${value} ${activeClassName}`

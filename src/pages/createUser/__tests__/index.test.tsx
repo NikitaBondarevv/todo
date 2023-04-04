@@ -1,13 +1,16 @@
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 
 import { CreateUser } from '..'
 import { createUser } from 'contracts/user'
-import styles from 'components/userForm/styles.css'
 import { fakeUser } from '__mocks__/entities/user.mock'
 
 jest.mock('contracts/user', () => ({
   createUser: jest.fn()
+}))
+
+jest.mock('components/userForm', () => ({
+  UserForm: jest.fn().mockReturnValue('UserForm')
 }))
 
 describe('<CreateUser />', () => {
@@ -21,27 +24,21 @@ describe('<CreateUser />', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should call createUser', () => {
-    const { container } = render(
+  test('should call createUser onSubmit()', () => {
+    const userModule = jest.requireMock<{ UserForm: jest.Mock }>('components/userForm')
+
+    userModule.UserForm.mockImplementation(
+      ({ onSubmit }: { onSubmit: (data: unknown) => void }) => <button onClick={() => onSubmit(fakeUser)} />
+    )
+    render(
       <BrowserRouter>
         <CreateUser />
       </BrowserRouter>
     )
 
-    const form = container.querySelector(`.${styles.loginForm}`)
-    const inputEmail = container.querySelector('[data-test="email"]')
-    const inputFirstName = container.querySelector('[data-test="firstName"]')
-    const inputLastName = container.querySelector('[data-test="lastName"]')
-    const inputPassword = container.querySelector('[data-test="password"]')
-    const inputPasswordRepeat = container.querySelector('[data-test="passwordRepeat"]')
+    const button = screen.getByRole('button')
 
-    fireEvent.change(inputEmail!, { target: { value: fakeUser.email } })
-    fireEvent.change(inputFirstName!, { target: { value: fakeUser.firstName } })
-    fireEvent.change(inputLastName!, { target: { value: fakeUser.lastName } })
-    fireEvent.change(inputPassword!, { target: { value: fakeUser.password } })
-    fireEvent.change(inputPasswordRepeat!, { target: { value: fakeUser.passwordRepeat } })
-
-    fireEvent.submit(form!)
+    fireEvent.click(button)
 
     expect(createUser).toHaveBeenCalledWith(fakeUser)
   })

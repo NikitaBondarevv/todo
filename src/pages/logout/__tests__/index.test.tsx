@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react'
+
 import { logout } from 'contracts/logout'
 import { customRender } from '__mocks__/customRender'
 import { Logout } from '..'

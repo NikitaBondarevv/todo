@@ -1,13 +1,12 @@
-import { render } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import configureStore from 'redux-mock-store'
-import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
 
 import { Header } from '..'
 import { customRender } from '__mocks__/customRender'
 import styles from './styles.css'
-
-const mockStore = configureStore([])
+import { login } from 'store/user'
+import { store } from 'store'
+import { IUser } from 'interfaces/IUser'
 
 describe('<Header />', () => {
   test('should match snapshot', () => {
@@ -17,15 +16,10 @@ describe('<Header />', () => {
   })
 
   test('should render <AuthorizedUser /> if "isAuthenticated" true', () => {
-    const initialState = { user: { isAuthenticated: true } }
-    const store = mockStore(initialState)
-    const { container } = render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <Header />
-        </Provider>
-      </BrowserRouter>
-    )
+    const firstName = 'test name'
+    store.dispatch(login({ firstName } as IUser))
+
+    const { container } = customRender(<Header />)
     const authorizedUserElement = container.querySelector(`.${styles.menu}`)
 
     expect(authorizedUserElement).toBeInTheDocument()

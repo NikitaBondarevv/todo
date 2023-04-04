@@ -14,5 +14,14 @@ module.exports = {
     '^pages$': '<rootDir>/src/pages/index.tsx',
     '^__mocks__/(.*)$': '<rootDir>/src/__mocks__/$1',
   },
-  testEnvironment: 'jsdom'
+  testEnvironment: 'jsdom',
+
+  coverageThreshold: {
+    'global': {
+      'branches': 90,
+      'functions': 90,
+      'lines': 90,
+      'statements': 90,
+    },
+  },
 };

@@ -77,7 +77,6 @@ export const UserForm = ({ disabledFields, user, onSubmit }: TUserForm) => {
           return (
             <li key={field.label} className={styles[field.label]}>
               <input type={field.secure ? 'password' : 'text'}
-                data-test={field.label}
                 name={field.label}
                 className={stateField.error ? styles.error : styles.success}
                 placeholder={field.label.replace(/([A-Z])/g, ' $1').toUpperCase()}

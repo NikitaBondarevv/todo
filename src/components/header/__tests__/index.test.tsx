@@ -1,12 +1,12 @@
-import { act } from '@testing-library/react'
-import configureStore from 'redux-mock-store'
-
 import { Header } from '..'
 import { customRender } from '__mocks__/customRender'
-import styles from './styles.css'
 import { login } from 'store/user'
 import { store } from 'store'
 import { IUser } from 'interfaces/IUser'
+
+jest.mock('../authorizedUser', () => ({
+  AuthorizedUser: () => <div data-test-id="test" />
+}))
 
 describe('<Header />', () => {
   test('should match snapshot', () => {
@@ -20,7 +20,7 @@ describe('<Header />', () => {
     store.dispatch(login({ firstName } as IUser))
 
     const { container } = customRender(<Header />)
-    const authorizedUserElement = container.querySelector(`.${styles.menu}`)
+    const authorizedUserElement = container.querySelector(`[data-test-id=test]`)
 
     expect(authorizedUserElement).toBeInTheDocument()
   })

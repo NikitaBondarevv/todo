@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { Navigation } from '../navigation'
 
-jest.mock('helpers/constans', () => ({
-  getDates: () => new Date()
+jest.mock('helpers/constants', () => ({
+  getDates: () => ['date-test1', 'date-test2']
 }))
 
 describe('<Navigation />', () => {

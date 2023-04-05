@@ -5,7 +5,7 @@ import { store } from 'store'
 import { IUser } from 'interfaces/IUser'
 
 jest.mock('../authorizedUser', () => ({
-  AuthorizedUser: () => <div data-test-id="test" />
+  AuthorizedUser: () => <div id="test" />
 }))
 
 describe('<Header />', () => {
@@ -20,7 +20,7 @@ describe('<Header />', () => {
     store.dispatch(login({ firstName } as IUser))
 
     const { container } = customRender(<Header />)
-    const authorizedUserElement = container.querySelector(`[data-test-id=test]`)
+    const authorizedUserElement = container.querySelector('#test')
 
     expect(authorizedUserElement).toBeInTheDocument()
   })

@@ -1,12 +1,12 @@
 import { Link, NavLink } from 'react-router-dom'
 
 import { useAppSelector } from 'store'
-import { navigation, notLoggedNavigation } from 'helpers/constans'
+import { navigation, notLoggedNavigation } from 'helpers/constants'
 import { AuthorizedUser } from './authorizedUser'
 import styles from './styles.css'
 import logo from './images/logo.png'
 
-const getNavLinkName = (isActive: boolean, value: string = '') => {
+const getNavLinkName = (isActive: boolean, value = '') => {
   const activeClassName = isActive ? styles.active : ''
 
   return `${value} ${activeClassName}`

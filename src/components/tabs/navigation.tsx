@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 import styles from './styles.css'
-import { getDates } from '../../helpers/constans'
+import { getDates } from '../../helpers/constants'
 import { TNavigationProps } from './types'
 
 export const Navigation = ({ titles, setActiveTab, activeTabIndex }: TNavigationProps) => (

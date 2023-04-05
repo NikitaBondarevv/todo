@@ -8,12 +8,27 @@ exports[`<Tabs /> should match snapshot 1`] = `
     <nav>
       <ul
         class="list"
-      />
+      >
+        <li
+          class="active"
+        >
+          <a>
+            <br />
+            <time
+              class="dates"
+            >
+              3 April
+            </time>
+          </a>
+        </li>
+      </ul>
     </nav>
     <div
       class="activeContent"
       id="0"
-    />
+    >
+      test
+    </div>
   </div>
 </DocumentFragment>
 `;

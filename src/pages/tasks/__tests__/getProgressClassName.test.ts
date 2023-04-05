@@ -8,9 +8,9 @@ describe('getProgressClassName', () => {
 
   test('should return styles.progress and styles.updateTask if argument done === undefined', () => {
     expect(getProgressClassName(undefined)).toEqual(`${styles.progress} ${styles.updateTask}`)
-  });
+  })
 
   test('should return styles.waiting and styles.updateTask if argument done === false', () => {
     expect(getProgressClassName(false)).toEqual(`${styles.waiting} ${styles.updateTask}`)
-  });
+  })
 })

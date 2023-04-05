@@ -14,7 +14,7 @@ exports[`<UserForm /> should match snapshot 1`] = `
           name="email"
           placeholder="EMAIL"
           type="text"
-          value="test@gmai.com"
+          value="test@gmail.com"
         />
       </li>
       <li

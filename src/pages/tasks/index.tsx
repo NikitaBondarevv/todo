@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { daysOfTheWeek } from 'helpers/constans'
+import { daysOfTheWeek } from 'helpers/constants'
 import { getTasks } from 'contracts/getTasks'
 import { TaskList } from './taskList'
 import { Tabs } from 'components/tabs'

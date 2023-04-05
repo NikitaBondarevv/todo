@@ -1,6 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { Navigation } from '../navigation'
 
+jest.mock('helpers/constants', () => ({
+  getDates: () => ['date-test1', 'date-test2']
+}))
+
 describe('<Navigation />', () => {
   const titles = ['test1', 'test2']
   const setActiveTab = jest.fn();

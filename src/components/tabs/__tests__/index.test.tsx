@@ -15,7 +15,7 @@ describe('<Tabs />', () => {
   })
 
   test('should render <Preloader /> if loading = true', () => {
-    const { container } = render(<Tabs children={[]} loading={true} />)
+    const { container } = render(<Tabs children={[]} loading />)
 
     const preloader = container.querySelector(`.${styles.preloader}`)
 

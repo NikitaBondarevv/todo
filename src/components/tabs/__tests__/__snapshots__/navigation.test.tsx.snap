@@ -14,9 +14,7 @@ exports[`<Navigation /> should match snapshot 1`] = `
           <br />
           <time
             class="dates"
-          >
-            t
-          </time>
+          />
         </a>
       </li>
       <li
@@ -27,9 +25,7 @@ exports[`<Navigation /> should match snapshot 1`] = `
           <br />
           <time
             class="dates"
-          >
-            e
-          </time>
+          />
         </a>
       </li>
     </ul>

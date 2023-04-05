@@ -39,7 +39,7 @@ describe('<LoginForm />', () => {
     expect(setUser).toHaveBeenCalled()
   })
 
-  test('should show error window if there is error', async () => {
+  test('should not call "setUser" if there is an error', async () => {
     const error = { error: 'test-error' }
 
     loginMock.mockReturnValueOnce(error)

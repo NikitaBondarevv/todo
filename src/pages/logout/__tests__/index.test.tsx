@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react'
 import { logout } from 'contracts/logout'
 import { customRender } from '__mocks__/customRender'
 import { Logout } from '..'
+import styles from './styles.css'
 
 jest.mock('contracts/logout', () => ({
   logout: jest.fn()
@@ -24,10 +25,12 @@ describe('<Logout />', () => {
   })
 
   test('should show error text if "logout" don`t work', async () => {
-    const mockError = 'something went wrong, please try leater!'
+    const mockError = 'something went wrong, please try later!'
 
     logoutMock.mockRejectedValueOnce(mockError)
     customRender(<Logout />)
+
+    await logout()
 
     expect(await screen.findByText(mockError)).toBeInTheDocument()
   })

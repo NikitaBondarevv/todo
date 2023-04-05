@@ -15,7 +15,7 @@ export const Logout = () => {
       await logout()
       dispatch(logoutAction())
     } catch (error) {
-      setError('something went wrong, please try leater!')
+      setError('something went wrong, please try later!')
     }
   }
   

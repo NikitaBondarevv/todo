@@ -14,28 +14,28 @@ jest.mock('contracts/request', () => ({
 const testUrl = `tasks/${task.id}`
 
 describe('getTaskById', () => {
-  test('should return data on request', () => {
+  test('should call "request.get" on "getTaskById"', () => {
     getTaskById(task.id)
     expect(request.get).toHaveBeenCalledWith(testUrl)
   })
 })
 
 describe('updateTask', () => {
-  test('should update data on request "updateTask"', () => {
+  test('should call "request.put()" on "updateTask"', () => {
     updateTask(task)
     expect(request.put).toHaveBeenCalledWith(testUrl, task)
   })
 })
 
 describe('deleteTask', () => {
-  test('should work delete on request', () => {
+  test('should call the "request.delete" on "deleteTask"', () => {
     deleteTask(task)
     expect(request.delete).toHaveBeenCalledWith(testUrl)
   })
 })
 
 describe('createTask', () => {
-  test('should create data on request "createTask"', () => {
+  test('should call the "request.post" on "createTask"', () => {
     createTask(task)
     expect(request.post).toHaveBeenCalledWith('tasks', task)
   })

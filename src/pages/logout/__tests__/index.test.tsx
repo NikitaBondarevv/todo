@@ -3,7 +3,6 @@ import { screen } from '@testing-library/react'
 import { logout } from 'contracts/logout'
 import { customRender } from '__mocks__/customRender'
 import { Logout } from '..'
-import styles from './styles.css'
 
 jest.mock('contracts/logout', () => ({
   logout: jest.fn()

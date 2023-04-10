@@ -10,7 +10,10 @@
 1) Go to project folder and make *npm i*
 2) Run *npm start* to start todo project.
 
+## Description
 Todo is a task creation project.
+
+App built with React library using TypeScript, React Testing Library, React-Redux. 
 
 You can:
 1) Create a new task

@@ -1,4 +1,4 @@
-# todo
+# Todo
 
 ## Installation server
 1) Clone repo (server base-koa) *git clone https://github.com/iliatcymbal/base-koa.git*

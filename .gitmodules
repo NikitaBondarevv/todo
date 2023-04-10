@@ -1,0 +1,3 @@
+[submodule "base-koa"]
+	path = base-koa
+	url = https://github.com/iliatcymbal/base-koa
